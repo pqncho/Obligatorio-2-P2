@@ -1,8 +1,8 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
-package Interfaz;
+package Dominio;
 
 
-public class Obligatorio2P2 {
+public class Sistema {
 
    
     public static void main(String[] args) {
