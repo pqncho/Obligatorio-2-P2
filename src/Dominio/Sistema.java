@@ -5,8 +5,16 @@ package Dominio;
 public class Sistema {
 
    
-    public static void main(String[] args) {
-      
-    }
+   
+    
+    
+   public void moverEmpleado(Empleado unEmpleado, Area areaActual,Area areaDestino, int unMes ) {
+       int sueldoAReintegrar=0;
+       
+       
+       
+
+
+}
     
 }
