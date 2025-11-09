@@ -1,15 +1,36 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz;
 import Dominio.*;
+import javax.swing.*;
+import java.awt.*;
 
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class VentanaMenu extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaMenu.class.getName());
 
    
-    public VentanaPrincipal(Sistema unSistema) {
+    public VentanaMenu(Sistema unSistema) {
         initComponents();
-    }
+        setTitle("ERP Empresarial");
+        
+       JPanel panelFondo = new JPanel() {
+            private Image fondo = new ImageIcon(
+                getClass().getResource("/Recursos/fondoERP.jpg")
+            ).getImage();
+
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+             
+                g.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+
+        panelFondo.setLayout(new BorderLayout());
+
+       
+        setContentPane(panelFondo);
+ }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -87,7 +108,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        pack();
+        setBounds(0, 0, 416, 309);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -112,4 +133,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
+
+                
 }

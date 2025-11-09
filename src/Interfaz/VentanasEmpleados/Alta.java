@@ -27,7 +27,7 @@ public class Alta extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        pack();
+        setBounds(0, 0, 416, 309);
     }// </editor-fold>//GEN-END:initComponents
 
    

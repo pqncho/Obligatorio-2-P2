@@ -1,3 +1,4 @@
+//Marcos Coszion(332945), Francisco Lino(347691)
 package Dominio;
 
 public class Empleado {
@@ -5,5 +6,37 @@ public class Empleado {
    private int salarioMensual;
    private Manager manager;
    private Area area;
+
+    public String getCurriculum() {
+        return curriculum;
+    }
+
+    public void setCurriculum(String unCurriculum) {
+        curriculum = unCurriculum;
+    }
+
+    public int getSalarioMensual() {
+        return salarioMensual;
+    }
+
+    public void setSalarioMensual(int unSalarioMensual) {
+        salarioMensual = unSalarioMensual;
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager unManager) {
+        manager = unManager;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area unArea) {
+        area = unArea;
+    }
    
 }
