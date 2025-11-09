@@ -12,7 +12,7 @@ public class VentanaMenu extends javax.swing.JFrame {
     public VentanaMenu(Sistema unSistema) {
         initComponents();
         setTitle("ERP Empresarial");
-        
+        setVisible(true);
        JPanel panelFondo = new JPanel() {
             private Image fondo = new ImageIcon(
                 getClass().getResource("/Recursos/fondoERP.jpg")
@@ -38,71 +38,76 @@ public class VentanaMenu extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        itemAreaAlta = new javax.swing.JMenuItem();
+        itemAreaBaja = new javax.swing.JMenuItem();
+        itemAreaModificacion = new javax.swing.JMenuItem();
+        itemAreaMovimiento = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        itemManagersAlta = new javax.swing.JMenuItem();
+        itemManagersBaja = new javax.swing.JMenuItem();
+        itemManagersModificacion = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        itemEmpleadosAlta = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        itemReporteInteligente = new javax.swing.JMenuItem();
+        itemReporteAreas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jMenu1.setText("Areas");
 
-        jMenuItem1.setText("Alta");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itemAreaAlta.setText("Alta");
+        itemAreaAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itemAreaAltaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(itemAreaAlta);
 
-        jMenuItem2.setText("Baja");
-        jMenu1.add(jMenuItem2);
+        itemAreaBaja.setText("Baja");
+        jMenu1.add(itemAreaBaja);
 
-        jMenuItem3.setText("Modificacion");
-        jMenu1.add(jMenuItem3);
+        itemAreaModificacion.setText("Modificacion");
+        jMenu1.add(itemAreaModificacion);
 
-        jMenuItem4.setText("Realizar movimiento");
-        jMenu1.add(jMenuItem4);
+        itemAreaMovimiento.setText("Realizar movimiento");
+        jMenu1.add(itemAreaMovimiento);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Managers");
 
-        jMenuItem6.setText("Alta");
-        jMenu2.add(jMenuItem6);
+        itemManagersAlta.setText("Alta");
+        itemManagersAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemManagersAltaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemManagersAlta);
 
-        jMenuItem5.setText("Baja");
-        jMenu2.add(jMenuItem5);
+        itemManagersBaja.setText("Baja");
+        jMenu2.add(itemManagersBaja);
 
-        jMenuItem7.setText("Modificacion");
-        jMenu2.add(jMenuItem7);
+        itemManagersModificacion.setText("Modificacion");
+        jMenu2.add(itemManagersModificacion);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Empleados");
 
-        jMenuItem8.setText("Alta");
-        jMenu3.add(jMenuItem8);
+        itemEmpleadosAlta.setText("Alta");
+        jMenu3.add(itemEmpleadosAlta);
 
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Reportes");
 
-        jMenuItem9.setText("Reporte inteligente");
-        jMenu4.add(jMenuItem9);
+        itemReporteInteligente.setText("Reporte inteligente");
+        jMenu4.add(itemReporteInteligente);
 
-        jMenuItem10.setText("Reporte de estado de areas");
-        jMenu4.add(jMenuItem10);
+        itemReporteAreas.setText("Reporte de estado de areas");
+        jMenu4.add(itemReporteAreas);
 
         jMenuBar1.add(jMenu4);
 
@@ -111,27 +116,31 @@ public class VentanaMenu extends javax.swing.JFrame {
         setBounds(0, 0, 416, 309);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itemAreaAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaAltaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_itemAreaAltaActionPerformed
+
+    private void itemManagersAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManagersAltaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemManagersAltaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itemAreaAlta;
+    private javax.swing.JMenuItem itemAreaBaja;
+    private javax.swing.JMenuItem itemAreaModificacion;
+    private javax.swing.JMenuItem itemAreaMovimiento;
+    private javax.swing.JMenuItem itemEmpleadosAlta;
+    private javax.swing.JMenuItem itemManagersAlta;
+    private javax.swing.JMenuItem itemManagersBaja;
+    private javax.swing.JMenuItem itemManagersModificacion;
+    private javax.swing.JMenuItem itemReporteAreas;
+    private javax.swing.JMenuItem itemReporteInteligente;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 
                 

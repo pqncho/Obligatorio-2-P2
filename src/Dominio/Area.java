@@ -29,4 +29,9 @@ public class Area {
     public void setPresupuesto(int unPresupuesto){
         presupuesto=unPresupuesto;
     }
+
+    
+    
+    
 }
+

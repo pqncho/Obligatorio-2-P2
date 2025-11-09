@@ -7,13 +7,13 @@ public class ERP {
     
      public static void main(String[] args) {
         
-        VentanaMenu ventanaMenu= new VentanaMenu(sistema);
-        ventanaMenu.setVisible(true);
+        
+        
       
         
         javax.swing.SwingUtilities.invokeLater(() -> {
             VentanaSplash splash = new VentanaSplash();
-            splash.setVisible(true);
+          
 
             
             new Thread(() -> {

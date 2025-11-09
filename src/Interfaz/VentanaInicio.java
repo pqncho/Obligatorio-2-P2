@@ -1,6 +1,6 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz;
-
+import Dominio.*;
 
 public class VentanaInicio extends javax.swing.JFrame {
 
@@ -16,27 +16,27 @@ public class VentanaInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botonSistemaNuevo = new javax.swing.JButton();
+        botonSistemaGuardado = new javax.swing.JButton();
+        botonSistemaPrecargado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Sistema nuevo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonSistemaNuevo.setText("Sistema nuevo");
+        botonSistemaNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonSistemaNuevoActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Sistema guardado");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonSistemaGuardado.setText("Sistema guardado");
+        botonSistemaGuardado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonSistemaGuardadoActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Sistema con datos precargados");
+        botonSistemaPrecargado.setText("Sistema con datos precargados");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -44,11 +44,11 @@ public class VentanaInicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonSistemaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonSistemaGuardado, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(botonSistemaPrecargado)
                 .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
@@ -56,30 +56,32 @@ public class VentanaInicio extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(70, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(botonSistemaNuevo)
+                    .addComponent(botonSistemaGuardado)
+                    .addComponent(botonSistemaPrecargado))
                 .addGap(60, 60, 60))
         );
 
         setBounds(0, 0, 555, 166);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonSistemaGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSistemaGuardadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonSistemaGuardadoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botonSistemaNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSistemaNuevoActionPerformed
+       this.dispose();
+        Sistema sistema= new Sistema();
+       VentanaMenu ventanaMenu= new VentanaMenu(sistema);
+    }//GEN-LAST:event_botonSistemaNuevoActionPerformed
 
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton botonSistemaGuardado;
+    private javax.swing.JButton botonSistemaNuevo;
+    private javax.swing.JButton botonSistemaPrecargado;
     // End of variables declaration//GEN-END:variables
 
 

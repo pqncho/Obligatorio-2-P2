@@ -3,7 +3,7 @@ package Dominio;
 
 public class Manager {
     private String nombre;
-    private String ci;
+    private String cedula;
     private int celular;
     private int antiguedad;  
 
@@ -15,12 +15,12 @@ public class Manager {
         nombre = unNombre;
     }
 
-    public String getCi() {
-        return ci;
+    public String getCedula() {
+        return cedula;
     }
 
     public void setCi(String unaCi) {
-        ci = unaCi;
+        cedula = unaCi;
     }
 
     public int getCelular() {

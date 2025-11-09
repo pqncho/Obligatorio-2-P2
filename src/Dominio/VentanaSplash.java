@@ -8,6 +8,7 @@ public class VentanaSplash extends JWindow {
     public VentanaSplash() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.WHITE);
+        setVisible(true);
 
         
         ImageIcon icon = new ImageIcon(getClass().getResource("/Recursos/logoERP.png"));
