@@ -1,15 +1,19 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz.VentanasAreas;
 
+import Dominio.*;
+import java.util.*;
 
 public class ModificacionArea extends javax.swing.JFrame {
-
+    private Sistema sistema;
    
-    public ModificacionArea() {
+    public ModificacionArea(Sistema unSistema) {
+         this.sistema = unSistema;
         initComponents();
         setTitle("Modificacion de Areas");
         setVisible(true);
         
+        ArrayList<Area> listaAreas = sistema.getListaAreas();
         
     }
 
@@ -30,7 +34,7 @@ public class ModificacionArea extends javax.swing.JFrame {
         botonModifArea = new javax.swing.JButton();
         botonCancelarModifArea = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Areas");
 

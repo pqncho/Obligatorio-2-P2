@@ -1,14 +1,19 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz.VentanasAreas;
+import Dominio.*;
 import Interfaz.*;
+import java.util.*;
 
 public class AltaArea extends javax.swing.JFrame {
-
+     private Sistema sistema;
    
-    public AltaArea() {
+    public AltaArea(Sistema unSistema) {
+         this.sistema = unSistema;
         initComponents();
         setTitle("Alta de Areas");
         setVisible(true);
+       
+        ArrayList<Area> listaAreas = sistema.getListaAreas();
     }
 
     
@@ -27,7 +32,7 @@ public class AltaArea extends javax.swing.JFrame {
         botonRegistrarArea = new javax.swing.JButton();
         botonCancelarArea = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };

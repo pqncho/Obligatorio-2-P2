@@ -3,7 +3,7 @@ package Interfaz;
 import Dominio.*;
 
 public class VentanaInicio extends javax.swing.JFrame {
-
+    private Sistema sistema;
     
     public VentanaInicio() {
         initComponents();
@@ -14,13 +14,9 @@ public class VentanaInicio extends javax.swing.JFrame {
     }
 private void cargarSistemaPorDefecto(){
     
-    Sistema sistema= new Sistema();
+    sistema= new Sistema();
     sistema.cargarDatosPorDefecto();
-    
-    VentanaMenu ventanaMenu = new VentanaMenu(sistema);
-    
-    
-    
+       VentanaMenu ventanaMenu = new VentanaMenu(sistema);
     }
    
     @SuppressWarnings("unchecked")
@@ -31,7 +27,7 @@ private void cargarSistemaPorDefecto(){
         botonSistemaGuardado = new javax.swing.JButton();
         botonSistemaPrecargado = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         botonSistemaNuevo.setText("Sistema nuevo");
         botonSistemaNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +84,8 @@ private void cargarSistemaPorDefecto(){
 
     private void botonSistemaNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSistemaNuevoActionPerformed
        this.dispose();
-        cargarSistemaPorDefecto();
+       sistema= new Sistema();
+        VentanaMenu ventanaMenu = new VentanaMenu(sistema);
     }//GEN-LAST:event_botonSistemaNuevoActionPerformed
 
     private void botonSistemaPrecargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSistemaPrecargadoActionPerformed

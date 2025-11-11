@@ -1,14 +1,19 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz.VentanasManagers;
 
+import Dominio.*;
+import java.util.*;
 
 public class ModificacionManager extends javax.swing.JFrame {
-
+    private Sistema sistema;
    
-    public ModificacionManager() {
+    public ModificacionManager(Sistema unSistema) {
+         this.sistema = unSistema;
         initComponents();
         setTitle("Modificacion de Managers");
         setVisible(true);
+        
+        ArrayList<Manager> listaManagers = sistema.getListaManagers();
     }
 
  
@@ -30,7 +35,7 @@ public class ModificacionManager extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         textoAntiModMan = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setText("Nombre");
 

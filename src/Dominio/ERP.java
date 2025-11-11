@@ -4,18 +4,10 @@ import Interfaz.*;
 
 public class ERP {
    static Sistema sistema= new Sistema();
-    
+  
      public static void main(String[] args) {
-        
-        
-        
-      
-        
         javax.swing.SwingUtilities.invokeLater(() -> {
             VentanaSplash splash = new VentanaSplash();
-          
-
-            
             new Thread(() -> {
                 try {
                     Thread.sleep(4000); 
@@ -27,8 +19,6 @@ public class ERP {
                 VentanaInicio ventanaInicio= new VentanaInicio();
             }).start();
         });
-        
-        
     }
 }
 

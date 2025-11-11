@@ -1,24 +1,23 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz;
 import Dominio.*;
-import Interfaz.VentanasAreas.AltaArea;
-import Interfaz.VentanasAreas.BajaArea;
-import Interfaz.VentanasAreas.ModificacionArea;
-import Interfaz.VentanasAreas.RealizarMovimiento;
+import Interfaz.VentanasAreas.*;
 import Interfaz.VentanasEmpleados.AltaEmpleado;
-import Interfaz.VentanasManagers.AltaManager;
-import Interfaz.VentanasManagers.BajaManager;
-import Interfaz.VentanasManagers.ModificacionManager;
+import Interfaz.VentanasManagers.*;
+import Recursos.VentanaAutores;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.*;
 
 
 public class VentanaMenu extends javax.swing.JFrame {
-    
+    private Sistema sistema;    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaMenu.class.getName());
 
    
     public VentanaMenu(Sistema unSistema) {
+        sistema=unSistema;
         initComponents();
         setTitle("ERP Empresarial");
         setVisible(true);
@@ -39,8 +38,34 @@ public class VentanaMenu extends javax.swing.JFrame {
 
        
         setContentPane(panelFondo);
+        
+         configurarAtajoF1();
+         
  }
+   
+        
+        private void configurarAtajoF1() {
+        // Vincula F1 a la acción "mostrarAutores"
+        JRootPane rootPane = this.getRootPane();
+        KeyStroke teclaF1 = KeyStroke.getKeyStroke("F1");
 
+        rootPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(teclaF1, "mostrarAutores");
+
+        rootPane.getActionMap()
+                .put("mostrarAutores", new AbstractAction() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        mostrarVentanaAutores();
+                    }
+                });
+    }
+
+    private void mostrarVentanaAutores() {
+        new VentanaAutores().setVisible(true);
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -61,7 +86,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         itemReporteInteligente = new javax.swing.JMenuItem();
         itemReporteAreas = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jMenu1.setText("Areas");
@@ -157,37 +182,37 @@ public class VentanaMenu extends javax.swing.JFrame {
 
     private void itemAreaAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaAltaActionPerformed
        
-        AltaArea ventanaAlta= new AltaArea();
+        AltaArea ventanaAlta= new AltaArea(sistema);
        
     }//GEN-LAST:event_itemAreaAltaActionPerformed
 
     private void itemManagersAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManagersAltaActionPerformed
-        AltaManager ventanaAltaManager =new AltaManager();
+        AltaManager ventanaAltaManager =new AltaManager(sistema);
     }//GEN-LAST:event_itemManagersAltaActionPerformed
 
     private void itemAreaMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaMovimientoActionPerformed
-        RealizarMovimiento ventanaRealizarMovimiento= new RealizarMovimiento();
+        RealizarMovimiento ventanaRealizarMovimiento= new RealizarMovimiento(sistema);
         
     }//GEN-LAST:event_itemAreaMovimientoActionPerformed
 
     private void itemEmpleadosAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEmpleadosAltaActionPerformed
-       AltaEmpleado ventanaAltaEmpleado = new AltaEmpleado();
+       AltaEmpleado ventanaAltaEmpleado = new AltaEmpleado(sistema);
     }//GEN-LAST:event_itemEmpleadosAltaActionPerformed
 
     private void itemManagersBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManagersBajaActionPerformed
-        BajaManager ventanaBajaManager = new BajaManager();
+        BajaManager ventanaBajaManager = new BajaManager(sistema);
     }//GEN-LAST:event_itemManagersBajaActionPerformed
 
     private void itemAreaBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaBajaActionPerformed
-       BajaArea ventanaBajaArea = new BajaArea();
+       BajaArea ventanaBajaArea = new BajaArea(sistema);
     }//GEN-LAST:event_itemAreaBajaActionPerformed
 
     private void itemAreaModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaModificacionActionPerformed
-        ModificacionArea ventanaModifArea= new ModificacionArea();
+        ModificacionArea ventanaModifArea= new ModificacionArea(sistema);
     }//GEN-LAST:event_itemAreaModificacionActionPerformed
 
     private void itemManagersModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManagersModificacionActionPerformed
-        ModificacionManager ventanaModifMan= new ModificacionManager();
+        ModificacionManager ventanaModifMan= new ModificacionManager(sistema);
     }//GEN-LAST:event_itemManagersModificacionActionPerformed
 
 
@@ -211,3 +236,4 @@ public class VentanaMenu extends javax.swing.JFrame {
 
                 
 }
+

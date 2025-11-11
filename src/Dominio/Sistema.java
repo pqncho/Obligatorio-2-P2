@@ -4,24 +4,19 @@ import Interfaz.*;
 import java.util.*;
 
 public class Sistema {
-    ArrayList<Empleado> listaEmpleados= new ArrayList<>();
-    ArrayList<Area> listaAreas= new ArrayList<>();
-    ArrayList<Manager> listaManagers = new ArrayList<>();
+   private ArrayList<Empleado> listaEmpleados= new ArrayList<>();
+   private ArrayList<Area> listaAreas= new ArrayList<>();
+   private ArrayList<Manager> listaManagers = new ArrayList<>();
+    
+    public Sistema(){
     
     
+    }
    public void moverEmpleado(Empleado unEmpleado, Area areaActual,Area areaDestino, int unMes ) {
        int sueldoAReintegrar=0;
 
 }
-    public void cargarSistemaPorDefecto(){
-    Sistema sistema= new Sistema();
-    sistema.cargarDatosPorDefecto();
     
-    VentanaMenu ventanaInicio = new VentanaMenu(sistema);
-    
-    
-    
-    }
     
     public void cargarDatosPorDefecto(){
     listaAreas.add(new Area("Personal","Reclutamiento de personal, promociones, gestión de cargos",100000));
@@ -33,5 +28,15 @@ public class Sistema {
     listaManagers.add(new Manager("Ricardo Morales","3.214.589-3","094 121 212",4));
     listaManagers.add(new Manager("Laura Torales","3.589.257-5","099 654 321",1));
     listaManagers.add(new Manager("Juan Pablo Zapata","4.555.197-7","099 202 020",5));
+    }
+    
+    public ArrayList<Empleado> getListaEmpleados() { 
+        return listaEmpleados;
+    }
+    public ArrayList<Area> getListaAreas() {
+        return listaAreas;
+    }
+    public ArrayList<Manager> getListaManagers() { 
+        return listaManagers; 
     }
 }

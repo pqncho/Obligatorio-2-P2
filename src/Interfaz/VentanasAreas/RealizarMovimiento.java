@@ -1,14 +1,20 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz.VentanasAreas;
 
+import Dominio.*;
+import java.util.*;
 
 public class RealizarMovimiento extends javax.swing.JFrame {
-
+    private Sistema sistema;
    
-    public RealizarMovimiento() {
+    public RealizarMovimiento(Sistema unSistema) {
+         this.sistema = unSistema;
         initComponents();
         setTitle("Movimiento de Empleados");
         setVisible(true);
+        
+        ArrayList<Area> listaAreas = sistema.getListaAreas();
+        ArrayList<Empleado> listaEmpleados = sistema.getListaEmpleados();
     }
 
    
@@ -27,7 +33,7 @@ public class RealizarMovimiento extends javax.swing.JFrame {
         botonRegistrarMov = new javax.swing.JButton();
         botonCancelarMov = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Mes");
 

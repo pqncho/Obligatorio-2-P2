@@ -1,14 +1,20 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz.VentanasEmpleados;
 
+import Dominio.*;
+import java.util.*;
+
 
 public class AltaEmpleado extends javax.swing.JFrame {
-
+    private Sistema sistema;
     
-    public AltaEmpleado() {
+    public AltaEmpleado(Sistema unSistema) {
+         this.sistema = unSistema;
         initComponents();
         setTitle("Alta de Empleados");
         setVisible(true);
+        
+        ArrayList<Empleado> listaEmpleados = sistema.getListaEmpleados();
     }
 
     
@@ -42,7 +48,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
 
         scrollAreaAltaEmp.setOrientation(javax.swing.JScrollBar.HORIZONTAL);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         textoNombreAltaEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -1,14 +1,20 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz.VentanasManagers;
 
+import Dominio.*;
+import java.util.*;
+
 
 public class AltaManager extends javax.swing.JFrame {
-
+    private Sistema sistema;
     
-    public AltaManager() {
+    public AltaManager(Sistema unSistema) {
+         this.sistema = unSistema;
         initComponents();
         setTitle("Alta de Managers");
         setVisible(true);
+        
+        ArrayList<Manager> listaManagers = sistema.getListaManagers();
     }
 
     
@@ -29,7 +35,7 @@ public class AltaManager extends javax.swing.JFrame {
         textoCelularAltaMan = new javax.swing.JTextField();
         textoAntAltaMan = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Cedula");
 

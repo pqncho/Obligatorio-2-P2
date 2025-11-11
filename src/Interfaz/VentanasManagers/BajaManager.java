@@ -1,15 +1,19 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz.VentanasManagers;
 
+import Dominio.*;
+import java.util.*;
 
 public class BajaManager extends javax.swing.JFrame {
-
+     private Sistema sistema;
     
-    public BajaManager() {
+    public BajaManager(Sistema unSistema) {
+         this.sistema = unSistema;
         initComponents();
         setTitle("Baja de Managers");
         setVisible(true);
-            
+           
+           ArrayList<Manager> listaManagers = sistema.getListaManagers();
     }
 
    
@@ -23,7 +27,7 @@ public class BajaManager extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Managers sin empleados");
 
