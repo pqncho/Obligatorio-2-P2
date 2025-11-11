@@ -25,11 +25,11 @@ public class RealizarMovimiento extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         boxMesesMov = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaAOrigenMov = new javax.swing.JList<>();
+        listaAOrigenMov = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
-        listaEmpleadosMov = new javax.swing.JList<>();
+        listaEmpleadosMov = new javax.swing.JList();
         jScrollPane3 = new javax.swing.JScrollPane();
-        listaADestinoMov = new javax.swing.JList<>();
+        listaADestinoMov = new javax.swing.JList();
         botonRegistrarMov = new javax.swing.JButton();
         botonCancelarMov = new javax.swing.JButton();
 
@@ -44,24 +44,24 @@ public class RealizarMovimiento extends javax.swing.JFrame {
             }
         });
 
-        listaAOrigenMov.setModel(new javax.swing.AbstractListModel<String>() {
+        listaAOrigenMov.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(listaAOrigenMov);
 
-        listaEmpleadosMov.setModel(new javax.swing.AbstractListModel<String>() {
+        listaEmpleadosMov.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane2.setViewportView(listaEmpleadosMov);
 
-        listaADestinoMov.setModel(new javax.swing.AbstractListModel<String>() {
+        listaADestinoMov.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane3.setViewportView(listaADestinoMov);
 
@@ -132,8 +132,8 @@ public class RealizarMovimiento extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JList<String> listaADestinoMov;
-    private javax.swing.JList<String> listaAOrigenMov;
-    private javax.swing.JList<String> listaEmpleadosMov;
+    private javax.swing.JList listaADestinoMov;
+    private javax.swing.JList listaAOrigenMov;
+    private javax.swing.JList listaEmpleadosMov;
     // End of variables declaration//GEN-END:variables
 }

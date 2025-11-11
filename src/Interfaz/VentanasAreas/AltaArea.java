@@ -12,8 +12,8 @@ public class AltaArea extends javax.swing.JFrame {
         initComponents();
         setTitle("Alta de Areas");
         setVisible(true);
-       
-        ArrayList<Area> listaAreas = sistema.getListaAreas();
+       listaAltaAreas.setListData(sistema.getListaAreas().toArray());
+        
     }
 
     
@@ -22,7 +22,7 @@ public class AltaArea extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaAltaAreas = new javax.swing.JList();
         textoNombreArea = new javax.swing.JTextField();
         textoDescArea = new javax.swing.JTextField();
         textoPresuArea = new javax.swing.JTextField();
@@ -34,12 +34,12 @@ public class AltaArea extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listaAltaAreas.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listaAltaAreas);
 
         textoNombreArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +134,7 @@ public class AltaArea extends javax.swing.JFrame {
     }//GEN-LAST:event_textoNombreAreaActionPerformed
 
     private void botonRegistrarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarAreaActionPerformed
-        // TODO add your handling code here:
+       // sistema.agregarArea();
     }//GEN-LAST:event_botonRegistrarAreaActionPerformed
 
     private void botonCancelarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarAreaActionPerformed
@@ -150,8 +150,8 @@ public class AltaArea extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList listaAltaAreas;
     private javax.swing.JTextField textoDescArea;
     private javax.swing.JTextField textoNombreArea;
     private javax.swing.JTextField textoPresuArea;

@@ -29,7 +29,7 @@ public class ModificacionManager extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         textoCelularModMan = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaManMod = new javax.swing.JList<>();
+        listaManMod = new javax.swing.JList();
         botonModifMan = new javax.swing.JButton();
         botonCancelarModifMan = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -45,10 +45,10 @@ public class ModificacionManager extends javax.swing.JFrame {
 
         jLabel1.setText("Areas");
 
-        listaManMod.setModel(new javax.swing.AbstractListModel<String>() {
+        listaManMod.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(listaManMod);
 
@@ -145,7 +145,7 @@ public class ModificacionManager extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listaManMod;
+    private javax.swing.JList listaManMod;
     private javax.swing.JTextField textoAntiModMan;
     private javax.swing.JTextField textoCedulaModMan;
     private javax.swing.JTextField textoCelularModMan;

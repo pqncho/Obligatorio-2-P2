@@ -29,7 +29,7 @@ public class AltaManager extends javax.swing.JFrame {
         botonRegistrarAltaMan = new javax.swing.JButton();
         botonCancelarAltaMan = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaManagersAltaMan = new javax.swing.JList<>();
+        listaManagersAltaMan = new javax.swing.JList();
         textoCedulaAltaMan = new javax.swing.JTextField();
         textoNombreAltaMan = new javax.swing.JTextField();
         textoCelularAltaMan = new javax.swing.JTextField();
@@ -49,10 +49,10 @@ public class AltaManager extends javax.swing.JFrame {
 
         botonCancelarAltaMan.setText("Cancelar");
 
-        listaManagersAltaMan.setModel(new javax.swing.AbstractListModel<String>() {
+        listaManagersAltaMan.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(listaManagersAltaMan);
 
@@ -137,7 +137,7 @@ public class AltaManager extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listaManagersAltaMan;
+    private javax.swing.JList listaManagersAltaMan;
     private javax.swing.JTextField textoAntAltaMan;
     private javax.swing.JTextField textoCedulaAltaMan;
     private javax.swing.JTextField textoCelularAltaMan;

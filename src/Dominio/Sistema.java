@@ -16,6 +16,11 @@ public class Sistema {
        int sueldoAReintegrar=0;
 
 }
+   
+   public void agregarArea(Area unArea){
+   //sistema.put(unArea);
+   
+   }
     
     
     public void cargarDatosPorDefecto(){

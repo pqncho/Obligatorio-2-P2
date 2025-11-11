@@ -24,7 +24,7 @@ public class ModificacionArea extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaAreasModArea = new javax.swing.JList<>();
+        listaAreasModArea = new javax.swing.JList();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -38,10 +38,10 @@ public class ModificacionArea extends javax.swing.JFrame {
 
         jLabel1.setText("Areas");
 
-        listaAreasModArea.setModel(new javax.swing.AbstractListModel<String>() {
+        listaAreasModArea.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(listaAreasModArea);
 
@@ -134,7 +134,7 @@ public class ModificacionArea extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listaAreasModArea;
+    private javax.swing.JList listaAreasModArea;
     private javax.swing.JTextField textoDescModArea;
     private javax.swing.JTextField textoNombreModArea;
     private javax.swing.JTextField textoPresuModArea;

@@ -25,7 +25,7 @@ public class BajaManager extends javax.swing.JFrame {
         botonEliminarBajaMan = new javax.swing.JButton();
         botonCancelarBajaMan = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        jList2 = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -35,10 +35,10 @@ public class BajaManager extends javax.swing.JFrame {
 
         botonCancelarBajaMan.setText("Cancelar");
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        jList2.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane2.setViewportView(jList2);
 
@@ -84,7 +84,7 @@ public class BajaManager extends javax.swing.JFrame {
     private javax.swing.JButton botonCancelarBajaMan;
     private javax.swing.JButton botonEliminarBajaMan;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList2;
+    private javax.swing.JList jList2;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
