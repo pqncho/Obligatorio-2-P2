@@ -6,7 +6,9 @@ public class Area {
     private String descripcion;
     private int presupuesto;
     
+    public Area(String nombre, String descripcion, int presupuesto){
     
+    }
     public String getNombre(){
     return nombre;
     }

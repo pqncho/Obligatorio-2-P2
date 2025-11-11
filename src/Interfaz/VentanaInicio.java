@@ -9,8 +9,19 @@ public class VentanaInicio extends javax.swing.JFrame {
         initComponents();
         setTitle("Comenzar con...");
         setVisible(true);
+        
+        
     }
-
+private void cargarSistemaPorDefecto(){
+    
+    Sistema sistema= new Sistema();
+    sistema.cargarDatosPorDefecto();
+    
+    VentanaMenu ventanaMenu = new VentanaMenu(sistema);
+    
+    
+    
+    }
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -37,6 +48,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         });
 
         botonSistemaPrecargado.setText("Sistema con datos precargados");
+        botonSistemaPrecargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSistemaPrecargadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,14 +82,19 @@ public class VentanaInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonSistemaGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSistemaGuardadoActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        
     }//GEN-LAST:event_botonSistemaGuardadoActionPerformed
 
     private void botonSistemaNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSistemaNuevoActionPerformed
        this.dispose();
-        Sistema sistema= new Sistema();
-       VentanaMenu ventanaMenu= new VentanaMenu(sistema);
+        cargarSistemaPorDefecto();
     }//GEN-LAST:event_botonSistemaNuevoActionPerformed
+
+    private void botonSistemaPrecargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSistemaPrecargadoActionPerformed
+        this.dispose();
+        cargarSistemaPorDefecto();
+    }//GEN-LAST:event_botonSistemaPrecargadoActionPerformed
 
     
     

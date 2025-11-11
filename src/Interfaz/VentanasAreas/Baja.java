@@ -7,6 +7,8 @@ public class Baja extends javax.swing.JFrame {
     
     public Baja() {
         initComponents();
+        setTitle("Baja de Areas");
+        setVisible(true);
     }
 
    

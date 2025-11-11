@@ -4,8 +4,12 @@ package Dominio;
 public class Manager {
     private String nombre;
     private String cedula;
-    private int celular;
+    private String celular;
     private int antiguedad;  
+    
+    public Manager(String nombre, String cedula, String celular, int antiguedad){
+    
+    }
 
     public String getNombre() {
         return nombre;
@@ -23,11 +27,11 @@ public class Manager {
         cedula = unaCi;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int unCelular) {
+    public void setCelular(String unCelular) {
         celular = unCelular;
     }
 

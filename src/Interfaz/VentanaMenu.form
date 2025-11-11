@@ -31,6 +31,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Realizar movimiento"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemAreaMovimientoActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -68,6 +71,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alta"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemEmpleadosAltaActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

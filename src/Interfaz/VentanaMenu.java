@@ -1,8 +1,12 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz;
 import Dominio.*;
+import Interfaz.VentanasAreas.Alta;
+import Interfaz.VentanasAreas.Baja;
+import Interfaz.VentanasAreas.RealizarMovimiento;
 import javax.swing.*;
 import java.awt.*;
+
 
 public class VentanaMenu extends javax.swing.JFrame {
     
@@ -72,6 +76,11 @@ public class VentanaMenu extends javax.swing.JFrame {
         jMenu1.add(itemAreaModificacion);
 
         itemAreaMovimiento.setText("Realizar movimiento");
+        itemAreaMovimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAreaMovimientoActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemAreaMovimiento);
 
         jMenuBar1.add(jMenu1);
@@ -97,6 +106,11 @@ public class VentanaMenu extends javax.swing.JFrame {
         jMenu3.setText("Empleados");
 
         itemEmpleadosAlta.setText("Alta");
+        itemEmpleadosAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEmpleadosAltaActionPerformed(evt);
+            }
+        });
         jMenu3.add(itemEmpleadosAlta);
 
         jMenuBar1.add(jMenu3);
@@ -117,12 +131,23 @@ public class VentanaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemAreaAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaAltaActionPerformed
-        // TODO add your handling code here:
+       
+        Alta ventanaAlta= new Alta();
+       
     }//GEN-LAST:event_itemAreaAltaActionPerformed
 
     private void itemManagersAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManagersAltaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemManagersAltaActionPerformed
+
+    private void itemAreaMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaMovimientoActionPerformed
+        RealizarMovimiento ventanaRealizarMovimiento= new RealizarMovimiento();
+        
+    }//GEN-LAST:event_itemAreaMovimientoActionPerformed
+
+    private void itemEmpleadosAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEmpleadosAltaActionPerformed
+       Alta ventanaAlta = new Alta();
+    }//GEN-LAST:event_itemEmpleadosAltaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
