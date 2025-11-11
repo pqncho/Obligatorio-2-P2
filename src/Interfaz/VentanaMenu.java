@@ -1,9 +1,14 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz;
 import Dominio.*;
-import Interfaz.VentanasAreas.Alta;
-import Interfaz.VentanasAreas.Baja;
+import Interfaz.VentanasAreas.AltaArea;
+import Interfaz.VentanasAreas.BajaArea;
+import Interfaz.VentanasAreas.ModificacionArea;
 import Interfaz.VentanasAreas.RealizarMovimiento;
+import Interfaz.VentanasEmpleados.AltaEmpleado;
+import Interfaz.VentanasManagers.AltaManager;
+import Interfaz.VentanasManagers.BajaManager;
+import Interfaz.VentanasManagers.ModificacionManager;
 import javax.swing.*;
 import java.awt.*;
 
@@ -70,9 +75,19 @@ public class VentanaMenu extends javax.swing.JFrame {
         jMenu1.add(itemAreaAlta);
 
         itemAreaBaja.setText("Baja");
+        itemAreaBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAreaBajaActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemAreaBaja);
 
         itemAreaModificacion.setText("Modificacion");
+        itemAreaModificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAreaModificacionActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemAreaModificacion);
 
         itemAreaMovimiento.setText("Realizar movimiento");
@@ -96,9 +111,19 @@ public class VentanaMenu extends javax.swing.JFrame {
         jMenu2.add(itemManagersAlta);
 
         itemManagersBaja.setText("Baja");
+        itemManagersBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemManagersBajaActionPerformed(evt);
+            }
+        });
         jMenu2.add(itemManagersBaja);
 
         itemManagersModificacion.setText("Modificacion");
+        itemManagersModificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemManagersModificacionActionPerformed(evt);
+            }
+        });
         jMenu2.add(itemManagersModificacion);
 
         jMenuBar1.add(jMenu2);
@@ -132,12 +157,12 @@ public class VentanaMenu extends javax.swing.JFrame {
 
     private void itemAreaAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaAltaActionPerformed
        
-        Alta ventanaAlta= new Alta();
+        AltaArea ventanaAlta= new AltaArea();
        
     }//GEN-LAST:event_itemAreaAltaActionPerformed
 
     private void itemManagersAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManagersAltaActionPerformed
-        // TODO add your handling code here:
+        AltaManager ventanaAltaManager =new AltaManager();
     }//GEN-LAST:event_itemManagersAltaActionPerformed
 
     private void itemAreaMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaMovimientoActionPerformed
@@ -146,8 +171,24 @@ public class VentanaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_itemAreaMovimientoActionPerformed
 
     private void itemEmpleadosAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEmpleadosAltaActionPerformed
-       Alta ventanaAlta = new Alta();
+       AltaEmpleado ventanaAltaEmpleado = new AltaEmpleado();
     }//GEN-LAST:event_itemEmpleadosAltaActionPerformed
+
+    private void itemManagersBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManagersBajaActionPerformed
+        BajaManager ventanaBajaManager = new BajaManager();
+    }//GEN-LAST:event_itemManagersBajaActionPerformed
+
+    private void itemAreaBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaBajaActionPerformed
+       BajaArea ventanaBajaArea = new BajaArea();
+    }//GEN-LAST:event_itemAreaBajaActionPerformed
+
+    private void itemAreaModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaModificacionActionPerformed
+        ModificacionArea ventanaModifArea= new ModificacionArea();
+    }//GEN-LAST:event_itemAreaModificacionActionPerformed
+
+    private void itemManagersModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManagersModificacionActionPerformed
+        ModificacionManager ventanaModifMan= new ModificacionManager();
+    }//GEN-LAST:event_itemManagersModificacionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
