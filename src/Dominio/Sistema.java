@@ -4,13 +4,14 @@ import Interfaz.*;
 import java.util.*;
 
 public class Sistema {
-   private ArrayList<Empleado> listaEmpleados= new ArrayList<>();
-   private ArrayList<Area> listaAreas= new ArrayList<>();
-   private ArrayList<Manager> listaManagers = new ArrayList<>();
+   private ArrayList<Area> listaAreas;
+   private ArrayList<Empleado> listaEmpleados;
+   private ArrayList<Manager> listaManagers;
     
     public Sistema(){
-    
-    
+    listaAreas= new ArrayList<>();
+    listaEmpleados= new ArrayList<>();
+    listaManagers = new ArrayList<>();
     }
    public void moverEmpleado(Empleado unEmpleado, Area areaActual,Area areaDestino, int unMes ) {
        int sueldoAReintegrar=0;
@@ -18,10 +19,14 @@ public class Sistema {
 }
    
    public void agregarArea(Area unArea){
-   //sistema.put(unArea);
-   
+       listaAreas.add(unArea);
    }
-    
+   public void agregarEmpleado(Empleado unEmpleado){
+       listaEmpleados.add(unEmpleado);
+   }
+    public void agregarManagers(Manager unManager){
+       listaManagers.add(unManager);
+   }
     
     public void cargarDatosPorDefecto(){
     listaAreas.add(new Area("Personal","Reclutamiento de personal, promociones, gestión de cargos",100000));

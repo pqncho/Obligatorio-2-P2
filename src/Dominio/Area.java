@@ -6,8 +6,10 @@ public class Area {
     private String descripcion;
     private int presupuesto;
     
-    public Area(String nombre, String descripcion, int presupuesto){
-    
+    public Area(String unNombre, String unaDescripcion, int unPresupuesto){
+    nombre=unNombre;
+    descripcion=unaDescripcion;
+    presupuesto=unPresupuesto;
     }
     public String getNombre(){
     return nombre;
@@ -30,6 +32,11 @@ public class Area {
     
     public void setPresupuesto(int unPresupuesto){
         presupuesto=unPresupuesto;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
 
     

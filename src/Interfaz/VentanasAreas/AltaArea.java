@@ -1,22 +1,55 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz.VentanasAreas;
+
 import Dominio.*;
 import Interfaz.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class AltaArea extends javax.swing.JFrame {
-     private Sistema sistema;
-   
+
+    private Sistema sistema;
+
     public AltaArea(Sistema unSistema) {
-         this.sistema = unSistema;
+        this.sistema = unSistema;
         initComponents();
         setTitle("Alta de Areas");
         setVisible(true);
-       listaAltaAreas.setListData(sistema.getListaAreas().toArray());
-        
+        listaAltaAreas.setListData(sistema.getListaAreas().toArray());
+
+    }
+     private void limpiarCajas(){
+     textoNombreArea.setText("");
+     textoDescArea.setText("");
+    textoPresuArea.setText("");
+     }
+    private void agregarArea() {
+        try {
+            ArrayList<Area> listaAreas = sistema.getListaAreas();
+
+            String nombre = textoNombreArea.getText();
+
+            for (int i = 0; i < sistema.getListaAreas().size(); i++) {
+                if (listaAreas.get(i).getNombre().equals(nombre)) {
+                    JOptionPane.showMessageDialog(this, "Area existente.");
+                    limpiarCajas();
+                }else{
+                
+                }
+//falta terminar
+            }
+            String descripcion = textoDescArea.getText();
+            int presupuesto = Integer.parseInt(textoPresuArea.getText());
+            Area area = new Area(nombre, descripcion, presupuesto);
+            sistema.agregarArea(area);
+            
+            listaAltaAreas.setListData(sistema.getListaAreas().toArray());
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Presupuesto invalido");
+        }
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -134,15 +167,13 @@ public class AltaArea extends javax.swing.JFrame {
     }//GEN-LAST:event_textoNombreAreaActionPerformed
 
     private void botonRegistrarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarAreaActionPerformed
-       // sistema.agregarArea();
+        agregarArea();
     }//GEN-LAST:event_botonRegistrarAreaActionPerformed
 
     private void botonCancelarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarAreaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelarAreaActionPerformed
 
-   
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelarArea;
