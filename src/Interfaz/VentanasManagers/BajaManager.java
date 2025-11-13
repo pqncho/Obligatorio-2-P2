@@ -34,6 +34,11 @@ public class BajaManager extends javax.swing.JFrame {
         botonEliminarBajaMan.setText("Eliminar");
 
         botonCancelarBajaMan.setText("Cancelar");
+        botonCancelarBajaMan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarBajaManActionPerformed(evt);
+            }
+        });
 
         jList2.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -76,6 +81,10 @@ public class BajaManager extends javax.swing.JFrame {
 
         setBounds(0, 0, 416, 309);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonCancelarBajaManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarBajaManActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_botonCancelarBajaManActionPerformed
 
 
     

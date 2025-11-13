@@ -55,6 +55,11 @@ public class ModificacionManager extends javax.swing.JFrame {
         botonModifMan.setText("Modificar");
 
         botonCancelarModifMan.setText("Cancelar");
+        botonCancelarModifMan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarModifManActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Antiguedad");
 
@@ -132,6 +137,10 @@ public class ModificacionManager extends javax.swing.JFrame {
 
         setBounds(0, 0, 416, 309);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonCancelarModifManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarModifManActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_botonCancelarModifManActionPerformed
 
 
     

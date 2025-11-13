@@ -24,6 +24,7 @@ public class AltaArea extends javax.swing.JFrame {
     textoPresuArea.setText("");
      }
     private void agregarArea() {
+        boolean existente=false;
         try {
             ArrayList<Area> listaAreas = sistema.getListaAreas();
 
@@ -33,20 +34,22 @@ public class AltaArea extends javax.swing.JFrame {
                 if (listaAreas.get(i).getNombre().equals(nombre)) {
                     JOptionPane.showMessageDialog(this, "Area existente.");
                     limpiarCajas();
-                }else{
-                
+                    existente=true;
                 }
-//falta terminar
+
             }
+            if(!existente){
             String descripcion = textoDescArea.getText();
             int presupuesto = Integer.parseInt(textoPresuArea.getText());
             Area area = new Area(nombre, descripcion, presupuesto);
             sistema.agregarArea(area);
-            
             listaAltaAreas.setListData(sistema.getListaAreas().toArray());
-
+            JOptionPane.showMessageDialog(this, "El area fue agregada correctamente.");
+            limpiarCajas();
+            }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Presupuesto invalido");
+            limpiarCajas();
         }
     }
 
@@ -171,7 +174,7 @@ public class AltaArea extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRegistrarAreaActionPerformed
 
     private void botonCancelarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarAreaActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_botonCancelarAreaActionPerformed
 
 

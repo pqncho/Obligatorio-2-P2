@@ -86,7 +86,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         itemReporteInteligente = new javax.swing.JMenuItem();
         itemReporteAreas = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jMenu1.setText("Areas");

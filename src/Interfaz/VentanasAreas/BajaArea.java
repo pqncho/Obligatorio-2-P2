@@ -4,6 +4,7 @@ package Interfaz.VentanasAreas;
 import Dominio.*;
 import java.util.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class BajaArea extends javax.swing.JFrame {
     private Sistema sistema;
@@ -13,8 +14,27 @@ public class BajaArea extends javax.swing.JFrame {
         initComponents();
         setTitle("Baja de Areas");
         setVisible(true);
-        
         ArrayList<Area> listaAreas = sistema.getListaAreas();
+        listaAreasEliminar.setListData(sistema.getListaAreas().toArray());
+        
+    }
+    private void eliminarArea(){
+        boolean sePuede=true;
+         Area unArea=(Area)listaAreasEliminar.getSelectedValue();
+         if(listaAreasEliminar.getSelectedValue()==null){
+          JOptionPane.showMessageDialog(this,"Debe seleccionar un elemento antes de eliminar.");
+          sePuede=false;
+         }
+        for (int i = 0; i < sistema.getListaAreas().size() && sePuede; i++) {
+            if((Area)sistema.getListaAreas().get(i)==unArea){
+            sistema.getListaAreas().remove(i);
+            listaAreasEliminar.setListData(sistema.getListaAreas().toArray());
+            
+            }
+            
+        }
+    
+    
     }
 
    
@@ -24,7 +44,7 @@ public class BajaArea extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        listaAreasEliminar = new javax.swing.JList();
         botonEliminarBajaArea = new javax.swing.JButton();
         botonCancelarBajaArea = new javax.swing.JButton();
 
@@ -32,16 +52,26 @@ public class BajaArea extends javax.swing.JFrame {
 
         jLabel1.setText("Areas sin empleados");
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        listaAreasEliminar.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listaAreasEliminar);
 
         botonEliminarBajaArea.setText("Eliminar");
+        botonEliminarBajaArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarBajaAreaActionPerformed(evt);
+            }
+        });
 
         botonCancelarBajaArea.setText("Cancelar");
+        botonCancelarBajaArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarBajaAreaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,6 +110,19 @@ public class BajaArea extends javax.swing.JFrame {
         setBounds(0, 0, 416, 309);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonCancelarBajaAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarBajaAreaActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_botonCancelarBajaAreaActionPerformed
+
+    private void botonEliminarBajaAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarBajaAreaActionPerformed
+       int opcion = JOptionPane.showConfirmDialog(this,"¿Confirma la eliminacion de esta area?","SI",JOptionPane.YES_NO_OPTION);
+    
+    if (opcion == JOptionPane.YES_OPTION) {
+        eliminarArea();
+    }
+        
+    }//GEN-LAST:event_botonEliminarBajaAreaActionPerformed
+
    
    
 
@@ -87,7 +130,7 @@ public class BajaArea extends javax.swing.JFrame {
     private javax.swing.JButton botonCancelarBajaArea;
     private javax.swing.JButton botonEliminarBajaArea;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList listaAreasEliminar;
     // End of variables declaration//GEN-END:variables
 }

@@ -54,6 +54,11 @@ public class ModificacionArea extends javax.swing.JFrame {
         botonModifArea.setText("Modificar");
 
         botonCancelarModifArea.setText("Cancelar");
+        botonCancelarModifArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarModifAreaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,6 +127,10 @@ public class ModificacionArea extends javax.swing.JFrame {
 
         setBounds(0, 0, 420, 313);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonCancelarModifAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarModifAreaActionPerformed
+      this.dispose();
+    }//GEN-LAST:event_botonCancelarModifAreaActionPerformed
 
     
     

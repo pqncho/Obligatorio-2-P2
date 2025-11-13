@@ -48,6 +48,11 @@ public class AltaManager extends javax.swing.JFrame {
         botonRegistrarAltaMan.setText("Registrar");
 
         botonCancelarAltaMan.setText("Cancelar");
+        botonCancelarAltaMan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarAltaManActionPerformed(evt);
+            }
+        });
 
         listaManagersAltaMan.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -125,6 +130,10 @@ public class AltaManager extends javax.swing.JFrame {
     private void textoCedulaAltaManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCedulaAltaManActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoCedulaAltaManActionPerformed
+
+    private void botonCancelarAltaManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarAltaManActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_botonCancelarAltaManActionPerformed
 
    
     

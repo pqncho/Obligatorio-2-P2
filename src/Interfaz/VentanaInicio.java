@@ -27,7 +27,7 @@ private void cargarSistemaPorDefecto(){
         botonSistemaGuardado = new javax.swing.JButton();
         botonSistemaPrecargado = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         botonSistemaNuevo.setText("Sistema nuevo");
         botonSistemaNuevo.addActionListener(new java.awt.event.ActionListener() {

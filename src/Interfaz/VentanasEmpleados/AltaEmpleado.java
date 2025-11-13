@@ -227,7 +227,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_textoSalAltaEmpActionPerformed
 
     private void botonCancelarAltaEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarAltaEmpActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_botonCancelarAltaEmpActionPerformed
 
    

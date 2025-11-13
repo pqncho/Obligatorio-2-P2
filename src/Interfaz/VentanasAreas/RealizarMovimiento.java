@@ -68,6 +68,11 @@ public class RealizarMovimiento extends javax.swing.JFrame {
         botonRegistrarMov.setText("Registrar");
 
         botonCancelarMov.setText("Cancelar");
+        botonCancelarMov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarMovActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,6 +125,10 @@ public class RealizarMovimiento extends javax.swing.JFrame {
     private void boxMesesMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxMesesMovActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boxMesesMovActionPerformed
+
+    private void botonCancelarMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarMovActionPerformed
+      this.dispose();
+    }//GEN-LAST:event_botonCancelarMovActionPerformed
 
    
     
