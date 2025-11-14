@@ -16,6 +16,9 @@ public class ModificacionArea extends javax.swing.JFrame {
         
         ArrayList<Area> listaAreas = sistema.getListaAreas();
         listaAreasModArea.setListData(sistema.getListaAreas().toArray());
+        if(listaAreasModArea.getSelectedValue()!=null){
+        
+        
         for (int i = 0; i < sistema.getListaAreas().size(); i++) {
             
             if(listaAreasModArea.getSelectedValue().equals(sistema.getListaAreas().get(i).getNombre())){
@@ -24,12 +27,13 @@ public class ModificacionArea extends javax.swing.JFrame {
              textoPresuModArea.setText(""+sistema.getListaAreas().get(i).getPresupuesto());
              }
         }
+        }
 }
     public void modificar(){
-    
+    Area a= (Area)listaAreasModArea.getSelectedValue();
         for (int i = 0; i < sistema.getListaAreas().size(); i++) {
              
-             if(listaAreasModArea.getSelectedValue()!=sistema.getListaAreas().get(i).getDescripcion()){
+             if(!a.getDescripcion().equals(sistema.getListaAreas().get(i).getDescripcion())){
              sistema.getListaAreas().get(i).setDescripcion(textoPresuModArea.getText());
              
              }else{
