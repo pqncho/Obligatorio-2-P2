@@ -10,6 +10,25 @@ public class Empleado {
    private Manager manager;
    private Area area;
 
+   
+   public void empleado(String nombre, String cedula, int celular, String curriculum, int salarioMensual, Manager manager,Area area){
+   String unNombre=nombre;
+   String unaCedula=cedula;
+   int unCelular=celular;
+   String unCurriculum=curriculum;
+   int unSalarioMensual=salarioMensual;
+   Manager unManager=manager;
+   Area unArea=area;
+       
+       
+   }
+
+     @Override
+    public String toString() {
+        return  nombre + " (" + cedula + ")";
+    }
+   
+   
     public String getNombre() {
         return nombre;
     }

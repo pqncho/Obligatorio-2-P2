@@ -11,6 +11,10 @@ public class Area {
     descripcion=unaDescripcion;
     presupuesto=unPresupuesto;
     }
+    
+    
+    
+    
     public String getNombre(){
     return nombre;
     }

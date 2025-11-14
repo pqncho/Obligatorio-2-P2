@@ -8,7 +8,15 @@ public class Manager {
     private int antiguedad;  
     
     public Manager(String nombre, String cedula, String celular, int antiguedad){
-    
+    String unNombre=nombre;
+    String unaCedula=cedula;
+    String unCelular=celular;
+    int unaAntiguedad=antiguedad;
+    }
+
+    @Override
+    public String toString() {
+        return  nombre + " (" + cedula + ")";
     }
 
     public String getNombre() {
