@@ -3,6 +3,7 @@ package Interfaz.VentanasAreas;
 
 import Dominio.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class ModificacionArea extends javax.swing.JFrame {
     private Sistema sistema;
@@ -14,8 +15,32 @@ public class ModificacionArea extends javax.swing.JFrame {
         setVisible(true);
         
         ArrayList<Area> listaAreas = sistema.getListaAreas();
-        
-    }
+        listaAreasModArea.setListData(sistema.getListaAreas().toArray());
+        for (int i = 0; i < sistema.getListaAreas().size(); i++) {
+            
+            if(listaAreasModArea.getSelectedValue().equals(sistema.getListaAreas().get(i).getNombre())){
+             textoNombreModArea.setText(sistema.getListaAreas().get(i).getNombre());
+             textoDescModArea.setText(sistema.getListaAreas().get(i).getDescripcion());
+             textoPresuModArea.setText(""+sistema.getListaAreas().get(i).getPresupuesto());
+             }
+        }
+}
+    public void modificar(){
+    
+        for (int i = 0; i < sistema.getListaAreas().size(); i++) {
+             
+             if(listaAreasModArea.getSelectedValue()!=sistema.getListaAreas().get(i).getDescripcion()){
+             sistema.getListaAreas().get(i).setDescripcion(textoPresuModArea.getText());
+             
+             }else{
+             JOptionPane.showMessageDialog(this, "No se ha modificado nada aún.");
+             }
+             
+             }
+            
+        }
+    
+    
 
    
     @SuppressWarnings("unchecked")
