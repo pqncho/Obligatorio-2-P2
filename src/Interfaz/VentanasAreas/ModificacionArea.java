@@ -16,31 +16,19 @@ public class ModificacionArea extends javax.swing.JFrame {
         
         ArrayList<Area> listaAreas = sistema.getListaAreas();
         listaAreasModArea.setListData(sistema.getListaAreas().toArray());
-        if(listaAreasModArea.getSelectedValue()!=null){
-        
-        
-        for (int i = 0; i < sistema.getListaAreas().size(); i++) {
-            
-            if(listaAreasModArea.getSelectedValue().equals(sistema.getListaAreas().get(i).getNombre())){
-             textoNombreModArea.setText(sistema.getListaAreas().get(i).getNombre());
-             textoDescModArea.setText(sistema.getListaAreas().get(i).getDescripcion());
-             textoPresuModArea.setText(""+sistema.getListaAreas().get(i).getPresupuesto());
-             }
-        }
-        }
+       
 }
     public void modificar(){
-    Area a= (Area)listaAreasModArea.getSelectedValue();
-        for (int i = 0; i < sistema.getListaAreas().size(); i++) {
-             
-             if(!a.getDescripcion().equals(sistema.getListaAreas().get(i).getDescripcion())){
-             sistema.getListaAreas().get(i).setDescripcion(textoPresuModArea.getText());
-             
-             }else{
-             JOptionPane.showMessageDialog(this, "No se ha modificado nada aún.");
-             }
-             
-             }
+        
+        Area unArea= (Area)listaAreasModArea.getSelectedValue();
+        if(unArea!=null){
+        if(!((Area)listaAreasModArea.getSelectedValue()).getDescripcion().equals(textoDescModArea.getText())){
+            ((Area)listaAreasModArea.getSelectedValue()).setDescripcion(textoDescModArea.getText());
+            JOptionPane.showMessageDialog(this, "Modificacion exitosa.");
+        }else{
+            JOptionPane.showMessageDialog(this, "No se han realizado modificaciones.");
+        }
+        } else{JOptionPane.showMessageDialog(this, "Debe seleccionar un area.");}
             
         }
     
@@ -72,6 +60,11 @@ public class ModificacionArea extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        listaAreasModArea.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaAreasModAreaValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(listaAreasModArea);
 
         jLabel2.setText("Nombre");
@@ -81,6 +74,11 @@ public class ModificacionArea extends javax.swing.JFrame {
         jLabel4.setText("Presupuesto");
 
         botonModifArea.setText("Modificar");
+        botonModifArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModifAreaActionPerformed(evt);
+            }
+        });
 
         botonCancelarModifArea.setText("Cancelar");
         botonCancelarModifArea.addActionListener(new java.awt.event.ActionListener() {
@@ -160,6 +158,20 @@ public class ModificacionArea extends javax.swing.JFrame {
     private void botonCancelarModifAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarModifAreaActionPerformed
       this.dispose();
     }//GEN-LAST:event_botonCancelarModifAreaActionPerformed
+
+    private void listaAreasModAreaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAreasModAreaValueChanged
+        Area unArea= (Area)listaAreasModArea.getSelectedValue();
+        if(unArea!=null){
+        textoNombreModArea.setText(unArea.getNombre());
+        textoDescModArea.setText(unArea.getDescripcion());
+        textoPresuModArea.setText(""+unArea.getPresupuesto());
+        
+        }
+    }//GEN-LAST:event_listaAreasModAreaValueChanged
+
+    private void botonModifAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModifAreaActionPerformed
+        modificar();
+    }//GEN-LAST:event_botonModifAreaActionPerformed
 
     
     

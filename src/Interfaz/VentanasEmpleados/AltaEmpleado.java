@@ -3,6 +3,7 @@ package Interfaz.VentanasEmpleados;
 
 import Dominio.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 
 public class AltaEmpleado extends javax.swing.JFrame {
@@ -17,6 +18,22 @@ public class AltaEmpleado extends javax.swing.JFrame {
         ArrayList<Empleado> listaEmpleados = sistema.getListaEmpleados();
     }
 
+    private void agregarEmpleado(){
+        try{
+    String nombre= textoNombreAltaEmp.getText();
+    String cedula= textoCedulaAltaEmp.getText();
+    int salario= Integer.parseInt(textoSalAltaEmp.getText());
+    int celular= Integer.parseInt(textoCelAltaEmp.getText());
+    String curriculum= textoCVAltaEmp.getText();
+    Manager manager= (Manager)listaManagersAltaEmp.getSelectedValue();
+    Area area= (Area)listaAreasAltaEmp.getSelectedValue();
+    
+        }catch(NumberFormatException e){
+        JOptionPane.showMessageDialog(this, "Celular y/o salario invalidos.");
+        }
+    }
+    
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -42,9 +59,9 @@ public class AltaEmpleado extends javax.swing.JFrame {
         botonRegistrarAltaEmp = new javax.swing.JButton();
         botonCancelarAltaEmp = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        listaManagersAltaEmp = new javax.swing.JList();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
+        listaAreasAltaEmp = new javax.swing.JList();
 
         scrollAreaAltaEmp.setOrientation(javax.swing.JScrollBar.HORIZONTAL);
 
@@ -97,20 +114,20 @@ public class AltaEmpleado extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        listaManagersAltaEmp.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList1);
+        jScrollPane3.setViewportView(listaManagersAltaEmp);
 
-        jList2.setModel(new javax.swing.AbstractListModel() {
+        listaAreasAltaEmp.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jList2.setLayoutOrientation(javax.swing.JList.HORIZONTAL_WRAP);
-        jScrollPane4.setViewportView(jList2);
+        listaAreasAltaEmp.setLayoutOrientation(javax.swing.JList.HORIZONTAL_WRAP);
+        jScrollPane4.setViewportView(listaAreasAltaEmp);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -243,13 +260,13 @@ public class AltaEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JList listaAreasAltaEmp;
     private javax.swing.JList<String> listaEmpleadosAltaEmp;
+    private javax.swing.JList listaManagersAltaEmp;
     private javax.swing.JScrollBar scrollAreaAltaEmp;
     private javax.swing.JScrollBar scrollManagerAltaEmp;
     private javax.swing.JTextArea textoCVAltaEmp;

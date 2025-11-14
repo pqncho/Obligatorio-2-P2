@@ -1,15 +1,26 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Dominio;
 
+import java.util.*;
+
 public class Area {
     private String nombre;
     private String descripcion;
     private int presupuesto;
+    private ArrayList<Empleado> listaEmpleados;
     
     public Area(String unNombre, String unaDescripcion, int unPresupuesto){
     nombre=unNombre;
     descripcion=unaDescripcion;
     presupuesto=unPresupuesto;
+    }
+
+    public ArrayList<Empleado> getListaEmpleados() {
+        return listaEmpleados;
+    }
+
+    public void setListaEmpleados(ArrayList<Empleado> listaEmpleados) {
+        listaEmpleados = listaEmpleados;
     }
     
     
