@@ -3,6 +3,7 @@ package Interfaz.VentanasManagers;
 
 import Dominio.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 
 public class AltaManager extends javax.swing.JFrame {
@@ -15,8 +16,47 @@ public class AltaManager extends javax.swing.JFrame {
         setVisible(true);
         
         ArrayList<Manager> listaManagers = sistema.getListaManagers();
+        listaManagersAltaMan.setListData(sistema.getListaManagers().toArray());
     }
-
+    private void limpiarCajas(){
+            textoNombreAltaMan.setText("");
+            textoCedulaAltaMan.setText("");
+            textoCelularAltaMan.setText("");
+    
+    }//esto no funciona, hay que arreglarlo, creo que las cedulas estan en null entonces no entra al if
+        private void agregarManager(){
+            try{
+            String nombre=textoNombreAltaMan.getText();
+            String cedula=textoCedulaAltaMan.getText();
+            String celular=textoCelularAltaMan.getText();
+            int antiguedad=Integer.parseInt(textoAntAltaMan.getText());
+                for (int i = 0; i < sistema.getListaManagers().size(); i++) {
+                    String cedulaDosMan=sistema.getListaManagers().get(i).getCedula();
+                    for (int j = 0; j < sistema.getListaEmpleados().size(); j++) {
+                        String cedulaEmp=sistema.getListaEmpleados().get(i).getCedula();
+                        
+                        if(!cedula.equals(cedulaDosMan) && !cedula.equals(cedulaEmp)){
+                        
+                         Manager manager= new Manager(nombre,cedula,celular,antiguedad);
+                         sistema.agregarManagers(manager);
+                         listaManagersAltaMan.setListData(sistema.getListaManagers().toArray());
+                         limpiarCajas();
+                        }else{
+                            JOptionPane.showMessageDialog(this, "Ya existe una persona ingresada con esta cedula.");
+                            limpiarCajas();
+                        }
+                        
+                    }
+                    
+                }
+                
+           
+            }
+            catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Antiguedad invalida");   
+            limpiarCajas();
+            }
+        }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -46,6 +86,11 @@ public class AltaManager extends javax.swing.JFrame {
         jLabel4.setText("Antiguedad");
 
         botonRegistrarAltaMan.setText("Registrar");
+        botonRegistrarAltaMan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarAltaManActionPerformed(evt);
+            }
+        });
 
         botonCancelarAltaMan.setText("Cancelar");
         botonCancelarAltaMan.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +179,10 @@ public class AltaManager extends javax.swing.JFrame {
     private void botonCancelarAltaManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarAltaManActionPerformed
        this.dispose();
     }//GEN-LAST:event_botonCancelarAltaManActionPerformed
+
+    private void botonRegistrarAltaManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarAltaManActionPerformed
+        agregarManager();
+    }//GEN-LAST:event_botonRegistrarAltaManActionPerformed
 
    
     

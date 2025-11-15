@@ -9,9 +9,9 @@ public class Sistema {
    private ArrayList<Manager> listaManagers;
     
     public Sistema(){
-    listaAreas= new ArrayList<>();
-    listaEmpleados= new ArrayList<>();
-    listaManagers = new ArrayList<>();
+        listaAreas= new ArrayList<>();
+        listaEmpleados= new ArrayList<>();
+        listaManagers = new ArrayList<>();
     }
    public void moverEmpleado(Empleado unEmpleado, Area areaActual,Area areaDestino, int unMes ) {
        int sueldoAReintegrar=0;

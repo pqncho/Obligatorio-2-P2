@@ -16,6 +16,9 @@ public class AltaEmpleado extends javax.swing.JFrame {
         setVisible(true);
         
         ArrayList<Empleado> listaEmpleados = sistema.getListaEmpleados();
+        listaEmpleadosAltaEmp.setListData(listaEmpleados.toArray());
+        listaAreasAltaEmp.setListData(sistema.getListaAreas().toArray());
+        listaManagersAltaEmp.setListData(sistema.getListaManagers().toArray());
     }
 
     private void agregarEmpleado(){
@@ -27,11 +30,21 @@ public class AltaEmpleado extends javax.swing.JFrame {
     String curriculum= textoCVAltaEmp.getText();
     Manager manager= (Manager)listaManagersAltaEmp.getSelectedValue();
     Area area= (Area)listaAreasAltaEmp.getSelectedValue();
-    
+    if(manager!=null || area!=null){
+    Empleado empleado= new Empleado(nombre,cedula,celular,curriculum,salario,manager,area);
+    sistema.agregarEmpleado(empleado);
+    listaEmpleadosAltaEmp.setListData(sistema.getListaEmpleados().toArray());
+    JOptionPane.showMessageDialog(this, "El empleado fue agregado correctamente.");
+    }else{
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un area y un manager.");
+        }
         }catch(NumberFormatException e){
         JOptionPane.showMessageDialog(this, "Celular y/o salario invalidos.");
+                }
         }
-    }
+
+        
+    
     
     
     
@@ -53,7 +66,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         textoCVAltaEmp = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        listaEmpleadosAltaEmp = new javax.swing.JList<>();
+        listaEmpleadosAltaEmp = new javax.swing.JList();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         botonRegistrarAltaEmp = new javax.swing.JButton();
@@ -106,6 +119,11 @@ public class AltaEmpleado extends javax.swing.JFrame {
         jLabel7.setText("Area");
 
         botonRegistrarAltaEmp.setText("Registrar");
+        botonRegistrarAltaEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarAltaEmpActionPerformed(evt);
+            }
+        });
 
         botonCancelarAltaEmp.setText("Cancelar");
         botonCancelarAltaEmp.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +265,10 @@ public class AltaEmpleado extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonCancelarAltaEmpActionPerformed
 
+    private void botonRegistrarAltaEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarAltaEmpActionPerformed
+        agregarEmpleado();
+    }//GEN-LAST:event_botonRegistrarAltaEmpActionPerformed
+
    
    
 
@@ -265,7 +287,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JList listaAreasAltaEmp;
-    private javax.swing.JList<String> listaEmpleadosAltaEmp;
+    private javax.swing.JList listaEmpleadosAltaEmp;
     private javax.swing.JList listaManagersAltaEmp;
     private javax.swing.JScrollBar scrollAreaAltaEmp;
     private javax.swing.JScrollBar scrollManagerAltaEmp;
