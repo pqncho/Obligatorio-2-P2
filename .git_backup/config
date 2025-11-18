@@ -1,0 +1,16 @@
+[pack]
+	buildbitmaps = false
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	logallrefupdates = true
+	bare = false
+[remote "origin"]
+	url = https://pqncho@github.com/pqncho/Obligatorio-2-P2
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+[branch "Rama-Francisco"]
+	remote = origin
+	merge = refs/heads/Rama-Francisco

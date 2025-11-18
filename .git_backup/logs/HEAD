@@ -1,0 +1,66 @@
+0000000000000000000000000000000000000000 1d10cd619a4636de6c84dc164cc7109a57a9920a Francisco Lino <juanfranlino321@gmail.com> 1761694839 -0300	commit (initial): Merge main into Rama_Francisco
+1d10cd619a4636de6c84dc164cc7109a57a9920a 0000000000000000000000000000000000000000 Francisco Lino <juanf@PC-de-pqncho.(none)> 1761695071 +0100	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 1d10cd619a4636de6c84dc164cc7109a57a9920a Francisco Lino <juanf@PC-de-pqncho.(none)> 1761695071 +0100	Branch: renamed refs/heads/master to refs/heads/main
+1d10cd619a4636de6c84dc164cc7109a57a9920a 1d10cd619a4636de6c84dc164cc7109a57a9920a Francisco Lino <juanfranlino321@gmail.com> 1761695354 -0300	checkout: moving from main to Rama-Francisco
+1d10cd619a4636de6c84dc164cc7109a57a9920a 971d4677a057c3200c2fce8c896996a62a1963b0 Francisco Lino <juanfranlino321@gmail.com> 1761695789 -0300	commit: Merge main into Rama_Francisco
+971d4677a057c3200c2fce8c896996a62a1963b0 1d10cd619a4636de6c84dc164cc7109a57a9920a Francisco Lino <juanfranlino321@gmail.com> 1761695807 -0300	checkout: moving from Rama-Francisco to main
+1d10cd619a4636de6c84dc164cc7109a57a9920a 971d4677a057c3200c2fce8c896996a62a1963b0 Francisco Lino <juanfranlino321@gmail.com> 1761695817 -0300	merge Rama-Francisco: Fast-forward
+971d4677a057c3200c2fce8c896996a62a1963b0 c91ee24da4f39977abf4f31e2d0ced76e189ea0b Francisco Lino <juanfranlino321@gmail.com> 1762216108 -0300	merge origin/main: Fast-forward
+c91ee24da4f39977abf4f31e2d0ced76e189ea0b 8f426b2f9837279a5d0a406da3def3afa9d3369c Francisco Lino <juanfranlino321@gmail.com> 1762472135 -0300	merge origin/main: Fast-forward
+8f426b2f9837279a5d0a406da3def3afa9d3369c 20f544720215e7f1a126194f8b111585751223f3 Francisco Lino <juanfranlino321@gmail.com> 1762720546 -0300	commit: Merge main into Rama_Francisco
+20f544720215e7f1a126194f8b111585751223f3 971d4677a057c3200c2fce8c896996a62a1963b0 Francisco Lino <juanfranlino321@gmail.com> 1762720577 -0300	checkout: moving from main to Rama-Francisco
+971d4677a057c3200c2fce8c896996a62a1963b0 20f544720215e7f1a126194f8b111585751223f3 Francisco Lino <juanfranlino321@gmail.com> 1762720590 -0300	merge main: Fast-forward
+20f544720215e7f1a126194f8b111585751223f3 20f544720215e7f1a126194f8b111585751223f3 Francisco Lino <juanfranlino321@gmail.com> 1762720626 -0300	checkout: moving from Rama-Francisco to main
+20f544720215e7f1a126194f8b111585751223f3 e9ac17811051a598640f18d7ba002c2d9ca4d4d6 Francisco Lino <juanfranlino321@gmail.com> 1762728869 -0300	commit: Merge main into Rama_Francisco
+e9ac17811051a598640f18d7ba002c2d9ca4d4d6 20f544720215e7f1a126194f8b111585751223f3 Francisco Lino <juanfranlino321@gmail.com> 1762728893 -0300	checkout: moving from main to Rama-Francisco
+20f544720215e7f1a126194f8b111585751223f3 e9ac17811051a598640f18d7ba002c2d9ca4d4d6 Francisco Lino <juanfranlino321@gmail.com> 1762728909 -0300	merge main: Fast-forward
+e9ac17811051a598640f18d7ba002c2d9ca4d4d6 4a2e96d536f0c46a23ca8b594985ed6923327809 Francisco Lino <juanfranlino321@gmail.com> 1762821939 -0300	commit: Merge main into Rama_Francisco
+4a2e96d536f0c46a23ca8b594985ed6923327809 0f9464ca911e6d161aaf22e760184973410e06a9 Francisco Lino <juanfranlino321@gmail.com> 1762827325 -0300	commit: Merge main into Rama_Francisco
+0f9464ca911e6d161aaf22e760184973410e06a9 e9ac17811051a598640f18d7ba002c2d9ca4d4d6 Francisco Lino <juanfranlino321@gmail.com> 1762827351 -0300	checkout: moving from Rama-Francisco to main
+e9ac17811051a598640f18d7ba002c2d9ca4d4d6 0f9464ca911e6d161aaf22e760184973410e06a9 Francisco Lino <juanfranlino321@gmail.com> 1762827363 -0300	merge Rama-Francisco: Fast-forward
+0f9464ca911e6d161aaf22e760184973410e06a9 e638b4244690271dcc0568285dc44ac53ffb7e90 Francisco Lino <juanfranlino321@gmail.com> 1762827538 -0300	checkout: moving from main to e638b4244690271dcc0568285dc44ac53ffb7e90
+e638b4244690271dcc0568285dc44ac53ffb7e90 0f9464ca911e6d161aaf22e760184973410e06a9 Francisco Lino <juanf@PC-de-pqncho.(none)> 1762828355 +0000	rebase (abort): returning to refs/heads/main
+0f9464ca911e6d161aaf22e760184973410e06a9 0f9464ca911e6d161aaf22e760184973410e06a9 Francisco Lino <juanfranlino321@gmail.com> 1762828473 -0300	checkout: moving from main to Rama-Francisco
+0f9464ca911e6d161aaf22e760184973410e06a9 0f9464ca911e6d161aaf22e760184973410e06a9 Francisco Lino <juanfranlino321@gmail.com> 1762828500 -0300	checkout: moving from Rama-Francisco to main
+0f9464ca911e6d161aaf22e760184973410e06a9 0f9464ca911e6d161aaf22e760184973410e06a9 Francisco Lino <juanf@PC-de-pqncho.(none)> 1762828645 +0000	reset: moving to Rama-Francisco
+0f9464ca911e6d161aaf22e760184973410e06a9 0ca916b2fa5b7299551db95d45cea08f238fdf24 Francisco Lino <juanfranlino321@gmail.com> 1762895315 -0300	commit: Merge main into Rama_Francisco
+0ca916b2fa5b7299551db95d45cea08f238fdf24 0f9464ca911e6d161aaf22e760184973410e06a9 Francisco Lino <juanfranlino321@gmail.com> 1762895344 -0300	checkout: moving from main to Rama-Francisco
+0f9464ca911e6d161aaf22e760184973410e06a9 0ca916b2fa5b7299551db95d45cea08f238fdf24 Francisco Lino <juanfranlino321@gmail.com> 1762895362 -0300	merge main: Fast-forward
+0ca916b2fa5b7299551db95d45cea08f238fdf24 0ca916b2fa5b7299551db95d45cea08f238fdf24 Francisco Lino <juanfranlino321@gmail.com> 1762895387 -0300	checkout: moving from Rama-Francisco to main
+0ca916b2fa5b7299551db95d45cea08f238fdf24 46b67d8773c009871e180a726a4641e95945b675 Francisco Lino <juanfranlino321@gmail.com> 1762904829 -0300	commit: Merge main into Rama_Francisco
+46b67d8773c009871e180a726a4641e95945b675 a49602055e22b964817ed882b4003f19727bedc9 Francisco Lino <juanfranlino321@gmail.com> 1762904850 -0300	commit: Merge main into Rama_Francisco
+a49602055e22b964817ed882b4003f19727bedc9 0ca916b2fa5b7299551db95d45cea08f238fdf24 Francisco Lino <juanfranlino321@gmail.com> 1762904867 -0300	checkout: moving from main to Rama-Francisco
+0ca916b2fa5b7299551db95d45cea08f238fdf24 a49602055e22b964817ed882b4003f19727bedc9 Francisco Lino <juanfranlino321@gmail.com> 1762904878 -0300	merge main: Fast-forward
+a49602055e22b964817ed882b4003f19727bedc9 04e7c6d943d08ee82ad2ea865e11c735f1ee6c6d Francisco Lino <juanfranlino321@gmail.com> 1763073579 -0300	merge origin/Rama-Francisco: Fast-forward
+04e7c6d943d08ee82ad2ea865e11c735f1ee6c6d 3b6a559b3418682ca1455893eba223e6693f35b0 Francisco Lino <juanfranlino321@gmail.com> 1763078335 -0300	commit: Merge main into Rama_Francisco
+3b6a559b3418682ca1455893eba223e6693f35b0 a49602055e22b964817ed882b4003f19727bedc9 Francisco Lino <juanfranlino321@gmail.com> 1763078364 -0300	checkout: moving from Rama-Francisco to main
+a49602055e22b964817ed882b4003f19727bedc9 3b6a559b3418682ca1455893eba223e6693f35b0 Francisco Lino <juanfranlino321@gmail.com> 1763078379 -0300	merge Rama-Francisco: Fast-forward
+3b6a559b3418682ca1455893eba223e6693f35b0 cf4ed52082bc2205af078f43c6eae1bfcca47ea9 Francisco Lino <juanfranlino321@gmail.com> 1763081261 -0300	commit: Merge main into Rama_Francisco
+cf4ed52082bc2205af078f43c6eae1bfcca47ea9 3b6a559b3418682ca1455893eba223e6693f35b0 Francisco Lino <juanfranlino321@gmail.com> 1763081281 -0300	checkout: moving from main to Rama-Francisco
+3b6a559b3418682ca1455893eba223e6693f35b0 cf4ed52082bc2205af078f43c6eae1bfcca47ea9 Francisco Lino <juanfranlino321@gmail.com> 1763081291 -0300	merge main: Fast-forward
+cf4ed52082bc2205af078f43c6eae1bfcca47ea9 7bb3e91a9595da5017445ec1cba9bfa5a9aff598 Francisco Lino <juanfranlino321@gmail.com> 1763115671 -0300	commit: Merge main into Rama_Francisco
+7bb3e91a9595da5017445ec1cba9bfa5a9aff598 cf4ed52082bc2205af078f43c6eae1bfcca47ea9 Francisco Lino <juanfranlino321@gmail.com> 1763115712 -0300	checkout: moving from Rama-Francisco to main
+cf4ed52082bc2205af078f43c6eae1bfcca47ea9 7bb3e91a9595da5017445ec1cba9bfa5a9aff598 Francisco Lino <juanfranlino321@gmail.com> 1763115729 -0300	merge Rama-Francisco: Fast-forward
+7bb3e91a9595da5017445ec1cba9bfa5a9aff598 989e8141d14265880a8fe2d80e99200a349a937d Francisco Lino <juanfranlino321@gmail.com> 1763118216 -0300	commit: Merge main into Rama_Francisco
+989e8141d14265880a8fe2d80e99200a349a937d 7bb3e91a9595da5017445ec1cba9bfa5a9aff598 Francisco Lino <juanfranlino321@gmail.com> 1763118259 -0300	checkout: moving from main to Rama-Francisco
+7bb3e91a9595da5017445ec1cba9bfa5a9aff598 989e8141d14265880a8fe2d80e99200a349a937d Francisco Lino <juanfranlino321@gmail.com> 1763118273 -0300	merge main: Fast-forward
+989e8141d14265880a8fe2d80e99200a349a937d e90e191920031a0aa27e21fe17eb7b9378f4d98f Francisco Lino <juanfranlino321@gmail.com> 1763164466 -0300	commit: Merge main into Rama_Francisco
+e90e191920031a0aa27e21fe17eb7b9378f4d98f 3dd47749972b3022124c034513913b57d25edba6 Francisco Lino <juanfranlino321@gmail.com> 1763173979 -0300	commit: Merge main into Rama_Francisco
+3dd47749972b3022124c034513913b57d25edba6 989e8141d14265880a8fe2d80e99200a349a937d Francisco Lino <juanfranlino321@gmail.com> 1763174001 -0300	checkout: moving from Rama-Francisco to main
+989e8141d14265880a8fe2d80e99200a349a937d 3dd47749972b3022124c034513913b57d25edba6 Francisco Lino <juanfranlino321@gmail.com> 1763174015 -0300	merge Rama-Francisco: Fast-forward
+3dd47749972b3022124c034513913b57d25edba6 3dd47749972b3022124c034513913b57d25edba6 Francisco Lino <juanfranlino321@gmail.com> 1763174046 -0300	checkout: moving from main to Rama-Francisco
+3dd47749972b3022124c034513913b57d25edba6 535b8a0930e5e07399d5ccd3b04fdd814411be87 Francisco Lino <juanfranlino321@gmail.com> 1763341353 -0300	commit: Merge main into Rama_Francisco
+535b8a0930e5e07399d5ccd3b04fdd814411be87 3dd47749972b3022124c034513913b57d25edba6 Francisco Lino <juanfranlino321@gmail.com> 1763341381 -0300	checkout: moving from Rama-Francisco to main
+3dd47749972b3022124c034513913b57d25edba6 535b8a0930e5e07399d5ccd3b04fdd814411be87 Francisco Lino <juanfranlino321@gmail.com> 1763341393 -0300	merge Rama-Francisco: Fast-forward
+535b8a0930e5e07399d5ccd3b04fdd814411be87 535b8a0930e5e07399d5ccd3b04fdd814411be87 Francisco Lino <juanfranlino321@gmail.com> 1763402221 -0300	checkout: moving from main to Rama-Francisco
+535b8a0930e5e07399d5ccd3b04fdd814411be87 a7816494689b6a4bdb8fcf0fe5056237651dd8b0 Francisco Lino <juanfranlino321@gmail.com> 1763427430 -0300	commit: Merge main into Rama_Francisco
+a7816494689b6a4bdb8fcf0fe5056237651dd8b0 535b8a0930e5e07399d5ccd3b04fdd814411be87 Francisco Lino <juanfranlino321@gmail.com> 1763429664 -0300	checkout: moving from Rama-Francisco to main
+535b8a0930e5e07399d5ccd3b04fdd814411be87 a7816494689b6a4bdb8fcf0fe5056237651dd8b0 Francisco Lino <juanfranlino321@gmail.com> 1763429700 -0300	merge Rama-Francisco: Fast-forward
+a7816494689b6a4bdb8fcf0fe5056237651dd8b0 879f8dfa99897e70a2273695214e4581de19b73b Francisco Lino <juanfranlino321@gmail.com> 1763430197 -0300	commit: Merge main into Rama_Francisco
+879f8dfa99897e70a2273695214e4581de19b73b a7816494689b6a4bdb8fcf0fe5056237651dd8b0 Francisco Lino <juanfranlino321@gmail.com> 1763430222 -0300	checkout: moving from main to Rama-Francisco
+a7816494689b6a4bdb8fcf0fe5056237651dd8b0 879f8dfa99897e70a2273695214e4581de19b73b Francisco Lino <juanfranlino321@gmail.com> 1763430231 -0300	merge main: Fast-forward
+879f8dfa99897e70a2273695214e4581de19b73b 3be8c572ef937aa26744e1b416e7c626b7bd49fd Francisco Lino <juanfranlino321@gmail.com> 1763485748 -0300	commit: Merge main into Rama_Francisco
+3be8c572ef937aa26744e1b416e7c626b7bd49fd 879f8dfa99897e70a2273695214e4581de19b73b Francisco Lino <juanfranlino321@gmail.com> 1763488703 -0300	checkout: moving from Rama-Francisco to main
+879f8dfa99897e70a2273695214e4581de19b73b 3be8c572ef937aa26744e1b416e7c626b7bd49fd Francisco Lino <juanfranlino321@gmail.com> 1763488732 -0300	merge Rama-Francisco: Fast-forward
+3be8c572ef937aa26744e1b416e7c626b7bd49fd 3be8c572ef937aa26744e1b416e7c626b7bd49fd Francisco Lino <juanfranlino321@gmail.com> 1763503520 -0300	checkout: moving from main to Rama-Francisco
+3be8c572ef937aa26744e1b416e7c626b7bd49fd 3be8c572ef937aa26744e1b416e7c626b7bd49fd Francisco Lino <juanfranlino321@gmail.com> 1763503641 -0300	checkout: moving from Rama-Francisco to main
