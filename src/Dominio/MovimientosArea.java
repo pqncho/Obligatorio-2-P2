@@ -1,10 +1,11 @@
 
 package Dominio;
 
+import java.io.*;
 
 
 
-public class MovimientosArea {
+public class MovimientosArea implements Serializable{
     private String mes;
     private Area areaOrigen;
     private Area areaDestino;

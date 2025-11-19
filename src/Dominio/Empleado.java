@@ -1,7 +1,8 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Dominio;
 
-public class Empleado {
+import java.io.*;
+public class Empleado implements Serializable{
    private String nombre;
    private String cedula;
    private String celular;

@@ -1,9 +1,10 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Dominio;
 
+import java.io.*;
 import java.util.*;
 
-public class Area  {
+public class Area  implements Serializable{
     private String nombre;
     private String descripcion;
     private int presupuesto;

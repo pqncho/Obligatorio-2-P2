@@ -1,9 +1,10 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Dominio;
 import Interfaz.*;
+import java.io.*;
 import java.util.*;
 
-public class Sistema extends Observable{
+public class Sistema extends Observable implements Serializable{
    private ArrayList<Area> listaAreas;
    private ArrayList<Empleado> listaEmpleados;
    private ArrayList<Manager> listaManagers;

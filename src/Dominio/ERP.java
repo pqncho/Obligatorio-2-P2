@@ -1,8 +1,9 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Dominio;
 import Interfaz.*;
+import java.io.*;
 
-public class ERP {
+public class ERP implements Serializable{
    static Sistema sistema= new Sistema();
   
      public static void main(String[] args) {

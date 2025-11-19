@@ -9,6 +9,7 @@ import Recursos.VentanaAutores;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.*;
 import java.util.*;
 
 
@@ -42,11 +43,28 @@ public class VentanaMenu extends javax.swing.JFrame {
         
          configurarAtajoF1();
          
+         this.addWindowListener(new java.awt.event.WindowAdapter() {
+    @Override
+    public void windowClosing(java.awt.event.WindowEvent e) {
+
+        
+        try {
+            FileOutputStream arch= new FileOutputStream("DATOS");
+            ObjectOutputStream grabar = new ObjectOutputStream(arch);
+            grabar.writeObject(sistema);
+            grabar.close();
+        } catch (IOException ex) {
+            System.out.println("Error de archivo");
+        }
+        System.exit(0);
+    }
+});
+         
  }
    
         
         private void configurarAtajoF1() {
-        // Vincula F1 a la acción "mostrarAutores"
+      
         JRootPane rootPane = this.getRootPane();
         KeyStroke teclaF1 = KeyStroke.getKeyStroke("F1");
 
@@ -88,7 +106,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         itemReporteAreas = new javax.swing.JMenuItem();
         itemReporteMov = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jMenu1.setText("Areas");
