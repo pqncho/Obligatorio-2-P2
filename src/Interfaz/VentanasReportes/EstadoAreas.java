@@ -1,4 +1,4 @@
-//Marcos Coszion(332945), Francisco Lino(347691)
+//Marcos Coszion(332945), Francisco Lino(347691).
 package Interfaz.VentanasReportes;
 
 import Dominio.*;
