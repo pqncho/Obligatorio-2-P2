@@ -7,15 +7,23 @@ import java.util.*;
 public class Area  implements Serializable{
     private String nombre;
     private String descripcion;
-    private int presupuesto;
+    private int presupuestoActual;
+    private int presupuestoFijo;
     private ArrayList<Empleado> listaEmpleados;
     
     public Area(String unNombre, String unaDescripcion, int unPresupuesto){
     nombre=unNombre;
     descripcion=unaDescripcion;
-    presupuesto=unPresupuesto;
+    presupuestoActual=unPresupuesto;
     listaEmpleados= new ArrayList<>();
+    presupuestoFijo=unPresupuesto;
     }
+
+    public int getPresupuestoFijo() {
+        return presupuestoFijo;
+    }
+    
+    
 
     public ArrayList<Empleado> getListaEmpleados() {
         return listaEmpleados;
@@ -43,12 +51,12 @@ public class Area  implements Serializable{
         descripcion=unaDescripcion;
     }
     
-     public int getPresupuesto(){
-        return presupuesto;
+     public int getPresupuestoActual(){
+        return presupuestoActual;
     }
     
-    public void setPresupuesto(int unPresupuesto){
-        presupuesto=unPresupuesto;
+    public void setPresupuestoActual(int unPresupuesto){
+        presupuestoActual=unPresupuesto;
     }
 
     @Override
@@ -62,14 +70,14 @@ public class Area  implements Serializable{
          if (listaEmpleados != null) {
         for (Empleado e : listaEmpleados) {
            
-            totalSalarios = totalSalarios + e.getSalarioAnual();
+            totalSalarios = totalSalarios + (double)e.SalarioAnualRes();
         }
     }
          
          double porcentaje = 0.0;
-    if (presupuesto > 0) {
+    if (presupuestoFijo > 0) {
         
-        porcentaje = (totalSalarios * 100.0) / (double) presupuesto;
+        porcentaje = (totalSalarios * 100.0) / (double) presupuestoFijo;
     }
 
     return porcentaje;

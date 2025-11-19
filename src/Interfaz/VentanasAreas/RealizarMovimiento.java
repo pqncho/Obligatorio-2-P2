@@ -47,8 +47,8 @@ public class RealizarMovimiento extends javax.swing.JFrame implements Observer {
         String mes= (String)boxMesesMov.getSelectedItem();
         int numMes=0;
        
-        int presuAreaDestino=areaDestino.getPresupuesto();
-        int presuAreaOrigen=areaOrigen.getPresupuesto();
+        int presuAreaDestino=areaDestino.getPresupuestoActual();
+        int presuAreaOrigen=areaOrigen.getPresupuestoActual();
         boolean repetido=false;
         
         switch (mes){
@@ -109,9 +109,10 @@ public class RealizarMovimiento extends javax.swing.JFrame implements Observer {
         JOptionPane.showMessageDialog(this, "Las areas seleccionadas son las mismas.");
         }
             if(presuAreaDestino>=salarioRestante && !repetido){
-             areaDestino.setPresupuesto(presuAreaDestino-salarioRestante);
-                areaOrigen.setPresupuesto(presuAreaOrigen + presuReintegro);
+                areaDestino.setPresupuestoActual(presuAreaDestino-salarioRestante);
+                areaOrigen.setPresupuestoActual(presuAreaOrigen + presuReintegro);
                 empleado.setArea(areaDestino);
+                empleado.setMesDeEntrada(numMes);
                 areaOrigen.getListaEmpleados().remove(empleado);
                 sistema.ordenarAreasPorNombre();
                 sistema.ordenarEmpleadosPorSalario();
@@ -123,6 +124,8 @@ public class RealizarMovimiento extends javax.swing.JFrame implements Observer {
                 MovimientosArea unMovArea= new MovimientosArea(mes,areaOrigen,areaDestino,empleado);
                 sistema.agregarMovArea(unMovArea);
                 JOptionPane.showMessageDialog(this, "Movimiento exitoso.");
+                
+                
         
             }else{
             JOptionPane.showMessageDialog(this, "El presupuesto del Area de destino no es suficiente.");

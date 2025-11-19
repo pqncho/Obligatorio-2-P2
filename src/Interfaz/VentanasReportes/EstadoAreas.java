@@ -47,11 +47,11 @@ public class EstadoAreas extends javax.swing.JFrame implements Observer {
     }
     private void mostrarArea(Area unArea){
     
-    double total = unArea.getPresupuesto();
+    double total = unArea.getPresupuestoFijo();
     double asignado = 0;
     
      for (Empleado e : unArea.getListaEmpleados()) {
-        asignado += e.getSalarioAnual(); 
+        asignado += e.SalarioAnualRes(); 
     }
 
     double restante = total - asignado;
@@ -167,6 +167,7 @@ public class EstadoAreas extends javax.swing.JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         sistema.ordenarAreasPorPorcentaje();
+        cargarAreas();
         
     }
 }

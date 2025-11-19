@@ -165,7 +165,7 @@ public class ModificacionArea extends javax.swing.JFrame implements Observer{
         if(unArea!=null){
         textoNombreModArea.setText(unArea.getNombre());
         textoDescModArea.setText(unArea.getDescripcion());
-        textoPresuModArea.setText(""+unArea.getPresupuesto());
+        textoPresuModArea.setText(""+unArea.getPresupuestoActual());
         
         }
     }//GEN-LAST:event_listaAreasModAreaValueChanged

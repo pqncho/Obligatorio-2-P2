@@ -6,12 +6,12 @@ import java.io.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
-
 public class AltaEmpleado extends javax.swing.JFrame implements Observer {
+
     private Sistema sistema;
     
     public AltaEmpleado(Sistema unSistema) {
-         sistema = unSistema;
+        sistema = unSistema;
         initComponents();
         setTitle("Alta de Empleados");
         setVisible(true);
@@ -26,96 +26,91 @@ public class AltaEmpleado extends javax.swing.JFrame implements Observer {
     }
     
     private void guardarCVEnArchivo(String cedula, String textoCV) {
-    try {
-      
-        File carpeta = new File("cvs");
-        if (!carpeta.exists()) {
-            carpeta.mkdir(); 
+        try {
+            
+            File carpeta = new File("cvs");
+            if (!carpeta.exists()) {
+                carpeta.mkdir();                
+            }
+            
+            JOptionPane.showMessageDialog(this, "Archivo del CV guardado correctamente.");
+            File archivoCV = new File(carpeta, "CV" + cedula + ".txt");
+            
+            FileWriter fw = new FileWriter(archivoCV);
+            fw.write(textoCV);
+            fw.close();
+            
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error al guardar el archivo de CV.");
         }
-
-        JOptionPane.showMessageDialog(this,"Archivo del CV guardado correctamente.");
-        File archivoCV = new File(carpeta, "CV" + cedula + ".txt");
-
-       
-        FileWriter fw = new FileWriter(archivoCV);
-        fw.write(textoCV);
-        fw.close();
-
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, 
-            "Error al guardar el archivo de CV.");
     }
-}
-
-    private void limpiarCajas(){
+    
+    private void limpiarCajas() {
         textoNombreAltaEmp.setText("");
         textoCedulaAltaEmp.setText("");
         textoCelAltaEmp.setText("");
         textoCVAltaEmp.setText("");
         textoSalAltaEmp.setText("");
     }
-    private void agregarEmpleado(){
-        boolean datosValidos=true;
-        boolean cedulaRepetida=false;
-         boolean alcanzaPresupuesto=true;
-        try{
-    String nombre= textoNombreAltaEmp.getText();
-    String cedula= textoCedulaAltaEmp.getText();
-    int salario= Integer.parseInt(textoSalAltaEmp.getText());
-    String celular= textoCelAltaEmp.getText();
-    String curriculum= textoCVAltaEmp.getText();
-    if (nombre.isEmpty() || cedula.isEmpty() || curriculum.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Hay campos vacíos.");
-        datosValidos = false;
-    }
+
+    private void agregarEmpleado() {
+        boolean datosValidos = true;
+        boolean cedulaRepetida = false;
+        boolean alcanzaPresupuesto = true;
+        try {
+            String nombre = textoNombreAltaEmp.getText();
+            String cedula = textoCedulaAltaEmp.getText();
+            int salario = Integer.parseInt(textoSalAltaEmp.getText());
+            String celular = textoCelAltaEmp.getText();
+            String curriculum = textoCVAltaEmp.getText();
+            if (nombre.isEmpty() || cedula.isEmpty() || curriculum.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Hay campos vacíos.");
+                datosValidos = false;
+            }
             for (int i = 0; i < sistema.getListaEmpleados().size(); i++) {
-                if(sistema.getListaEmpleados().get(i).getCedula().equals(cedula)){
-                    cedulaRepetida=true;
+                if (sistema.getListaEmpleados().get(i).getCedula().equals(cedula)) {
+                    cedulaRepetida = true;
                 }
                 
             }
             for (int i = 0; i < sistema.getListaManagers().size(); i++) {
-                if(sistema.getListaManagers().get(i).getCedula().equals(cedula)){
-                    cedulaRepetida=true;
+                if (sistema.getListaManagers().get(i).getCedula().equals(cedula)) {
+                    cedulaRepetida = true;
                 }
                 
             }
             
-            
-    if(datosValidos && !cedulaRepetida){
-    Manager manager= (Manager)listaManagersAltaEmp.getSelectedValue();
-    Area area= (Area)listaAreasAltaEmp.getSelectedValue();
-    if(manager!=null && area!=null){
-        if(salario<area.getPresupuesto()){
-    Empleado empleado= new Empleado(nombre,cedula,celular,curriculum,salario,manager,area);
-    sistema.agregarEmpleado(empleado);
-    guardarCVEnArchivo(cedula, curriculum);
-    area.getListaEmpleados().add(empleado);
-    sistema.ordenarEmpleadosPorSalario();
-    listaEmpleadosAltaEmp.setListData(sistema.getListaEmpleados().toArray());
-    JOptionPane.showMessageDialog(this, "El empleado fue agregado correctamente.");
-    limpiarCajas();
-        }else{
-        JOptionPane.showMessageDialog(this, "El salario supera el presupuesto actual.");
-        }
-    }else{
-        JOptionPane.showMessageDialog(this, "Debe seleccionar un area y un manager.");
-        
-        }
-    }else{
-        JOptionPane.showMessageDialog(this, "Ya existe una persona con esta cedula.");
-        
-    }
-        }catch(NumberFormatException e){
-        JOptionPane.showMessageDialog(this,"Salario invalido.");
-       
+            if (datosValidos && !cedulaRepetida) {
+                Manager manager = (Manager) listaManagersAltaEmp.getSelectedValue();
+                Area area = (Area) listaAreasAltaEmp.getSelectedValue();
+                if (manager != null && area != null) {
+                    if (salario < area.getPresupuestoActual()) {
+                        Empleado empleado = new Empleado(nombre, cedula, celular, curriculum, salario, manager, area);
+                        sistema.agregarEmpleado(empleado);
+                        area.setPresupuestoActual(area.getPresupuestoActual() - empleado.SalarioAnualRes());
+                        guardarCVEnArchivo(cedula, curriculum);
+                        area.getListaEmpleados().add(empleado);
+                        sistema.ordenarEmpleadosPorSalario();
+                        listaEmpleadosAltaEmp.setListData(sistema.getListaEmpleados().toArray());
+                        JOptionPane.showMessageDialog(this, "El empleado fue agregado correctamente.");
+                        limpiarCajas();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "El salario supera el presupuesto actual.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Debe seleccionar un area y un manager.");
+                    
                 }
+            } else {
+                JOptionPane.showMessageDialog(this, "Ya existe una persona con esta cedula.");
+                
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Salario invalido.");
+            
         }
-
-        
-    
-    
-    
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -338,8 +333,6 @@ public class AltaEmpleado extends javax.swing.JFrame implements Observer {
         agregarEmpleado();
     }//GEN-LAST:event_botonRegistrarAltaEmpActionPerformed
 
-   
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelarAltaEmp;
@@ -369,10 +362,10 @@ public class AltaEmpleado extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals("areas")){
-        sistema.ordenarAreasPorNombre();
-        listaAreasAltaEmp.setListData(sistema.getListaAreas().toArray());
-        }else if(arg.equals("managers")){
+        if (arg.equals("areas")) {
+            sistema.ordenarAreasPorNombre();
+            listaAreasAltaEmp.setListData(sistema.getListaAreas().toArray());
+        } else if (arg.equals("managers")) {
             sistema.ordenarManagersPorAntiguedad();
             listaManagersAltaEmp.setListData(sistema.getListaManagers().toArray());
         }

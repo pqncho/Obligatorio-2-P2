@@ -10,6 +10,7 @@ public class Empleado implements Serializable{
    private int salarioMensual;
    private Manager manager;
    private Area area;
+   private int mesDeEntrada;
 
    
    public Empleado (String unNombre, String unaCedula, String unCelular, String unCurriculum, int unSalarioMensual, Manager unManager,Area unArea){
@@ -20,6 +21,7 @@ public class Empleado implements Serializable{
     salarioMensual=unSalarioMensual;
     manager=unManager;
     area=unArea;
+    mesDeEntrada=1;
        
        
    }
@@ -86,9 +88,19 @@ public class Empleado implements Serializable{
         area = unArea;
     }
 
-        public double getSalarioAnual() {
+    public int getMesDeEntrada() {
+        return mesDeEntrada;
+    }
+
+    public void setMesDeEntrada(int mesDeEntrada) {
+        this.mesDeEntrada = mesDeEntrada;
+    }
     
-    return salarioMensual * 12;
+    
+
+        public int SalarioAnualRes() {
+            int salarioAnualRes= getSalarioMensual() * (13-this.mesDeEntrada);
+    return salarioAnualRes;
 }
     
    
