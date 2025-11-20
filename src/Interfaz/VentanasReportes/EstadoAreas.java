@@ -29,16 +29,19 @@ public class EstadoAreas extends javax.swing.JFrame implements Observer {
       for (Area unArea : listaAreas) {
 
         JButton btn = new JButton(unArea.getNombre());
-        
+         btn.setOpaque(true);              
+        btn.setBorderPainted(false); 
+        panelAreas.getParent().repaint();
          double p = unArea.getPorcentaje();
 
-        if (p > 0.90) btn.setBackground(Color.RED);
-        else if (p >= 0.70) btn.setBackground(Color.YELLOW);
+        if (p > 90) btn.setBackground(Color.RED);
+        else if (p >= 70) btn.setBackground(Color.YELLOW);
         else btn.setBackground(Color.LIGHT_GRAY);
 
         btn.addActionListener(e -> mostrarArea(unArea)); 
 
         panelAreas.add(btn);
+       
     }
 
     panelAreas.revalidate();
@@ -51,7 +54,7 @@ public class EstadoAreas extends javax.swing.JFrame implements Observer {
     double asignado = 0;
     
      for (Empleado e : unArea.getListaEmpleados()) {
-        asignado += e.SalarioAnualRes(); 
+        asignado += e.salarioAnualRes(); 
     }
 
     double restante = total - asignado;
@@ -166,8 +169,10 @@ public class EstadoAreas extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+         
+        if(arg.equals("presupuesto")){
         sistema.ordenarAreasPorPorcentaje();
         cargarAreas();
-        
+        }
     }
 }

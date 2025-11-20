@@ -15,7 +15,6 @@ public class Inteligente extends javax.swing.JFrame {
         setVisible(true);
         
         listaAreaOrInt.setListData(sistema.getListaAreas().toArray());
-        listaEmpleadosInt.setListData(sistema.getListaEmpleados().toArray());
         listaAreaDestInt.setListData(sistema.getListaAreas().toArray());
         
     }
@@ -50,6 +49,11 @@ public class Inteligente extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        listaAreaOrInt.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaAreaOrIntValueChanged(evt);
+            }
         });
         jScrollPane1.setViewportView(listaAreaOrInt);
 
@@ -139,6 +143,13 @@ public class Inteligente extends javax.swing.JFrame {
 
         setBounds(0, 0, 506, 469);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void listaAreaOrIntValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAreaOrIntValueChanged
+        Area unArea= (Area)listaAreaOrInt.getSelectedValue();
+        if(unArea!=null){
+           listaEmpleadosInt.setListData(unArea.getListaEmpleados().toArray());
+        }
+    }//GEN-LAST:event_listaAreaOrIntValueChanged
 
     
     

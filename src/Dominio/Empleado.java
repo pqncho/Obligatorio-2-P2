@@ -98,7 +98,7 @@ public class Empleado implements Serializable{
     
     
 
-        public int SalarioAnualRes() {
+        public int salarioAnualRes() {
             int salarioAnualRes= getSalarioMensual() * (13-this.mesDeEntrada);
     return salarioAnualRes;
 }

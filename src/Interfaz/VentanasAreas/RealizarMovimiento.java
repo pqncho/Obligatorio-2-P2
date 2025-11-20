@@ -100,20 +100,21 @@ public class RealizarMovimiento extends javax.swing.JFrame implements Observer {
                 numMes=12;
                 break;             
         }
-         int numMesRestante=12-numMes +1;
-        int salarioRestante= empleado.getSalarioMensual()*numMesRestante;
-        int presuReintegro=numMesRestante*empleado.getSalarioMensual();
+         
+       
+       
         
         if(areaDestino==areaOrigen){
         repetido=true;
         JOptionPane.showMessageDialog(this, "Las areas seleccionadas son las mismas.");
         }
-            if(presuAreaDestino>=salarioRestante && !repetido){
-                areaDestino.setPresupuestoActual(presuAreaDestino-salarioRestante);
-                areaOrigen.setPresupuestoActual(presuAreaOrigen + presuReintegro);
+            if(presuAreaDestino>=empleado.salarioAnualRes() && !repetido){
+                areaDestino.setPresupuestoActual(presuAreaDestino-empleado.salarioAnualRes());
+                areaOrigen.setPresupuestoActual(presuAreaOrigen + empleado.salarioAnualRes());
                 empleado.setArea(areaDestino);
                 empleado.setMesDeEntrada(numMes);
                 areaOrigen.getListaEmpleados().remove(empleado);
+                
                 sistema.ordenarAreasPorNombre();
                 sistema.ordenarEmpleadosPorSalario();
                 listaEmpleadosMov.setListData(areaOrigen.getListaEmpleados().toArray());
@@ -123,7 +124,9 @@ public class RealizarMovimiento extends javax.swing.JFrame implements Observer {
                 areaDestino.getListaEmpleados().add(empleado);
                 MovimientosArea unMovArea= new MovimientosArea(mes,areaOrigen,areaDestino,empleado);
                 sistema.agregarMovArea(unMovArea);
+                sistema.notiCambioPresu();
                 JOptionPane.showMessageDialog(this, "Movimiento exitoso.");
+                
                 
                 
         

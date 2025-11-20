@@ -161,4 +161,10 @@ public class Sistema extends Observable implements Serializable{
     Collections.sort(listaEmpleados, comp);
 
     }
+    
+    public void notiCambioPresu(){
+    setChanged();
+    notifyObservers("presupuesto");
 }
+}
+

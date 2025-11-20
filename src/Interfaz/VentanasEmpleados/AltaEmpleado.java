@@ -80,20 +80,21 @@ public class AltaEmpleado extends javax.swing.JFrame implements Observer {
                 }
                 
             }
-            
-            if (datosValidos && !cedulaRepetida) {
+            if(!cedulaRepetida){
+            if (datosValidos) {
                 Manager manager = (Manager) listaManagersAltaEmp.getSelectedValue();
                 Area area = (Area) listaAreasAltaEmp.getSelectedValue();
                 if (manager != null && area != null) {
-                    if (salario < area.getPresupuestoActual()) {
+                    if (salario*12 < area.getPresupuestoActual()) {
                         Empleado empleado = new Empleado(nombre, cedula, celular, curriculum, salario, manager, area);
                         sistema.agregarEmpleado(empleado);
-                        area.setPresupuestoActual(area.getPresupuestoActual() - empleado.SalarioAnualRes());
+                        area.setPresupuestoActual(area.getPresupuestoActual() - empleado.salarioAnualRes());
                         guardarCVEnArchivo(cedula, curriculum);
                         area.getListaEmpleados().add(empleado);
                         sistema.ordenarEmpleadosPorSalario();
                         listaEmpleadosAltaEmp.setListData(sistema.getListaEmpleados().toArray());
                         JOptionPane.showMessageDialog(this, "El empleado fue agregado correctamente.");
+                         sistema.notiCambioPresu();
                         limpiarCajas();
                     } else {
                         JOptionPane.showMessageDialog(this, "El salario supera el presupuesto actual.");
@@ -102,10 +103,12 @@ public class AltaEmpleado extends javax.swing.JFrame implements Observer {
                     JOptionPane.showMessageDialog(this, "Debe seleccionar un area y un manager.");
                     
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "Ya existe una persona con esta cedula.");
+            } 
                 
-            }
+            else{
+                    JOptionPane.showMessageDialog(this, "Ya existe una persona con esta cedula.");
+                    }
+}
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Salario invalido.");
             

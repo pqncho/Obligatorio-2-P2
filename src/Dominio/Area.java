@@ -70,7 +70,7 @@ public class Area  implements Serializable{
          if (listaEmpleados != null) {
         for (Empleado e : listaEmpleados) {
            
-            totalSalarios = totalSalarios + (double)e.SalarioAnualRes();
+            totalSalarios = totalSalarios + (double)e.salarioAnualRes();
         }
     }
          
