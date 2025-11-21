@@ -3,8 +3,9 @@ package Interfaz.VentanasReportes;
 
 import Dominio.*;
 import java.util.*;
+import javax.swing.*;
 
-public class Inteligente extends javax.swing.JFrame {
+public class Inteligente extends javax.swing.JFrame implements Observer{
     private Sistema sistema;
    
     
@@ -16,8 +17,31 @@ public class Inteligente extends javax.swing.JFrame {
         
         listaAreaOrInt.setListData(sistema.getListaAreas().toArray());
         listaAreaDestInt.setListData(sistema.getListaAreas().toArray());
-        
+        sistema.addObserver(this);
     }
+    
+   private String construirPrompt(Area origen, Area destino, Empleado emp) {
+    StringBuilder sb = new StringBuilder();
+
+    sb.append("Genera un reporte profesional sobre la conveniencia de trasladar un empleado entre áreas.\n");
+    sb.append("Incluye obligatoriamente ventajas, desventajas y una recomendación final.\n\n");
+
+    sb.append("Área de Origen:\n");
+    sb.append("- Nombre: ").append(origen.getNombre()).append("\n");
+    sb.append("- Descripción: ").append(origen.getDescripcion()).append("\n\n");
+
+    sb.append("Empleado:\n");
+    sb.append("- Nombre: ").append(emp.getNombre()).append("\n");
+    sb.append("- Curriculum: ").append(emp.getCurriculum()).append("\n\n");
+
+    sb.append("Área de Destino:\n");
+    sb.append("- Nombre: ").append(destino.getNombre()).append("\n");
+    sb.append("- Descripción: ").append(destino.getDescripcion()).append("\n\n");
+
+    sb.append("Redacta el reporte en lenguaje claro, profesional, en 3 secciones: ventajas, desventajas y recomendación.\n");
+
+    return sb.toString();
+}
 
     
     @SuppressWarnings("unchecked")
@@ -57,11 +81,6 @@ public class Inteligente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listaAreaOrInt);
 
-        listaEmpleadosInt.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(listaEmpleadosInt);
 
         listaAreaDestInt.setModel(new javax.swing.AbstractListModel() {
@@ -72,6 +91,11 @@ public class Inteligente extends javax.swing.JFrame {
         jScrollPane3.setViewportView(listaAreaDestInt);
 
         botonConsultarInt.setText("Consultar");
+        botonConsultarInt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConsultarIntActionPerformed(evt);
+            }
+        });
 
         textoAreaInt.setColumns(20);
         textoAreaInt.setRows(5);
@@ -151,6 +175,28 @@ public class Inteligente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listaAreaOrIntValueChanged
 
+    private void botonConsultarIntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarIntActionPerformed
+      /*try {
+          Area origen = (Area) listaAreaOrInt.getSelectedValue();
+        Area destino = (Area) listaAreaDestInt.getSelectedValue();
+        Empleado emp = (Empleado) listaEmpleadosInt.getSelectedValue();
+        // 1. Construir el prompt con los datos del sistema
+        String prompt = construirPrompt(origen, destino, emp);
+
+        // 2. Llamada a Gemini
+        String reporte = geminiAI.generarReporte(prompt);
+
+        // 3. Mostrarlo en el área de texto
+        textoAreaInt.setText(reporte);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this,
+                "Error al generar reporte con IA: " + e.getMessage(),
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+    }*/
+    }//GEN-LAST:event_botonConsultarIntActionPerformed
+
     
     
 
@@ -168,4 +214,13 @@ public class Inteligente extends javax.swing.JFrame {
     private javax.swing.JList listaEmpleadosInt;
     private javax.swing.JTextArea textoAreaInt;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if(arg.equals("areas")){
+            sistema.ordenarAreasPorNombre();
+        listaAreaOrInt.setListData(sistema.getListaAreas().toArray());
+        listaAreaDestInt.setListData(sistema.getListaAreas().toArray());
+        }
+    }
 }

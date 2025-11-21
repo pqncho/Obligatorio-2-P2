@@ -7,77 +7,138 @@ import java.util.*;
 import javax.swing.*;
 
 public class EstadoAreas extends javax.swing.JFrame implements Observer {
+
     private Sistema sistema;
-    
+
     public EstadoAreas(Sistema unSistema) {
-         sistema = unSistema;
+        sistema = unSistema;
         initComponents();
         setTitle("Reporte estado de areas");
         setVisible(true);
         sistema.ordenarAreasPorPorcentaje();
         unSistema.addObserver(this);
-       cargarAreas();
-        
-    }
-    private void cargarAreas(){
-    
-     panelAreas.removeAll();
-     panelAreas.setLayout(new GridLayout(0, 1));
-     sistema.ordenarAreasPorPorcentaje();
-     ArrayList<Area> listaAreas = new ArrayList<>(sistema.getListaAreas());
-     
-      for (Area unArea : listaAreas) {
+        cargarAreas();
 
-        JButton btn = new JButton(unArea.getNombre());
-         btn.setOpaque(true);              
-        btn.setBorderPainted(false); 
-        panelAreas.getParent().repaint();
-         double p = unArea.getPorcentaje();
-
-        if (p > 90) btn.setBackground(Color.RED);
-        else if (p >= 70) btn.setBackground(Color.YELLOW);
-        else btn.setBackground(Color.LIGHT_GRAY);
-
-        btn.addActionListener(e -> mostrarArea(unArea)); 
-
-        panelAreas.add(btn);
-       
     }
 
-    panelAreas.revalidate();
-    panelAreas.repaint();
-        
-    }
-    private void mostrarArea(Area unArea){
-    
-    double total = unArea.getPresupuestoFijo();
-    double asignado = 0;
-    
-     for (Empleado e : unArea.getListaEmpleados()) {
-        asignado += e.salarioAnualRes(); 
+    private void cargarAreas() {
+
+        panelAreas.removeAll();
+        panelAreas.setLayout(new GridLayout(0, 1));
+        sistema.ordenarAreasPorPorcentaje();
+        ArrayList<Area> listaAreas = new ArrayList<>(sistema.getListaAreas());
+
+        for (Area unArea : listaAreas) {
+
+            JButton btn = new JButton(unArea.getNombre());
+            btn.setOpaque(true);
+            btn.setBorderPainted(false);
+            panelAreas.getParent().repaint();
+            double p = unArea.getPorcentaje();
+
+            if (p > 90) {
+                btn.setBackground(Color.RED);
+            } else if (p >= 70) {
+                btn.setBackground(Color.YELLOW);
+            } else {
+                btn.setBackground(Color.LIGHT_GRAY);
+            }
+
+            btn.addActionListener(e -> mostrarArea(unArea));
+
+            panelAreas.add(btn);
+
+        }
+
+        panelAreas.revalidate();
+        panelAreas.repaint();
+
     }
 
-    double restante = total - asignado;
+    private void mostrarArea(Area unArea) {
 
-    labelPorcentaje.setText(unArea.getNombre() +" " + unArea.getPorcentaje() + " %");
-    labelPresuTotal.setText("Presupuesto: $" + total);
-    labelPresuAsignado.setText("Asignado: $" + asignado);
-    labelPresuRestante.setText("Restante: $" + restante);
-    
-    panelEmpleados.removeAll();
-    panelEmpleados.setLayout(new GridLayout(0, 3));
-    
-    ArrayList<Empleado> listaEmpleados = new ArrayList<>(unArea.getListaEmpleados());
-    Collections.sort(listaEmpleados, new Comparator<Empleado>() {
-    @Override
-    public int compare(Empleado e1, Empleado e2) {
-        return e1.getNombre().compareToIgnoreCase(e2.getNombre());
-    }
-});
-    
+        double total = unArea.getPresupuestoFijo();
+        double asignado = 0;
+
+        for (Empleado e : unArea.getListaEmpleados()) {
+            asignado += e.salarioAnualRes();
+        }
+
+        double restante = total - asignado;
+
+        labelPorcentaje.setText(unArea.getNombre() + " " + unArea.getPorcentaje() + " %");
+        labelPresuTotal.setText("Presupuesto: $" + total);
+        labelPresuAsignado.setText("Asignado: $" + asignado);
+        labelPresuRestante.setText("Restante: $" + restante);
+
+        panelEmpleados.removeAll();
+        panelEmpleados.setLayout(new GridLayout(0, 3));
+
+        ArrayList<Empleado> listaEmpleados = new ArrayList<>(unArea.getListaEmpleados());
+        Collections.sort(listaEmpleados, new Comparator<Empleado>() {
+            @Override
+            public int compare(Empleado e1, Empleado e2) {
+                return e1.getNombre().compareToIgnoreCase(e2.getNombre());
+            }
+        });
+
+        for (Empleado emp : listaEmpleados) {
+
+            JButton btnEmp = new JButton(emp.getNombre());
+            btnEmp.setOpaque(true);
+            btnEmp.setBorderPainted(false);
+
+            double minSal = listaEmpleados.get(0).salarioAnualRes();
+            double maxSal = listaEmpleados.get(listaEmpleados.size() - 1).salarioAnualRes();
+            double valor = emp.salarioAnualRes();
+
+            double factor;
+
+            if (maxSal == minSal) {
+                factor = 0;
+            } else {
+                factor = (valor - minSal) / (maxSal - minSal);
+            }
+
+
+            if (factor < 0) {
+                factor = 0;
+            }
+            if (factor > 1) {
+                factor = 1;
+            }
+
+            int blue = (int) (255 * factor);
+
+
+            if (blue < 0) {
+                blue = 0;
+            }
+            if (blue > 255) {
+                blue = 255;
+            }
+
+            Color color = new Color(0, 0, blue);
+            btnEmp.setBackground(color);
+
+            btnEmp.addActionListener(e -> {
+                JOptionPane.showMessageDialog(this,
+                        "Nombre: " + emp.getNombre() + "\n"
+                        + "CI: " + emp.getCedula() + "\n"
+                        + "Salario: $" + emp.salarioAnualRes(),
+                        "Información del empleado",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+            });
+
+            panelEmpleados.add(btnEmp);
+        }
+
+        panelEmpleados.revalidate();
+        panelEmpleados.repaint();
+
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -152,8 +213,6 @@ public class EstadoAreas extends javax.swing.JFrame implements Observer {
         setBounds(0, 0, 602, 433);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -169,10 +228,10 @@ public class EstadoAreas extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-         
-        if(arg.equals("presupuesto")){
-        sistema.ordenarAreasPorPorcentaje();
-        cargarAreas();
+
+        if (arg.equals("presupuesto") || arg.equals("empleados")) {
+            sistema.ordenarAreasPorPorcentaje();
+            cargarAreas();
         }
     }
 }

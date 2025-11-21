@@ -33,7 +33,7 @@ public class AltaEmpleado extends javax.swing.JFrame implements Observer {
                 carpeta.mkdir();                
             }
             
-            JOptionPane.showMessageDialog(this, "Archivo del CV guardado correctamente.");
+            
             File archivoCV = new File(carpeta, "CV" + cedula + ".txt");
             
             FileWriter fw = new FileWriter(archivoCV);
@@ -65,7 +65,7 @@ public class AltaEmpleado extends javax.swing.JFrame implements Observer {
             String celular = textoCelAltaEmp.getText();
             String curriculum = textoCVAltaEmp.getText();
             if (nombre.isEmpty() || cedula.isEmpty() || curriculum.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Hay campos vacíos.");
+                
                 datosValidos = false;
             }
             for (int i = 0; i < sistema.getListaEmpleados().size(); i++) {
@@ -80,8 +80,8 @@ public class AltaEmpleado extends javax.swing.JFrame implements Observer {
                 }
                 
             }
-            if(!cedulaRepetida){
-            if (datosValidos) {
+            if(datosValidos){
+            if (!cedulaRepetida) {
                 Manager manager = (Manager) listaManagersAltaEmp.getSelectedValue();
                 Area area = (Area) listaAreasAltaEmp.getSelectedValue();
                 if (manager != null && area != null) {
@@ -103,12 +103,12 @@ public class AltaEmpleado extends javax.swing.JFrame implements Observer {
                     JOptionPane.showMessageDialog(this, "Debe seleccionar un area y un manager.");
                     
                 }
-            } 
-                
-            else{
-                    JOptionPane.showMessageDialog(this, "Ya existe una persona con esta cedula.");
-                    }
-}
+            }else{
+             JOptionPane.showMessageDialog(this, "Ya existe una persona con esta cedula.");
+            }
+}else{
+         JOptionPane.showMessageDialog(this, "Hay campos vacíos.");   
+            }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Salario invalido.");
             
