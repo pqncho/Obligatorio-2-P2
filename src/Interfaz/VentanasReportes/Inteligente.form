@@ -61,6 +61,8 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
                       <Component id="botonConsultarInt" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="labelReloj" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -94,7 +96,10 @@
                   <Component id="jScrollPane3" linkSize="2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="botonConsultarInt" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="botonConsultarInt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelReloj" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane4" min="-2" pref="113" max="-2" attributes="0"/>
               <EmptySpace pref="52" max="32767" attributes="0"/>
@@ -213,5 +218,7 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="labelReloj">
+    </Component>
   </SubComponents>
 </Form>

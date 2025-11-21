@@ -3,16 +3,35 @@ package Interfaz.VentanasReportes;
 
 import Dominio.*;
 import com.google.gson.Gson;
+import java.awt.Dimension;
+import java.awt.Image;
 import java.util.*;
 import javax.swing.*;
 
 public class Inteligente extends javax.swing.JFrame implements Observer{
     private Sistema sistema;
+private ImageIcon scaleIcon(ImageIcon icon, int w, int h) {
+    Image img = icon.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
+    return new ImageIcon(img);
+}
+
+private final ImageIcon iconLoading =
+    new ImageIcon(getClass().getResource("/Recursos/loading.gif"));
+
+private final ImageIcon iconCheck =
+    scaleIcon(new ImageIcon(getClass().getResource("/Recursos/check.png")), 32, 32);
+
    
     
     public Inteligente(Sistema unSistema) {
          sistema = unSistema;
         initComponents();
+        labelReloj.setPreferredSize(new Dimension(32, 32));
+labelReloj.setMaximumSize(new Dimension(32, 32));
+labelReloj.setMinimumSize(new Dimension(32, 32));
+labelReloj.setHorizontalAlignment(JLabel.CENTER);
+labelReloj.setVerticalAlignment(JLabel.CENTER);
+        
         setTitle("Reporte inteligente");
         setVisible(true);
         
@@ -22,33 +41,38 @@ public class Inteligente extends javax.swing.JFrame implements Observer{
     }
     
    private String construirPrompt(Area origen, Area destino, Empleado emp) {
-    StringBuilder sb = new StringBuilder();
+     return """
+Eres un asistente profesional de recursos humanos. 
+Genera un informe claro, fluido y narrativo sobre si conviene trasladar un empleado de un área a otra.
+No uses cuadros, plantillas, ni etiquetas como “Nombre:” o “Descripción:”. 
+Escribe todo como texto corrido, natural y profesional.
 
-    sb.append("Genera un reporte profesional sobre la conveniencia de trasladar un empleado entre áreas.\n");
-    sb.append("Incluye obligatoriamente ventajas, desventajas y una recomendación final.\n\n");
+Incluye:
+1. Ventajas del traslado.
+2. Desventajas del traslado.
+3. Recomendación final (una única recomendación bien fundamentada).
 
-    sb.append("Área de Origen:\n");
-    sb.append("- Nombre: ").append(origen.getNombre()).append("\n");
-    sb.append("- Descripción: ").append(origen.getDescripcion()).append("\n\n");
+Datos para el análisis:
+- Área de origen: %s. Descripción: %s.
+- Empleado: %s. Curriculum: %s.
+- Área de destino: %s. Descripción: %s.
 
-    sb.append("Empleado:\n");
-    sb.append("- Nombre: ").append(emp.getNombre()).append("\n");
-    sb.append("- Curriculum: ").append(emp.getCurriculum()).append("\n\n");
-
-    sb.append("Área de Destino:\n");
-    sb.append("- Nombre: ").append(destino.getNombre()).append("\n");
-    sb.append("- Descripción: ").append(destino.getDescripcion()).append("\n\n");
-
-    sb.append("Redacta el reporte en lenguaje claro, profesional, en 3 secciones: ventajas, desventajas y recomendación.\n");
-
-    return sb.toString();
+Comienza directamente con el análisis, sin títulos como “TuNombre”, “Zona”, ni formatos de formulario.
+""".formatted(
+            origen.getNombre(),
+            origen.getDescripcion(),
+            emp.getNombre(),
+            emp.getCurriculum(),
+            destino.getNombre(),
+            destino.getDescripcion()
+    );
 }
 
    private String extraerTextoDeRespuesta(String json) {
     try {
         Gson gson = new Gson();
 
-        // Estructura mínima esperada por Gemini
+      
         Map respuesta = gson.fromJson(json, Map.class);
         List candidates = (List) respuesta.get("candidates");
         if (candidates == null || candidates.isEmpty()) return "No hubo respuesta.";
@@ -84,6 +108,7 @@ public class Inteligente extends javax.swing.JFrame implements Observer{
         botonConsultarInt = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         textoAreaInt = new javax.swing.JTextArea();
+        labelReloj = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -154,7 +179,9 @@ public class Inteligente extends javax.swing.JFrame implements Observer{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(195, 195, 195)
-                        .addComponent(botonConsultarInt))
+                        .addComponent(botonConsultarInt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelReloj))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -181,7 +208,9 @@ public class Inteligente extends javax.swing.JFrame implements Observer{
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(botonConsultarInt)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonConsultarInt)
+                    .addComponent(labelReloj))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(52, Short.MAX_VALUE))
@@ -200,11 +229,11 @@ public class Inteligente extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_listaAreaOrIntValueChanged
 
     private void botonConsultarIntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarIntActionPerformed
-       Area origen = (Area) listaAreaOrInt.getSelectedValue();
+    
+        Area origen = (Area) listaAreaOrInt.getSelectedValue();
     Area destino = (Area) listaAreaDestInt.getSelectedValue();
     Empleado emp = (Empleado) listaEmpleadosInt.getSelectedValue();
-
-    // Validar
+    if(!origen.equals(destino)){
     if (origen == null || destino == null || emp == null) {
         JOptionPane.showMessageDialog(this,
                 "Debe seleccionar área de origen, empleado y área de destino.",
@@ -213,29 +242,38 @@ public class Inteligente extends javax.swing.JFrame implements Observer{
         return;
     }
 
-    // 2. Construir prompt
     String prompt = construirPrompt(origen, destino, emp);
 
-    // 3. Llamar a la IA
+    textoAreaInt.setText("Consultando IA... espere unos segundos.\n");
+    labelReloj.setIcon(iconLoading);  
+
     geminiAI ia = new geminiAI();
 
-    try {
-        textoAreaInt.setText("Consultando IA... espere unos segundos\n");
+   
+    SwingWorker<String, Void> worker = new SwingWorker<String, Void>() {
 
-        String respuestaJSON = ia.consultarIA(prompt);
+        @Override
+        protected String doInBackground() throws Exception {
+            String json = ia.consultarIA(prompt);
+            return extraerTextoDeRespuesta(json);
+        }
 
-        // 4. EXTRAER SOLO EL TEXTO, no el JSON entero
-        String textoLimpio = extraerTextoDeRespuesta(respuestaJSON);
+        @Override
+        protected void done() {
+            try {
+                String respuesta = get();
+                textoAreaInt.setText(respuesta);
+                labelReloj.setIcon(iconCheck);
+            } catch (Exception e) {
+                textoAreaInt.setText("Error al consultar IA: " + e.getMessage());
+                labelReloj.setIcon(null);
+            }
+        }
+    };
 
-        // 5. Mostrarlo en el textarea
-        textoAreaInt.setText(textoLimpio);
-
-    } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(this,
-                "Error al consultar Gemini: " + e.getMessage(),
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+    worker.execute();
+}else{
+     JOptionPane.showMessageDialog(this,"El area de origen y destino son las mismas.");
     }
     }//GEN-LAST:event_botonConsultarIntActionPerformed
 
@@ -251,6 +289,7 @@ public class Inteligente extends javax.swing.JFrame implements Observer{
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel labelReloj;
     private javax.swing.JList listaAreaDestInt;
     private javax.swing.JList listaAreaOrInt;
     private javax.swing.JList listaEmpleadosInt;
