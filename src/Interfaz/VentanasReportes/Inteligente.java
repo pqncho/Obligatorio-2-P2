@@ -2,6 +2,7 @@
 package Interfaz.VentanasReportes;
 
 import Dominio.*;
+import com.google.gson.Gson;
 import java.util.*;
 import javax.swing.*;
 
@@ -43,6 +44,29 @@ public class Inteligente extends javax.swing.JFrame implements Observer{
     return sb.toString();
 }
 
+   private String extraerTextoDeRespuesta(String json) {
+    try {
+        Gson gson = new Gson();
+
+        // Estructura mínima esperada por Gemini
+        Map respuesta = gson.fromJson(json, Map.class);
+        List candidates = (List) respuesta.get("candidates");
+        if (candidates == null || candidates.isEmpty()) return "No hubo respuesta.";
+
+        Map candidate0 = (Map) candidates.get(0);
+        List content = (List) ((Map) candidate0.get("content")).get("parts");
+
+        if (content != null && !content.isEmpty()) {
+            Map part0 = (Map) content.get(0);
+            Object text = part0.get("text");
+            return text != null ? text.toString() : "Sin texto recibido.";
+        }
+
+        return "No se pudo interpretar la respuesta.";
+    } catch (Exception e) {
+        return "Error al procesar JSON: " + e.getMessage();
+    }
+}
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -176,25 +200,43 @@ public class Inteligente extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_listaAreaOrIntValueChanged
 
     private void botonConsultarIntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarIntActionPerformed
-      /*try {
-          Area origen = (Area) listaAreaOrInt.getSelectedValue();
-        Area destino = (Area) listaAreaDestInt.getSelectedValue();
-        Empleado emp = (Empleado) listaEmpleadosInt.getSelectedValue();
-        // 1. Construir el prompt con los datos del sistema
-        String prompt = construirPrompt(origen, destino, emp);
+       Area origen = (Area) listaAreaOrInt.getSelectedValue();
+    Area destino = (Area) listaAreaDestInt.getSelectedValue();
+    Empleado emp = (Empleado) listaEmpleadosInt.getSelectedValue();
 
-        // 2. Llamada a Gemini
-        String reporte = geminiAI.generarReporte(prompt);
+    // Validar
+    if (origen == null || destino == null || emp == null) {
+        JOptionPane.showMessageDialog(this,
+                "Debe seleccionar área de origen, empleado y área de destino.",
+                "Datos incompletos",
+                JOptionPane.WARNING_MESSAGE);
+        return;
+    }
 
-        // 3. Mostrarlo en el área de texto
-        textoAreaInt.setText(reporte);
+    // 2. Construir prompt
+    String prompt = construirPrompt(origen, destino, emp);
+
+    // 3. Llamar a la IA
+    geminiAI ia = new geminiAI();
+
+    try {
+        textoAreaInt.setText("Consultando IA... espere unos segundos\n");
+
+        String respuestaJSON = ia.consultarIA(prompt);
+
+        // 4. EXTRAER SOLO EL TEXTO, no el JSON entero
+        String textoLimpio = extraerTextoDeRespuesta(respuestaJSON);
+
+        // 5. Mostrarlo en el textarea
+        textoAreaInt.setText(textoLimpio);
 
     } catch (Exception e) {
+        e.printStackTrace();
         JOptionPane.showMessageDialog(this,
-                "Error al generar reporte con IA: " + e.getMessage(),
+                "Error al consultar Gemini: " + e.getMessage(),
                 "Error",
                 JOptionPane.ERROR_MESSAGE);
-    }*/
+    }
     }//GEN-LAST:event_botonConsultarIntActionPerformed
 
     
