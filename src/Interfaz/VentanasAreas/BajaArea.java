@@ -6,11 +6,12 @@ import java.util.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
-public class BajaArea extends javax.swing.JFrame implements Observer{
+public class BajaArea extends javax.swing.JFrame implements Observer {
+
     private Sistema sistema;
-    
+
     public BajaArea(Sistema unSistema) {
-         sistema = unSistema;
+        sistema = unSistema;
         initComponents();
         setTitle("Baja de Areas");
         setVisible(true);
@@ -18,29 +19,28 @@ public class BajaArea extends javax.swing.JFrame implements Observer{
         sistema.addObserver(this);
         sistema.ordenarAreasPorNombre();
         listaAreasEliminar.setListData(sistema.getListaAreas().toArray());
-        
-    }
-    private void eliminarArea(){
-        boolean sePuede=true;
-         Area unArea=(Area)listaAreasEliminar.getSelectedValue();
-         if(listaAreasEliminar.getSelectedValue()==null){
-          JOptionPane.showMessageDialog(this,"Debe seleccionar un elemento antes de eliminar.");
-          sePuede=false;
-         }
-        for (int i = 0; i < sistema.getListaAreas().size() && sePuede; i++) {
-            if((Area)sistema.getListaAreas().get(i)==unArea){
-            sistema.getListaAreas().remove(i);
-            sistema.ordenarAreasPorNombre();
-            listaAreasEliminar.setListData(sistema.getListaAreas().toArray());
-            
-            }
-            
-        }
-    
-    
+
     }
 
-   
+    private void eliminarArea() {
+        boolean sePuede = true;
+        Area unArea = (Area) listaAreasEliminar.getSelectedValue();
+        if (listaAreasEliminar.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un elemento antes de eliminar.");
+            sePuede = false;
+        }
+        for (int i = 0; i < sistema.getListaAreas().size() && sePuede; i++) {
+            if ((Area) sistema.getListaAreas().get(i) == unArea) {
+                sistema.getListaAreas().remove(i);
+                sistema.ordenarAreasPorNombre();
+                listaAreasEliminar.setListData(sistema.getListaAreas().toArray());
+
+            }
+
+        }
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -114,20 +114,18 @@ public class BajaArea extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarBajaAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarBajaAreaActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_botonCancelarBajaAreaActionPerformed
 
     private void botonEliminarBajaAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarBajaAreaActionPerformed
-       int opcion = JOptionPane.showConfirmDialog(this,"¿Confirma la eliminacion de esta area?","SI",JOptionPane.YES_NO_OPTION);
-    
-    if (opcion == JOptionPane.YES_OPTION) {
-        eliminarArea();
-    }
-        
+        int opcion = JOptionPane.showConfirmDialog(this, "¿Confirma la eliminacion de esta area?", "SI", JOptionPane.YES_NO_OPTION);
+
+        if (opcion == JOptionPane.YES_OPTION) {
+            eliminarArea();
+        }
+
     }//GEN-LAST:event_botonEliminarBajaAreaActionPerformed
 
-   
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelarBajaArea;
@@ -139,9 +137,9 @@ public class BajaArea extends javax.swing.JFrame implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals("areas")){
-        sistema.ordenarAreasPorNombre();
-       listaAreasEliminar.setListData(sistema.getListaAreas().toArray());
+        if (arg.equals("areas")) {
+            sistema.ordenarAreasPorNombre();
+            listaAreasEliminar.setListData(sistema.getListaAreas().toArray());
         }
     }
 }

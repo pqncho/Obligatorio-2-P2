@@ -5,11 +5,12 @@ import Dominio.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
-public class ModificacionArea extends javax.swing.JFrame implements Observer{
+public class ModificacionArea extends javax.swing.JFrame implements Observer {
+
     private Sistema sistema;
-   
+
     public ModificacionArea(Sistema unSistema) {
-         sistema = unSistema;
+        sistema = unSistema;
         initComponents();
         setTitle("Modificacion de Areas");
         setVisible(true);
@@ -17,25 +18,25 @@ public class ModificacionArea extends javax.swing.JFrame implements Observer{
         ArrayList<Area> listaAreas = sistema.getListaAreas();
         sistema.ordenarAreasPorNombre();
         listaAreasModArea.setListData(sistema.getListaAreas().toArray());
-       
-}
-    public void modificar(){
-        
-        Area unArea= (Area)listaAreasModArea.getSelectedValue();
-        if(unArea!=null){
-        if(!((Area)listaAreasModArea.getSelectedValue()).getDescripcion().equals(textoDescModArea.getText())){
-            ((Area)listaAreasModArea.getSelectedValue()).setDescripcion(textoDescModArea.getText());
-            JOptionPane.showMessageDialog(this, "Modificacion exitosa.");
-        }else{
-            JOptionPane.showMessageDialog(this, "No se han realizado modificaciones.");
-        }
-        } else{JOptionPane.showMessageDialog(this, "Debe seleccionar un area.");}
-            
-        }
-    
-    
 
-   
+    }
+
+    public void modificar() {
+
+        Area unArea = (Area) listaAreasModArea.getSelectedValue();
+        if (unArea != null) {
+            if (!((Area) listaAreasModArea.getSelectedValue()).getDescripcion().equals(textoDescModArea.getText())) {
+                ((Area) listaAreasModArea.getSelectedValue()).setDescripcion(textoDescModArea.getText());
+                JOptionPane.showMessageDialog(this, "Modificacion exitosa.");
+            } else {
+                JOptionPane.showMessageDialog(this, "No se han realizado modificaciones.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un area.");
+        }
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -157,16 +158,16 @@ public class ModificacionArea extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarModifAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarModifAreaActionPerformed
-      this.dispose();
+        this.dispose();
     }//GEN-LAST:event_botonCancelarModifAreaActionPerformed
 
     private void listaAreasModAreaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAreasModAreaValueChanged
-        Area unArea= (Area)listaAreasModArea.getSelectedValue();
-        if(unArea!=null){
-        textoNombreModArea.setText(unArea.getNombre());
-        textoDescModArea.setText(unArea.getDescripcion());
-        textoPresuModArea.setText(""+unArea.getPresupuestoActual());
-        
+        Area unArea = (Area) listaAreasModArea.getSelectedValue();
+        if (unArea != null) {
+            textoNombreModArea.setText(unArea.getNombre());
+            textoDescModArea.setText(unArea.getDescripcion());
+            textoPresuModArea.setText("" + unArea.getPresupuestoActual());
+
         }
     }//GEN-LAST:event_listaAreasModAreaValueChanged
 
@@ -174,8 +175,6 @@ public class ModificacionArea extends javax.swing.JFrame implements Observer{
         modificar();
     }//GEN-LAST:event_botonModifAreaActionPerformed
 
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelarModifArea;
@@ -193,10 +192,10 @@ public class ModificacionArea extends javax.swing.JFrame implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals("areas")){
-        sistema.ordenarAreasPorNombre();
-       listaAreasModArea.setListData(sistema.getListaAreas().toArray());
+        if (arg.equals("areas")) {
+            sistema.ordenarAreasPorNombre();
+            listaAreasModArea.setListData(sistema.getListaAreas().toArray());
         }
-        
+
     }
 }

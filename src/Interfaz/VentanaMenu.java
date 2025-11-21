@@ -1,5 +1,6 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz;
+
 import Dominio.*;
 import Interfaz.VentanasAreas.*;
 import Interfaz.VentanasEmpleados.*;
@@ -12,59 +13,55 @@ import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.*;
 
-
 public class VentanaMenu extends javax.swing.JFrame {
-    private Sistema sistema;    
+
+    private Sistema sistema;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaMenu.class.getName());
 
-   
     public VentanaMenu(Sistema unSistema) {
-        sistema=unSistema;
+        sistema = unSistema;
         initComponents();
         setTitle("ERP Empresarial");
         setVisible(true);
-       JPanel panelFondo = new JPanel() {
+        JPanel panelFondo = new JPanel() {
             private Image fondo = new ImageIcon(
-                getClass().getResource("/Recursos/fondoERP.jpg")
+                    getClass().getResource("/Recursos/fondoERP.jpg")
             ).getImage();
 
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-             
+
                 g.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
             }
         };
 
         panelFondo.setLayout(new BorderLayout());
 
-       
         setContentPane(panelFondo);
-        
-         configurarAtajoF1();
-         
-         this.addWindowListener(new java.awt.event.WindowAdapter() {
-    @Override
-    public void windowClosing(java.awt.event.WindowEvent e) {
 
-        
-        try {
-            FileOutputStream arch= new FileOutputStream("DATOS");
-            ObjectOutputStream grabar = new ObjectOutputStream(arch);
-            grabar.writeObject(sistema);
-            grabar.close();
-        } catch (IOException ex) {
-            System.out.println("Error de archivo");
-        }
-        System.exit(0);
+        configurarAtajoF1();
+
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+
+                try {
+                    FileOutputStream arch = new FileOutputStream("DATOS");
+                    ObjectOutputStream grabar = new ObjectOutputStream(arch);
+                    grabar.writeObject(sistema);
+                    grabar.close();
+                } catch (IOException ex) {
+                    System.out.println("Error de archivo");
+                }
+                System.exit(0);
+            }
+        });
+
     }
-});
-         
- }
-   
-        
-        private void configurarAtajoF1() {
-      
+
+    private void configurarAtajoF1() {
+
         JRootPane rootPane = this.getRootPane();
         KeyStroke teclaF1 = KeyStroke.getKeyStroke("F1");
 
@@ -83,8 +80,7 @@ public class VentanaMenu extends javax.swing.JFrame {
     private void mostrarVentanaAutores() {
         new VentanaAutores().setVisible(true);
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -219,22 +215,22 @@ public class VentanaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemAreaAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaAltaActionPerformed
-       
-        AltaArea ventanaAlta= new AltaArea(sistema);
-       
+
+        AltaArea ventanaAlta = new AltaArea(sistema);
+
     }//GEN-LAST:event_itemAreaAltaActionPerformed
 
     private void itemManagersAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManagersAltaActionPerformed
-        AltaManager ventanaAltaManager =new AltaManager(sistema);
+        AltaManager ventanaAltaManager = new AltaManager(sistema);
     }//GEN-LAST:event_itemManagersAltaActionPerformed
 
     private void itemAreaMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaMovimientoActionPerformed
-        RealizarMovimiento ventanaRealizarMovimiento= new RealizarMovimiento(sistema);
-        
+        RealizarMovimiento ventanaRealizarMovimiento = new RealizarMovimiento(sistema);
+
     }//GEN-LAST:event_itemAreaMovimientoActionPerformed
 
     private void itemEmpleadosAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEmpleadosAltaActionPerformed
-       AltaEmpleado ventanaAltaEmpleado = new AltaEmpleado(sistema);
+        AltaEmpleado ventanaAltaEmpleado = new AltaEmpleado(sistema);
     }//GEN-LAST:event_itemEmpleadosAltaActionPerformed
 
     private void itemManagersBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManagersBajaActionPerformed
@@ -242,27 +238,27 @@ public class VentanaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_itemManagersBajaActionPerformed
 
     private void itemAreaBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaBajaActionPerformed
-       BajaArea ventanaBajaArea = new BajaArea(sistema);
+        BajaArea ventanaBajaArea = new BajaArea(sistema);
     }//GEN-LAST:event_itemAreaBajaActionPerformed
 
     private void itemAreaModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAreaModificacionActionPerformed
-        ModificacionArea ventanaModifArea= new ModificacionArea(sistema);
+        ModificacionArea ventanaModifArea = new ModificacionArea(sistema);
     }//GEN-LAST:event_itemAreaModificacionActionPerformed
 
     private void itemManagersModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManagersModificacionActionPerformed
-        ModificacionManager ventanaModifMan= new ModificacionManager(sistema);
+        ModificacionManager ventanaModifMan = new ModificacionManager(sistema);
     }//GEN-LAST:event_itemManagersModificacionActionPerformed
 
     private void itemReporteInteligenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReporteInteligenteActionPerformed
-       Inteligente ventanaInt= new Inteligente(sistema);
+        Inteligente ventanaInt = new Inteligente(sistema);
     }//GEN-LAST:event_itemReporteInteligenteActionPerformed
 
     private void itemReporteAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReporteAreasActionPerformed
-        EstadoAreas ventanaEstAreas= new EstadoAreas(sistema);
+        EstadoAreas ventanaEstAreas = new EstadoAreas(sistema);
     }//GEN-LAST:event_itemReporteAreasActionPerformed
 
     private void itemReporteMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReporteMovActionPerformed
-        ReporteMovimientos ventanaRepMov= new ReporteMovimientos(sistema);
+        ReporteMovimientos ventanaRepMov = new ReporteMovimientos(sistema);
     }//GEN-LAST:event_itemReporteMovActionPerformed
 
 
@@ -285,6 +281,4 @@ public class VentanaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 
-                
 }
-

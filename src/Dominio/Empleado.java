@@ -2,36 +2,35 @@
 package Dominio;
 
 import java.io.*;
-public class Empleado implements Serializable{
-   private String nombre;
-   private String cedula;
-   private String celular;
-   private String curriculum;
-   private int salarioMensual;
-   private Manager manager;
-   private Area area;
-   private int mesDeEntrada;
 
-   
-   public Empleado (String unNombre, String unaCedula, String unCelular, String unCurriculum, int unSalarioMensual, Manager unManager,Area unArea){
-    nombre=unNombre;
-    cedula=unaCedula;
-    celular=unCelular;
-    curriculum=unCurriculum;
-    salarioMensual=unSalarioMensual;
-    manager=unManager;
-    area=unArea;
-    mesDeEntrada=1;
-       
-       
-   }
+public class Empleado implements Serializable {
 
-     @Override
-    public String toString() {
-        return  nombre + " (" + salarioMensual + ")";
+    private String nombre;
+    private String cedula;
+    private String celular;
+    private String curriculum;
+    private int salarioMensual;
+    private Manager manager;
+    private Area area;
+    private int mesDeEntrada;
+
+    public Empleado(String unNombre, String unaCedula, String unCelular, String unCurriculum, int unSalarioMensual, Manager unManager, Area unArea) {
+        nombre = unNombre;
+        cedula = unaCedula;
+        celular = unCelular;
+        curriculum = unCurriculum;
+        salarioMensual = unSalarioMensual;
+        manager = unManager;
+        area = unArea;
+        mesDeEntrada = 1;
+
     }
-   
-   
+
+    @Override
+    public String toString() {
+        return nombre + " (" + salarioMensual + ")";
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -95,13 +94,10 @@ public class Empleado implements Serializable{
     public void setMesDeEntrada(int mesDeEntrada) {
         this.mesDeEntrada = mesDeEntrada;
     }
-    
-    
 
-        public int salarioAnualRes() {
-            int salarioAnualRes= getSalarioMensual() * (13-this.mesDeEntrada);
-    return salarioAnualRes;
-}
-    
-   
+    public int salarioAnualRes() {
+        int salarioAnualRes = getSalarioMensual() * (13 - this.mesDeEntrada);
+        return salarioAnualRes;
+    }
+
 }

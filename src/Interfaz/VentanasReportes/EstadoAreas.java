@@ -100,7 +100,6 @@ public class EstadoAreas extends javax.swing.JFrame implements Observer {
                 factor = (valor - minSal) / (maxSal - minSal);
             }
 
-
             if (factor < 0) {
                 factor = 0;
             }
@@ -109,7 +108,6 @@ public class EstadoAreas extends javax.swing.JFrame implements Observer {
             }
 
             int blue = (int) (255 * factor);
-
 
             if (blue < 0) {
                 blue = 0;

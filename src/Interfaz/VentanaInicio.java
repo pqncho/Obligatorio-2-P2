@@ -1,25 +1,27 @@
 //Marcos Coszion(332945), Francisco Lino(347691)
 package Interfaz;
+
 import Dominio.*;
 import java.io.*;
 
 public class VentanaInicio extends javax.swing.JFrame {
+
     private Sistema sistema;
-    
+
     public VentanaInicio() {
         initComponents();
         setTitle("Comenzar con...");
         setVisible(true);
-        
-        
+
     }
-private void cargarSistemaPorDefecto(){
-    
-    sistema= new Sistema();
-    sistema.cargarDatosPorDefecto();
-       VentanaMenu ventanaMenu = new VentanaMenu(sistema);
+
+    private void cargarSistemaPorDefecto() {
+
+        sistema = new Sistema();
+        sistema.cargarDatosPorDefecto();
+        VentanaMenu ventanaMenu = new VentanaMenu(sistema);
     }
-   
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -84,23 +86,23 @@ private void cargarSistemaPorDefecto(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonSistemaGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSistemaGuardadoActionPerformed
-      try{
-        FileInputStream arch= new FileInputStream("DATOS");
-       ObjectInputStream leer = new ObjectInputStream(arch);
-       sistema= (Sistema)leer.readObject();
-       leer.close();
-       VentanaMenu ventanaMenu= new VentanaMenu(sistema);
-        this.dispose();
-      }catch(IOException ex){
-          System.out.println("Error de archivo");
-      }catch(ClassNotFoundException ex){
-          System.out.println("Error de clase");
-      }
+        try {
+            FileInputStream arch = new FileInputStream("DATOS");
+            ObjectInputStream leer = new ObjectInputStream(arch);
+            sistema = (Sistema) leer.readObject();
+            leer.close();
+            VentanaMenu ventanaMenu = new VentanaMenu(sistema);
+            this.dispose();
+        } catch (IOException ex) {
+            System.out.println("Error de archivo");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Error de clase");
+        }
     }//GEN-LAST:event_botonSistemaGuardadoActionPerformed
 
     private void botonSistemaNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSistemaNuevoActionPerformed
-       this.dispose();
-       sistema= new Sistema();
+        this.dispose();
+        sistema = new Sistema();
         VentanaMenu ventanaMenu = new VentanaMenu(sistema);
     }//GEN-LAST:event_botonSistemaNuevoActionPerformed
 
@@ -109,14 +111,11 @@ private void cargarSistemaPorDefecto(){
         cargarSistemaPorDefecto();
     }//GEN-LAST:event_botonSistemaPrecargadoActionPerformed
 
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonSistemaGuardado;
     private javax.swing.JButton botonSistemaNuevo;
     private javax.swing.JButton botonSistemaPrecargado;
     // End of variables declaration//GEN-END:variables
-
 
 }

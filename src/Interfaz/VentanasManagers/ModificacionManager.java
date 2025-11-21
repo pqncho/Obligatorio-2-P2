@@ -6,10 +6,11 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 public class ModificacionManager extends javax.swing.JFrame implements Observer {
+
     private Sistema sistema;
-   
+
     public ModificacionManager(Sistema unSistema) {
-         sistema = unSistema;
+        sistema = unSistema;
         initComponents();
         setTitle("Modificacion de Managers");
         setVisible(true);
@@ -18,21 +19,22 @@ public class ModificacionManager extends javax.swing.JFrame implements Observer 
         sistema.ordenarManagersPorAntiguedad();
         listaManMod.setListData(sistema.getListaManagers().toArray());
     }
-    
-   private void modificarManager(){
-        Manager unManager= (Manager)listaManMod.getSelectedValue();
-        if(unManager!=null){
-        if(!((Manager)listaManMod.getSelectedValue()).getCelular().equals(textoCelularModMan.getText())){
-            ((Manager)listaManMod.getSelectedValue()).setCelular(textoCelularModMan.getText());
-            JOptionPane.showMessageDialog(this, "Modificacion exitosa.");
-        }else{
-            JOptionPane.showMessageDialog(this, "No se han realizado modificaciones.");
-        }
-        } else{JOptionPane.showMessageDialog(this, "Debe seleccionar un area.");}
-            
-   }
 
- 
+    private void modificarManager() {
+        Manager unManager = (Manager) listaManMod.getSelectedValue();
+        if (unManager != null) {
+            if (!((Manager) listaManMod.getSelectedValue()).getCelular().equals(textoCelularModMan.getText())) {
+                ((Manager) listaManMod.getSelectedValue()).setCelular(textoCelularModMan.getText());
+                JOptionPane.showMessageDialog(this, "Modificacion exitosa.");
+            } else {
+                JOptionPane.showMessageDialog(this, "No se han realizado modificaciones.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un area.");
+        }
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -175,34 +177,32 @@ public class ModificacionManager extends javax.swing.JFrame implements Observer 
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarModifManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarModifManActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_botonCancelarModifManActionPerformed
 
     private void listaManModValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaManModValueChanged
-       Manager unManager= (Manager)listaManMod.getSelectedValue();
-       ArrayList<Empleado> listaEmpleadosACargo = new ArrayList<>();
-        if(unManager!=null){
-        textoNombreModMan.setText(unManager.getNombre());
-        textoCedulaModMan.setText(unManager.getCedula());
-        textoCelularModMan.setText(unManager.getCelular());
-        textoAntiModMan.setText(""+unManager.getAntiguedad());
+        Manager unManager = (Manager) listaManMod.getSelectedValue();
+        ArrayList<Empleado> listaEmpleadosACargo = new ArrayList<>();
+        if (unManager != null) {
+            textoNombreModMan.setText(unManager.getNombre());
+            textoCedulaModMan.setText(unManager.getCedula());
+            textoCelularModMan.setText(unManager.getCelular());
+            textoAntiModMan.setText("" + unManager.getAntiguedad());
             for (int i = 0; i < sistema.getListaEmpleados().size(); i++) {
-                if(sistema.getListaEmpleados().get(i).getManager()==unManager){
+                if (sistema.getListaEmpleados().get(i).getManager() == unManager) {
                     listaEmpleadosACargo.add(sistema.getListaEmpleados().get(i));
                 }
-                
+
             }
-        sistema.ordenarEmpleadosPorSalario();
-        listaEmpACargo.setListData(listaEmpleadosACargo.toArray());
+            sistema.ordenarEmpleadosPorSalario();
+            listaEmpACargo.setListData(listaEmpleadosACargo.toArray());
         }
     }//GEN-LAST:event_listaManModValueChanged
 
     private void botonModifManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModifManActionPerformed
-      modificarManager();
+        modificarManager();
     }//GEN-LAST:event_botonModifManActionPerformed
 
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelarModifMan;
@@ -225,11 +225,9 @@ public class ModificacionManager extends javax.swing.JFrame implements Observer 
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals("managers")){
+        if (arg.equals("managers")) {
             sistema.ordenarManagersPorAntiguedad();
             listaManMod.setListData(sistema.getListaManagers().toArray());
         }
     }
 }
-    
-

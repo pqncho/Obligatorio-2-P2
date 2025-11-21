@@ -8,180 +8,181 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class ReporteMovimientos extends javax.swing.JFrame implements Observer {
+
     private Sistema sistema;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ReporteMovimientos.class.getName());
 
-    
     public ReporteMovimientos(Sistema unSistema) {
         initComponents();
-         sistema=unSistema;
+        sistema = unSistema;
         setTitle("Reporte movimientos");
         setVisible(true);
         unSistema.addObserver(this);
-        DefaultTableModel modelo= (DefaultTableModel) tablaRepoMov.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tablaRepoMov.getModel();
         modelo.setRowCount(0);
         cargarCombos();
         cargarMovimientos(sistema.getListaMovArea());
-        
+
     }
-    private void aplicarFiltro(){
+
+    private void aplicarFiltro() {
         DefaultTableModel modelo = (DefaultTableModel) tablaRepoMov.getModel();
         modelo.setRowCount(0);
-       String mesSel=boxMesRepMov.getSelectedItem().toString();
-       String aOriSel= boxAOriRepMov.getSelectedItem().toString();
-       String aDestSel= boxADestRepMov.getSelectedItem().toString();
-       String empSel= boxEmpRepMov.getSelectedItem().toString();
-       
-       for (MovimientosArea mov : sistema.getListaMovArea()) {
+        String mesSel = boxMesRepMov.getSelectedItem().toString();
+        String aOriSel = boxAOriRepMov.getSelectedItem().toString();
+        String aDestSel = boxADestRepMov.getSelectedItem().toString();
+        String empSel = boxEmpRepMov.getSelectedItem().toString();
 
-        boolean coincideMes = mesSel.equals("Todos") || mov.getMes().equals(mesSel);
-        boolean coincideOri = aOriSel.equals("Todos") || mov.getAreaOrigen().getNombre().equals(aOriSel);
-        boolean coincideDest = aDestSel.equals("Todos") || mov.getAreaDestino().getNombre().equals(aDestSel);
-        boolean coincideEmp = empSel.equals("Todos") || mov.getEmpleado().getNombre().equals(empSel);
+        for (MovimientosArea mov : sistema.getListaMovArea()) {
 
-       
-        if (coincideMes && coincideOri && coincideDest && coincideEmp) {
-            modelo.addRow(new Object[]{
-                mov.getMes(),
-                mov.getAreaOrigen().getNombre(),
-                mov.getAreaDestino().getNombre(),
-                mov.getEmpleado().getNombre()
-            });
-        }
-    }
-        
-    }
-    private void cargarCombos(){
-        boolean estaMes=false;
-         boolean estaAOrigen=false;
-          boolean estaADestino=false;
-           boolean estaEmpleado=false;
-        
-        
-           for (int i = 0; i < sistema.getListaMovArea().size(); i++) {
-               String unMes= sistema.getListaMovArea().get(i).getMes();
-               estaMes=false;
-               
-               for (int j = 0; j < boxMesRepMov.getItemCount(); j++) {
-                   if(boxMesRepMov.getItemAt(j).equals(unMes)){
-                       estaMes=true;
-                   }
-                   
-               }
-               if(!estaMes){
-                   boxMesRepMov.addItem(unMes);
-               }
-        }
-           
-           for (int i = 0; i < sistema.getListaMovArea().size(); i++) {
-               Area unAOrigen=sistema.getListaMovArea().get(i).getAreaOrigen();
-               estaAOrigen=false;
-               
-               for (int j = 0; j < boxAOriRepMov.getItemCount(); j++) {
-                   if(boxAOriRepMov.getItemAt(j).equals(unAOrigen.getNombre())){
-                       estaAOrigen=true;
-                   }
-                   
-               }
-               if(!estaAOrigen){
-                   boxAOriRepMov.addItem(unAOrigen.getNombre());
-               }
-        }
-           
-            for (int i = 0; i < sistema.getListaMovArea().size(); i++) {
-               Area unADestino=sistema.getListaMovArea().get(i).getAreaDestino();
-               estaADestino=false;
-               
-               for (int j = 0; j < boxADestRepMov.getItemCount(); j++) {
-                   if(boxADestRepMov.getItemAt(j).equals(unADestino.getNombre())){
-                       estaADestino=true;
-                   }
-                   
-               }
-               if(!estaADestino){
-                   boxADestRepMov.addItem(unADestino.getNombre());
-               }
-        }
-           
-            for (int i = 0; i < sistema.getListaMovArea().size(); i++) {
-               Empleado unEmpleado=sistema.getListaMovArea().get(i).getEmpleado();
-               estaEmpleado=false;
-               
-               for (int j = 0; j < boxEmpRepMov.getItemCount(); j++) {
-                   if(boxEmpRepMov.getItemAt(j).equals(unEmpleado.getNombre())){
-                       estaEmpleado=true;
-                   }
-                   
-               }
-               if(!estaEmpleado){
-                   boxEmpRepMov.addItem(unEmpleado.getNombre());
-               }
-        }
-    
-    }
-    private void cargarMovimientos(ArrayList<MovimientosArea> listaMovArea){
-        DefaultTableModel modelo = (DefaultTableModel) tablaRepoMov.getModel();
-        modelo.setRowCount(0);
-        
-        for (MovimientosArea movArea : listaMovArea) {
-        modelo.addRow(new Object[] {
-            movArea.getMes(),
-            movArea.getAreaOrigen().getNombre(),                
-            movArea.getAreaDestino().getNombre(),             
-            movArea.getEmpleado().getNombre(),            
-            });
-       }
-    }
+            boolean coincideMes = mesSel.equals("Todos") || mov.getMes().equals(mesSel);
+            boolean coincideOri = aOriSel.equals("Todos") || mov.getAreaOrigen().getNombre().equals(aOriSel);
+            boolean coincideDest = aDestSel.equals("Todos") || mov.getAreaDestino().getNombre().equals(aDestSel);
+            boolean coincideEmp = empSel.equals("Todos") || mov.getEmpleado().getNombre().equals(empSel);
 
-    public void exportarCSV(){
-    JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setDialogTitle("Guardar reporte como CSV");
-    
-    fileChooser.setSelectedFile(new java.io.File("reporteMovimientos.csv"));
-    int userSelection = fileChooser.showSaveDialog(this);
-    
-    if (userSelection == JFileChooser.APPROVE_OPTION) {
-        File archivo = fileChooser.getSelectedFile();
-    
-    if (!archivo.getName().toLowerCase().endsWith(".csv")) {
-            archivo = new File(archivo.getAbsolutePath() + ".csv");
-        }
-
-        try (PrintWriter pw = new PrintWriter(archivo)) {
-
-            DefaultTableModel modelo = (DefaultTableModel) tablaRepoMov.getModel();
-
-           
-            for (int i = 0; i < modelo.getColumnCount(); i++) {
-                pw.print(modelo.getColumnName(i));
-                if (i < modelo.getColumnCount() - 1) pw.print(",");
+            if (coincideMes && coincideOri && coincideDest && coincideEmp) {
+                modelo.addRow(new Object[]{
+                    mov.getMes(),
+                    mov.getAreaOrigen().getNombre(),
+                    mov.getAreaDestino().getNombre(),
+                    mov.getEmpleado().getNombre()
+                });
             }
-            pw.println();
+        }
 
-           
-            for (int fila = 0; fila < modelo.getRowCount(); fila++) {
-                for (int col = 0; col < modelo.getColumnCount(); col++) {
-                    Object valor = modelo.getValueAt(fila, col);
-                    if (valor == null) {
-                        pw.print("");
-                        } else {
-                                pw.print(valor.toString());
-                                }
+    }
 
-                    if (col < modelo.getColumnCount() - 1) pw.print(",");
+    private void cargarCombos() {
+        boolean estaMes = false;
+        boolean estaAOrigen = false;
+        boolean estaADestino = false;
+        boolean estaEmpleado = false;
+
+        for (int i = 0; i < sistema.getListaMovArea().size(); i++) {
+            String unMes = sistema.getListaMovArea().get(i).getMes();
+            estaMes = false;
+
+            for (int j = 0; j < boxMesRepMov.getItemCount(); j++) {
+                if (boxMesRepMov.getItemAt(j).equals(unMes)) {
+                    estaMes = true;
+                }
+
+            }
+            if (!estaMes) {
+                boxMesRepMov.addItem(unMes);
+            }
+        }
+
+        for (int i = 0; i < sistema.getListaMovArea().size(); i++) {
+            Area unAOrigen = sistema.getListaMovArea().get(i).getAreaOrigen();
+            estaAOrigen = false;
+
+            for (int j = 0; j < boxAOriRepMov.getItemCount(); j++) {
+                if (boxAOriRepMov.getItemAt(j).equals(unAOrigen.getNombre())) {
+                    estaAOrigen = true;
+                }
+
+            }
+            if (!estaAOrigen) {
+                boxAOriRepMov.addItem(unAOrigen.getNombre());
+            }
+        }
+
+        for (int i = 0; i < sistema.getListaMovArea().size(); i++) {
+            Area unADestino = sistema.getListaMovArea().get(i).getAreaDestino();
+            estaADestino = false;
+
+            for (int j = 0; j < boxADestRepMov.getItemCount(); j++) {
+                if (boxADestRepMov.getItemAt(j).equals(unADestino.getNombre())) {
+                    estaADestino = true;
+                }
+
+            }
+            if (!estaADestino) {
+                boxADestRepMov.addItem(unADestino.getNombre());
+            }
+        }
+
+        for (int i = 0; i < sistema.getListaMovArea().size(); i++) {
+            Empleado unEmpleado = sistema.getListaMovArea().get(i).getEmpleado();
+            estaEmpleado = false;
+
+            for (int j = 0; j < boxEmpRepMov.getItemCount(); j++) {
+                if (boxEmpRepMov.getItemAt(j).equals(unEmpleado.getNombre())) {
+                    estaEmpleado = true;
+                }
+
+            }
+            if (!estaEmpleado) {
+                boxEmpRepMov.addItem(unEmpleado.getNombre());
+            }
+        }
+
+    }
+
+    private void cargarMovimientos(ArrayList<MovimientosArea> listaMovArea) {
+        DefaultTableModel modelo = (DefaultTableModel) tablaRepoMov.getModel();
+        modelo.setRowCount(0);
+
+        for (MovimientosArea movArea : listaMovArea) {
+            modelo.addRow(new Object[]{
+                movArea.getMes(),
+                movArea.getAreaOrigen().getNombre(),
+                movArea.getAreaDestino().getNombre(),
+                movArea.getEmpleado().getNombre(),});
+        }
+    }
+
+    public void exportarCSV() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar reporte como CSV");
+
+        fileChooser.setSelectedFile(new java.io.File("reporteMovimientos.csv"));
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File archivo = fileChooser.getSelectedFile();
+
+            if (!archivo.getName().toLowerCase().endsWith(".csv")) {
+                archivo = new File(archivo.getAbsolutePath() + ".csv");
+            }
+
+            try (PrintWriter pw = new PrintWriter(archivo)) {
+
+                DefaultTableModel modelo = (DefaultTableModel) tablaRepoMov.getModel();
+
+                for (int i = 0; i < modelo.getColumnCount(); i++) {
+                    pw.print(modelo.getColumnName(i));
+                    if (i < modelo.getColumnCount() - 1) {
+                        pw.print(",");
+                    }
                 }
                 pw.println();
+
+                for (int fila = 0; fila < modelo.getRowCount(); fila++) {
+                    for (int col = 0; col < modelo.getColumnCount(); col++) {
+                        Object valor = modelo.getValueAt(fila, col);
+                        if (valor == null) {
+                            pw.print("");
+                        } else {
+                            pw.print(valor.toString());
+                        }
+
+                        if (col < modelo.getColumnCount() - 1) {
+                            pw.print(",");
+                        }
+                    }
+                    pw.println();
+                }
+
+                JOptionPane.showMessageDialog(this, "Archivo CSV guardado correctamente.");
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error al guardar el archivo: " + e.getMessage());
             }
-
-            JOptionPane.showMessageDialog(this, "Archivo CSV guardado correctamente.");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al guardar el archivo: " + e.getMessage());
         }
     }
-    }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -349,7 +350,7 @@ public class ReporteMovimientos extends javax.swing.JFrame implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonExpActionPerformed
-       exportarCSV();
+        exportarCSV();
     }//GEN-LAST:event_botonExpActionPerformed
 
     private void boxAOriRepMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxAOriRepMovActionPerformed
@@ -357,19 +358,17 @@ public class ReporteMovimientos extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_boxAOriRepMovActionPerformed
 
     private void boxMesRepMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxMesRepMovActionPerformed
-       aplicarFiltro();
+        aplicarFiltro();
     }//GEN-LAST:event_boxMesRepMovActionPerformed
 
     private void boxADestRepMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxADestRepMovActionPerformed
-       aplicarFiltro();
+        aplicarFiltro();
     }//GEN-LAST:event_boxADestRepMovActionPerformed
 
     private void boxEmpRepMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxEmpRepMovActionPerformed
         aplicarFiltro();
     }//GEN-LAST:event_boxEmpRepMovActionPerformed
 
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonExp;
@@ -389,11 +388,11 @@ public class ReporteMovimientos extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals("MovArea")){
-        DefaultTableModel modelo= (DefaultTableModel) tablaRepoMov.getModel();
-        modelo.setRowCount(0);
-        cargarMovimientos(sistema.getListaMovArea());
-        cargarCombos();
+        if (arg.equals("MovArea")) {
+            DefaultTableModel modelo = (DefaultTableModel) tablaRepoMov.getModel();
+            modelo.setRowCount(0);
+            cargarMovimientos(sistema.getListaMovArea());
+            cargarCombos();
         }
     }
 }

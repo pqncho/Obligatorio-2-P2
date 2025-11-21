@@ -5,12 +5,12 @@ import Dominio.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
-
 public class AltaManager extends javax.swing.JFrame implements Observer {
+
     private Sistema sistema;
-    
+
     public AltaManager(Sistema unSistema) {
-         sistema = unSistema;
+        sistema = unSistema;
         initComponents();
         setTitle("Alta de Managers");
         setVisible(true);
@@ -19,49 +19,50 @@ public class AltaManager extends javax.swing.JFrame implements Observer {
         sistema.ordenarManagersPorAntiguedad();
         listaManagersAltaMan.setListData(sistema.getListaManagers().toArray());
     }
-    private void limpiarCajas(){
-            textoNombreAltaMan.setText("");
-            textoCedulaAltaMan.setText("");
-            textoCelularAltaMan.setText("");
-            textoAntAltaMan.setText("");
-    
-    }
-        private void agregarManager(){
-            boolean hayError=false;
-            try{
-            String nombre=textoNombreAltaMan.getText();
-            String cedula=textoCedulaAltaMan.getText();
-            String celular=textoCelularAltaMan.getText();
-            int antiguedad=Integer.parseInt(textoAntAltaMan.getText());
-              
-            for (Manager m : sistema.getListaManagers()) {
-            if (!hayError && m.getCedula().equals(cedula)) {
-                JOptionPane.showMessageDialog(this, "Ya existe un manager con esta cédula.");
-                hayError = true;
-            }
-        }
-            for (Empleado e : sistema.getListaEmpleados()) {
-            if (!hayError && e.getCedula().equals(cedula)) {
-                JOptionPane.showMessageDialog(this, "Ya existe una persona ingresada con esta cédula.");
-                hayError = true;
-            }
-        }
-            if (!hayError) {
-            Manager manager = new Manager(nombre, cedula, celular, antiguedad);
-            sistema.agregarManagers(manager);
-            sistema.ordenarManagersPorAntiguedad();
-            listaManagersAltaMan.setListData(sistema.getListaManagers().toArray());
-            JOptionPane.showMessageDialog(this, "El manager fue agregado correctamente.");
-        }
 
-        limpiarCajas();
+    private void limpiarCajas() {
+        textoNombreAltaMan.setText("");
+        textoCedulaAltaMan.setText("");
+        textoCelularAltaMan.setText("");
+        textoAntAltaMan.setText("");
+
+    }
+
+    private void agregarManager() {
+        boolean hayError = false;
+        try {
+            String nombre = textoNombreAltaMan.getText();
+            String cedula = textoCedulaAltaMan.getText();
+            String celular = textoCelularAltaMan.getText();
+            int antiguedad = Integer.parseInt(textoAntAltaMan.getText());
+
+            for (Manager m : sistema.getListaManagers()) {
+                if (!hayError && m.getCedula().equals(cedula)) {
+                    JOptionPane.showMessageDialog(this, "Ya existe un manager con esta cédula.");
+                    hayError = true;
+                }
             }
-            catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Antiguedad invalida");   
+            for (Empleado e : sistema.getListaEmpleados()) {
+                if (!hayError && e.getCedula().equals(cedula)) {
+                    JOptionPane.showMessageDialog(this, "Ya existe una persona ingresada con esta cédula.");
+                    hayError = true;
+                }
+            }
+            if (!hayError) {
+                Manager manager = new Manager(nombre, cedula, celular, antiguedad);
+                sistema.agregarManagers(manager);
+                sistema.ordenarManagersPorAntiguedad();
+                listaManagersAltaMan.setListData(sistema.getListaManagers().toArray());
+                JOptionPane.showMessageDialog(this, "El manager fue agregado correctamente.");
+            }
+
             limpiarCajas();
-            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Antiguedad invalida");
+            limpiarCajas();
         }
-    
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -181,15 +182,13 @@ public class AltaManager extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_textoCedulaAltaManActionPerformed
 
     private void botonCancelarAltaManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarAltaManActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_botonCancelarAltaManActionPerformed
 
     private void botonRegistrarAltaManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarAltaManActionPerformed
         agregarManager();
     }//GEN-LAST:event_botonRegistrarAltaManActionPerformed
 
-   
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelarAltaMan;
@@ -208,7 +207,7 @@ public class AltaManager extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals("managers")){
+        if (arg.equals("managers")) {
             sistema.ordenarManagersPorAntiguedad();
             listaManagersAltaMan.setListData(sistema.getListaManagers().toArray());
         }

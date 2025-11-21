@@ -2,22 +2,24 @@
 package Dominio;
 
 import java.io.*;
-public class Manager implements Serializable{
+
+public class Manager implements Serializable {
+
     private String nombre;
     private String cedula;
     private String celular;
-    private int antiguedad;  
-    
-    public Manager(String unNombre, String unaCedula, String unCelular, int unaAntiguedad){
-    nombre=unNombre;
-    cedula=unaCedula;
-    celular=unCelular;
-    antiguedad=unaAntiguedad;
+    private int antiguedad;
+
+    public Manager(String unNombre, String unaCedula, String unCelular, int unaAntiguedad) {
+        nombre = unNombre;
+        cedula = unaCedula;
+        celular = unCelular;
+        antiguedad = unaAntiguedad;
     }
 
     @Override
     public String toString() {
-        return  nombre + " (" + cedula + ")";
+        return nombre + " (" + cedula + ")";
     }
 
     public String getNombre() {
@@ -51,6 +53,5 @@ public class Manager implements Serializable{
     public void setAntiguedad(int unaAntiguedad) {
         antiguedad = unaAntiguedad;
     }
-    
-    
+
 }

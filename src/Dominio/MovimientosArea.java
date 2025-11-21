@@ -1,23 +1,20 @@
-
 package Dominio;
 
 import java.io.*;
 
+public class MovimientosArea implements Serializable {
 
-
-public class MovimientosArea implements Serializable{
     private String mes;
     private Area areaOrigen;
     private Area areaDestino;
     private Empleado empleado;
-           
-    
-    public MovimientosArea(String unMes, Area unAreaOrigen, Area unAreaDestino, Empleado unEmpleado){
-        mes=unMes;
-        areaOrigen=unAreaOrigen;
-        areaDestino=unAreaDestino;
-        empleado=unEmpleado;
-    
+
+    public MovimientosArea(String unMes, Area unAreaOrigen, Area unAreaDestino, Empleado unEmpleado) {
+        mes = unMes;
+        areaOrigen = unAreaOrigen;
+        areaDestino = unAreaDestino;
+        empleado = unEmpleado;
+
     }
 
     public String getMes() {
@@ -51,6 +48,5 @@ public class MovimientosArea implements Serializable{
     public void setEmpleado(Empleado unEmpleado) {
         empleado = unEmpleado;
     }
-    
-    
+
 }

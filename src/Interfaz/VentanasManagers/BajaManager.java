@@ -6,52 +6,53 @@ import java.util.*;
 import javax.swing.*;
 
 public class BajaManager extends javax.swing.JFrame implements Observer {
-     private Sistema sistema;
-    
+
+    private Sistema sistema;
+
     public BajaManager(Sistema unSistema) {
-         sistema = unSistema;
+        sistema = unSistema;
         initComponents();
         setTitle("Baja de Managers");
         setVisible(true);
         unSistema.addObserver(this);
         ArrayList<Manager> listaManagers = sistema.getListaManagers();
         cargarLista();
-           
+
     }
-    private void cargarLista(){
-        boolean esta=false;
-    ArrayList<Manager> managersSin = new ArrayList<>();
-        ArrayList<Manager> managers= sistema.getListaManagers();
+
+    private void cargarLista() {
+        boolean esta = false;
+        ArrayList<Manager> managersSin = new ArrayList<>();
+        ArrayList<Manager> managers = sistema.getListaManagers();
         for (int i = 0; i < sistema.getListaManagers().size(); i++) {
-            Manager unManager= sistema.getListaManagers().get(i);
-            esta=false;
-            for (int j = 0; j <sistema.getListaEmpleados().size() ; j++) {
-                Manager empManager= sistema.getListaEmpleados().get(j).getManager();
-                
-                
-                if(unManager==empManager){
-                    esta=true;
+            Manager unManager = sistema.getListaManagers().get(i);
+            esta = false;
+            for (int j = 0; j < sistema.getListaEmpleados().size(); j++) {
+                Manager empManager = sistema.getListaEmpleados().get(j).getManager();
+
+                if (unManager == empManager) {
+                    esta = true;
                 }
-                
+
             }
-        if(!esta){
-            managersSin.add(unManager);
-        }
+            if (!esta) {
+                managersSin.add(unManager);
+            }
         }
         sistema.ordenarManagersPorAntiguedad();
         listaEliminarMan.setListData(managersSin.toArray());
     }
-    private void eliminarManager(){
-        if(listaEliminarMan.getSelectedValue()!=null){
-        sistema.getListaManagers().remove((Manager)listaEliminarMan.getSelectedValue());
-        listaEliminarMan.setListData(sistema.getListaManagers().toArray());
-        JOptionPane.showMessageDialog(this, "Manager eliminado correctamente.");
-        }else{
-             JOptionPane.showMessageDialog(this, "Debe seleccionar un Manager a eliminar.");
+
+    private void eliminarManager() {
+        if (listaEliminarMan.getSelectedValue() != null) {
+            sistema.getListaManagers().remove((Manager) listaEliminarMan.getSelectedValue());
+            listaEliminarMan.setListData(sistema.getListaManagers().toArray());
+            JOptionPane.showMessageDialog(this, "Manager eliminado correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un Manager a eliminar.");
         }
     }
-           
-            
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -123,19 +124,17 @@ public class BajaManager extends javax.swing.JFrame implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarBajaManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarBajaManActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_botonCancelarBajaManActionPerformed
 
     private void botonEliminarBajaManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarBajaManActionPerformed
-        int opcion = JOptionPane.showConfirmDialog(this,"¿Confirma la eliminacion de este manager?","SI",JOptionPane.YES_NO_OPTION);
-    
-    if (opcion == JOptionPane.YES_OPTION) {
-        eliminarManager();
-    }
+        int opcion = JOptionPane.showConfirmDialog(this, "¿Confirma la eliminacion de este manager?", "SI", JOptionPane.YES_NO_OPTION);
+
+        if (opcion == JOptionPane.YES_OPTION) {
+            eliminarManager();
+        }
     }//GEN-LAST:event_botonEliminarBajaManActionPerformed
 
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelarBajaMan;
@@ -147,7 +146,7 @@ public class BajaManager extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals("managers")){
+        if (arg.equals("managers")) {
             sistema.ordenarManagersPorAntiguedad();
             listaEliminarMan.setListData(sistema.getListaManagers().toArray());
         }

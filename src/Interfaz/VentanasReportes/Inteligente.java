@@ -8,90 +8,91 @@ import java.awt.Image;
 import java.util.*;
 import javax.swing.*;
 
-public class Inteligente extends javax.swing.JFrame implements Observer{
+public class Inteligente extends javax.swing.JFrame implements Observer {
+
     private Sistema sistema;
-private ImageIcon scaleIcon(ImageIcon icon, int w, int h) {
-    Image img = icon.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
-    return new ImageIcon(img);
-}
 
-private final ImageIcon iconLoading =
-    new ImageIcon(getClass().getResource("/Recursos/loading.gif"));
+    private ImageIcon scaleIcon(ImageIcon icon, int w, int h) {
+        Image img = icon.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
+        return new ImageIcon(img);
+    }
 
-private final ImageIcon iconCheck =
-    scaleIcon(new ImageIcon(getClass().getResource("/Recursos/check.png")), 32, 32);
+    private final ImageIcon iconLoading
+            = new ImageIcon(getClass().getResource("/Recursos/loading.gif"));
 
-   
-    
+    private final ImageIcon iconCheck
+            = scaleIcon(new ImageIcon(getClass().getResource("/Recursos/check.png")), 32, 32);
+
     public Inteligente(Sistema unSistema) {
-         sistema = unSistema;
+        sistema = unSistema;
         initComponents();
         labelReloj.setPreferredSize(new Dimension(32, 32));
-labelReloj.setMaximumSize(new Dimension(32, 32));
-labelReloj.setMinimumSize(new Dimension(32, 32));
-labelReloj.setHorizontalAlignment(JLabel.CENTER);
-labelReloj.setVerticalAlignment(JLabel.CENTER);
-        
+        labelReloj.setMaximumSize(new Dimension(32, 32));
+        labelReloj.setMinimumSize(new Dimension(32, 32));
+        labelReloj.setHorizontalAlignment(JLabel.CENTER);
+        labelReloj.setVerticalAlignment(JLabel.CENTER);
+
         setTitle("Reporte inteligente");
         setVisible(true);
-        
+
         listaAreaOrInt.setListData(sistema.getListaAreas().toArray());
         listaAreaDestInt.setListData(sistema.getListaAreas().toArray());
         sistema.addObserver(this);
     }
-    
-   private String construirPrompt(Area origen, Area destino, Empleado emp) {
-     return """
-Eres un asistente profesional de recursos humanos. 
-Genera un informe claro, fluido y narrativo sobre si conviene trasladar un empleado de un área a otra.
-No uses cuadros, plantillas, ni etiquetas como “Nombre:” o “Descripción:”. 
-Escribe todo como texto corrido, natural y profesional.
 
-Incluye:
-1. Ventajas del traslado.
-2. Desventajas del traslado.
-3. Recomendación final (una única recomendación bien fundamentada).
+    private String construirPrompt(Area origen, Area destino, Empleado emp) {
+        return """
+        Eres un asistente profesional de recursos humanos. 
+        Genera un informe claro, fluido y narrativo sobre si conviene trasladar un empleado de un área a otra.
+        No uses cuadros, plantillas, ni etiquetas como “Nombre:” o “Descripción:”. 
+        Escribe todo como texto corrido, natural y profesional.
 
-Datos para el análisis:
-- Área de origen: %s. Descripción: %s.
-- Empleado: %s. Curriculum: %s.
-- Área de destino: %s. Descripción: %s.
+        Incluye:
+        1. Ventajas del traslado.
+        2. Desventajas del traslado.
+        3. Recomendación final (una única recomendación bien fundamentada).
 
-Comienza directamente con el análisis, sin títulos como “TuNombre”, “Zona”, ni formatos de formulario.
-""".formatted(
-            origen.getNombre(),
-            origen.getDescripcion(),
-            emp.getNombre(),
-            emp.getCurriculum(),
-            destino.getNombre(),
-            destino.getDescripcion()
-    );
-}
+        Datos para el análisis:
+        - Área de origen: %s. Descripción: %s.
+        - Empleado: %s. Curriculum: %s.
+        - Área de destino: %s. Descripción: %s.
 
-   private String extraerTextoDeRespuesta(String json) {
-    try {
-        Gson gson = new Gson();
-
-      
-        Map respuesta = gson.fromJson(json, Map.class);
-        List candidates = (List) respuesta.get("candidates");
-        if (candidates == null || candidates.isEmpty()) return "No hubo respuesta.";
-
-        Map candidate0 = (Map) candidates.get(0);
-        List content = (List) ((Map) candidate0.get("content")).get("parts");
-
-        if (content != null && !content.isEmpty()) {
-            Map part0 = (Map) content.get(0);
-            Object text = part0.get("text");
-            return text != null ? text.toString() : "Sin texto recibido.";
-        }
-
-        return "No se pudo interpretar la respuesta.";
-    } catch (Exception e) {
-        return "Error al procesar JSON: " + e.getMessage();
+        Comienza directamente con el análisis, sin títulos como “TuNombre”, “Zona”, ni formatos de formulario.
+        """.formatted(
+                origen.getNombre(),
+                origen.getDescripcion(),
+                emp.getNombre(),
+                emp.getCurriculum(),
+                destino.getNombre(),
+                destino.getDescripcion()
+        );
     }
-}
-    
+
+    private String extraerTextoDeRespuesta(String json) {
+        try {
+            Gson gson = new Gson();
+
+            Map respuesta = gson.fromJson(json, Map.class);
+            List candidates = (List) respuesta.get("candidates");
+            if (candidates == null || candidates.isEmpty()) {
+                return "No hubo respuesta.";
+            }
+
+            Map candidate0 = (Map) candidates.get(0);
+            List content = (List) ((Map) candidate0.get("content")).get("parts");
+
+            if (content != null && !content.isEmpty()) {
+                Map part0 = (Map) content.get(0);
+                Object text = part0.get("text");
+                return text != null ? text.toString() : "Sin texto recibido.";
+            }
+
+            return "No se pudo interpretar la respuesta.";
+        } catch (Exception e) {
+            return "Error al procesar JSON: " + e.getMessage();
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -222,63 +223,60 @@ Comienza directamente con el análisis, sin títulos como “TuNombre”, “Zon
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaAreaOrIntValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAreaOrIntValueChanged
-        Area unArea= (Area)listaAreaOrInt.getSelectedValue();
-        if(unArea!=null){
-           listaEmpleadosInt.setListData(unArea.getListaEmpleados().toArray());
+        Area unArea = (Area) listaAreaOrInt.getSelectedValue();
+        if (unArea != null) {
+            listaEmpleadosInt.setListData(unArea.getListaEmpleados().toArray());
         }
     }//GEN-LAST:event_listaAreaOrIntValueChanged
 
     private void botonConsultarIntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarIntActionPerformed
-    
+
         Area origen = (Area) listaAreaOrInt.getSelectedValue();
-    Area destino = (Area) listaAreaDestInt.getSelectedValue();
-    Empleado emp = (Empleado) listaEmpleadosInt.getSelectedValue();
-    if(!origen.equals(destino)){
-    if (origen == null || destino == null || emp == null) {
-        JOptionPane.showMessageDialog(this,
-                "Debe seleccionar área de origen, empleado y área de destino.",
-                "Datos incompletos",
-                JOptionPane.WARNING_MESSAGE);
-        return;
-    }
-
-    String prompt = construirPrompt(origen, destino, emp);
-
-    textoAreaInt.setText("Consultando IA... espere unos segundos.\n");
-    labelReloj.setIcon(iconLoading);  
-
-    geminiAI ia = new geminiAI();
-
-   
-    SwingWorker<String, Void> worker = new SwingWorker<String, Void>() {
-
-        @Override
-        protected String doInBackground() throws Exception {
-            String json = ia.consultarIA(prompt);
-            return extraerTextoDeRespuesta(json);
-        }
-
-        @Override
-        protected void done() {
-            try {
-                String respuesta = get();
-                textoAreaInt.setText(respuesta);
-                labelReloj.setIcon(iconCheck);
-            } catch (Exception e) {
-                textoAreaInt.setText("Error al consultar IA: " + e.getMessage());
-                labelReloj.setIcon(null);
+        Area destino = (Area) listaAreaDestInt.getSelectedValue();
+        Empleado emp = (Empleado) listaEmpleadosInt.getSelectedValue();
+        if (!origen.equals(destino)) {
+            if (origen == null || destino == null || emp == null) {
+                JOptionPane.showMessageDialog(this,
+                        "Debe seleccionar área de origen, empleado y área de destino.",
+                        "Datos incompletos",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
             }
-        }
-    };
 
-    worker.execute();
-}else{
-     JOptionPane.showMessageDialog(this,"El area de origen y destino son las mismas.");
-    }
+            String prompt = construirPrompt(origen, destino, emp);
+
+            textoAreaInt.setText("Consultando IA... espere unos segundos.\n");
+            labelReloj.setIcon(iconLoading);
+
+            geminiAI ia = new geminiAI();
+
+            SwingWorker<String, Void> worker = new SwingWorker<String, Void>() {
+
+                @Override
+                protected String doInBackground() throws Exception {
+                    String json = ia.consultarIA(prompt);
+                    return extraerTextoDeRespuesta(json);
+                }
+
+                @Override
+                protected void done() {
+                    try {
+                        String respuesta = get();
+                        textoAreaInt.setText(respuesta);
+                        labelReloj.setIcon(iconCheck);
+                    } catch (Exception e) {
+                        textoAreaInt.setText("Error al consultar IA: " + e.getMessage());
+                        labelReloj.setIcon(null);
+                    }
+                }
+            };
+
+            worker.execute();
+        } else {
+            JOptionPane.showMessageDialog(this, "El area de origen y destino son las mismas.");
+        }
     }//GEN-LAST:event_botonConsultarIntActionPerformed
 
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonConsultarInt;
@@ -298,10 +296,10 @@ Comienza directamente con el análisis, sin títulos como “TuNombre”, “Zon
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals("areas")){
+        if (arg.equals("areas")) {
             sistema.ordenarAreasPorNombre();
-        listaAreaOrInt.setListData(sistema.getListaAreas().toArray());
-        listaAreaDestInt.setListData(sistema.getListaAreas().toArray());
+            listaAreaOrInt.setListData(sistema.getListaAreas().toArray());
+            listaAreaDestInt.setListData(sistema.getListaAreas().toArray());
         }
     }
 }

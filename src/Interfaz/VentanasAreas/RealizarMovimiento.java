@@ -6,115 +6,113 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 public class RealizarMovimiento extends javax.swing.JFrame implements Observer {
+
     private Sistema sistema;
-   
+
     public RealizarMovimiento(Sistema unSistema) {
-         sistema = unSistema;
+        sistema = unSistema;
         initComponents();
         setTitle("Movimiento de Empleados");
         setVisible(true);
         unSistema.addObserver(this);
         ArrayList<Area> listaAreas = sistema.getListaAreas();
-        
+
         sistema.ordenarAreasPorNombre();
         listaOrigenMov.setListData(listaAreas.toArray());
         listaDestinoMov.setListData(listaAreas.toArray());
         cargarMeses();
     }
-    private void cargarMeses(){
-        
-    boxMesesMov.addItem("Enero");
-    boxMesesMov.addItem("Febrero");
-    boxMesesMov.addItem("Marzo");
-    boxMesesMov.addItem("Abril");
-    boxMesesMov.addItem("Mayo");
-    boxMesesMov.addItem("Junio");
-    boxMesesMov.addItem("Julio");
-    boxMesesMov.addItem("Agosto");
-    boxMesesMov.addItem("Setiembre");
-    boxMesesMov.addItem("Octubre");
-    boxMesesMov.addItem("Noviembre");
-    boxMesesMov.addItem("Diciembre");
-    
-    
+
+    private void cargarMeses() {
+
+        boxMesesMov.addItem("Enero");
+        boxMesesMov.addItem("Febrero");
+        boxMesesMov.addItem("Marzo");
+        boxMesesMov.addItem("Abril");
+        boxMesesMov.addItem("Mayo");
+        boxMesesMov.addItem("Junio");
+        boxMesesMov.addItem("Julio");
+        boxMesesMov.addItem("Agosto");
+        boxMesesMov.addItem("Setiembre");
+        boxMesesMov.addItem("Octubre");
+        boxMesesMov.addItem("Noviembre");
+        boxMesesMov.addItem("Diciembre");
+
     }
-    
-    private void realizarMov(){
-      try{
-        Area areaOrigen=(Area)listaOrigenMov.getSelectedValue();
-        Area areaDestino=(Area)listaDestinoMov.getSelectedValue();
-        Empleado empleado=(Empleado)listaEmpleadosMov.getSelectedValue();
-        String mes= (String)boxMesesMov.getSelectedItem();
-        int numMes=0;
-       
-        int presuAreaDestino=areaDestino.getPresupuestoActual();
-        int presuAreaOrigen=areaOrigen.getPresupuestoActual();
-        boolean repetido=false;
-        
-        switch (mes){
-            case "Enero":
-                numMes=1;
-                break;
-                
+
+    private void realizarMov() {
+        try {
+            Area areaOrigen = (Area) listaOrigenMov.getSelectedValue();
+            Area areaDestino = (Area) listaDestinoMov.getSelectedValue();
+            Empleado empleado = (Empleado) listaEmpleadosMov.getSelectedValue();
+            String mes = (String) boxMesesMov.getSelectedItem();
+            int numMes = 0;
+
+            int presuAreaDestino = areaDestino.getPresupuestoActual();
+            int presuAreaOrigen = areaOrigen.getPresupuestoActual();
+            boolean repetido = false;
+
+            switch (mes) {
+                case "Enero":
+                    numMes = 1;
+                    break;
+
                 case "Febrero":
-                numMes=2;
-                break;
-                
+                    numMes = 2;
+                    break;
+
                 case "Marzo":
-                numMes=3;
-                break;
-                
+                    numMes = 3;
+                    break;
+
                 case "Abril":
-                numMes=4;
-                break;
-                
+                    numMes = 4;
+                    break;
+
                 case "Mayo":
-                numMes=5;
-                break;
-                
+                    numMes = 5;
+                    break;
+
                 case "Junio":
-                numMes=6;
-                break;
-                
+                    numMes = 6;
+                    break;
+
                 case "Julio":
-                numMes=7;
-                break;
-                
+                    numMes = 7;
+                    break;
+
                 case "Agosto":
-                numMes=8;
-                break;
-                
+                    numMes = 8;
+                    break;
+
                 case "Setiembre":
-                numMes=9;
-                break;
-                
+                    numMes = 9;
+                    break;
+
                 case "Octubre":
-                numMes=10;
-                break;
-                
+                    numMes = 10;
+                    break;
+
                 case "Noviembre":
-                numMes=11;
-                break;
-                
+                    numMes = 11;
+                    break;
+
                 case "Diciembre":
-                numMes=12;
-                break;             
-        }
-         
-       
-       
-        
-        if(areaDestino==areaOrigen){
-        repetido=true;
-        JOptionPane.showMessageDialog(this, "Las areas seleccionadas son las mismas.");
-        }
-            if(presuAreaDestino>=empleado.salarioAnualRes() && !repetido){
-                areaDestino.setPresupuestoActual(presuAreaDestino-empleado.salarioAnualRes());
+                    numMes = 12;
+                    break;
+            }
+
+            if (areaDestino == areaOrigen) {
+                repetido = true;
+                JOptionPane.showMessageDialog(this, "Las areas seleccionadas son las mismas.");
+            }
+            if (presuAreaDestino >= empleado.salarioAnualRes() && !repetido) {
+                areaDestino.setPresupuestoActual(presuAreaDestino - empleado.salarioAnualRes());
                 areaOrigen.setPresupuestoActual(presuAreaOrigen + empleado.salarioAnualRes());
                 empleado.setArea(areaDestino);
                 empleado.setMesDeEntrada(numMes);
                 areaOrigen.getListaEmpleados().remove(empleado);
-                
+
                 sistema.ordenarAreasPorNombre();
                 sistema.ordenarEmpleadosPorSalario();
                 listaEmpleadosMov.setListData(areaOrigen.getListaEmpleados().toArray());
@@ -122,26 +120,21 @@ public class RealizarMovimiento extends javax.swing.JFrame implements Observer {
                 listaOrigenMov.setListData(sistema.getListaAreas().toArray());
                 listaDestinoMov.setListData(sistema.getListaAreas().toArray());
                 areaDestino.getListaEmpleados().add(empleado);
-                MovimientosArea unMovArea= new MovimientosArea(mes,areaOrigen,areaDestino,empleado);
+                MovimientosArea unMovArea = new MovimientosArea(mes, areaOrigen, areaDestino, empleado);
                 sistema.agregarMovArea(unMovArea);
                 sistema.notiCambioPresu();
                 JOptionPane.showMessageDialog(this, "Movimiento exitoso.");
-                
-                
-                
-        
-            }else{
-            JOptionPane.showMessageDialog(this, "El presupuesto del Area de destino no es suficiente.");
+
+            } else {
+                JOptionPane.showMessageDialog(this, "El presupuesto del Area de destino no es suficiente.");
             }
-        
-        
-        
-        
-    }catch(NullPointerException e){
+
+        } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(this, "Alguna de las listas no tiene ningun valor seleccionado.");
-}
+        }
 
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -278,22 +271,22 @@ public class RealizarMovimiento extends javax.swing.JFrame implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boxMesesMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxMesesMovActionPerformed
-        
+
     }//GEN-LAST:event_boxMesesMovActionPerformed
 
     private void botonCancelarMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarMovActionPerformed
-      this.dispose();
+        this.dispose();
     }//GEN-LAST:event_botonCancelarMovActionPerformed
 
     private void listaEmpleadosMovValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaEmpleadosMovValueChanged
-        
+
     }//GEN-LAST:event_listaEmpleadosMovValueChanged
 
     private void listaOrigenMovValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaOrigenMovValueChanged
-      
-        Area unArea= (Area)listaOrigenMov.getSelectedValue();
-        if(unArea!=null){
-           listaEmpleadosMov.setListData(unArea.getListaEmpleados().toArray());
+
+        Area unArea = (Area) listaOrigenMov.getSelectedValue();
+        if (unArea != null) {
+            listaEmpleadosMov.setListData(unArea.getListaEmpleados().toArray());
         }
     }//GEN-LAST:event_listaOrigenMovValueChanged
 
@@ -301,8 +294,6 @@ public class RealizarMovimiento extends javax.swing.JFrame implements Observer {
         realizarMov();
     }//GEN-LAST:event_botonRegistrarMovActionPerformed
 
-   
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelarMov;
@@ -322,11 +313,11 @@ public class RealizarMovimiento extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals("areas")){
-        sistema.ordenarAreasPorNombre();
-        listaOrigenMov.setListData(sistema.getListaAreas().toArray());
-        listaDestinoMov.setListData(sistema.getListaAreas().toArray());
-        }else if(arg.equals("empleados")){
+        if (arg.equals("areas")) {
+            sistema.ordenarAreasPorNombre();
+            listaOrigenMov.setListData(sistema.getListaAreas().toArray());
+            listaDestinoMov.setListData(sistema.getListaAreas().toArray());
+        } else if (arg.equals("empleados")) {
             sistema.ordenarEmpleadosPorSalario();
             listaEmpleadosMov.setListData(sistema.getListaEmpleados().toArray());
         }

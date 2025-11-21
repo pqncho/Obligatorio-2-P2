@@ -18,13 +18,15 @@ public class AltaArea extends javax.swing.JFrame implements Observer {
         listaAltaAreas.setListData(sistema.getListaAreas().toArray());
         unSistema.addObserver(this);
     }
-     private void limpiarCajas(){
-     textoNombreArea.setText("");
-     textoDescArea.setText("");
-    textoPresuArea.setText("");
-     }
+
+    private void limpiarCajas() {
+        textoNombreArea.setText("");
+        textoDescArea.setText("");
+        textoPresuArea.setText("");
+    }
+
     private void agregarArea() {
-        boolean existente=false;
+        boolean existente = false;
         try {
             ArrayList<Area> listaAreas = sistema.getListaAreas();
 
@@ -34,19 +36,19 @@ public class AltaArea extends javax.swing.JFrame implements Observer {
                 if (listaAreas.get(i).getNombre().equals(nombre)) {
                     JOptionPane.showMessageDialog(this, "Area existente.");
                     limpiarCajas();
-                    existente=true;
+                    existente = true;
                 }
 
             }
-            if(!existente){
-            String descripcion = textoDescArea.getText();
-            int presupuesto = Integer.parseInt(textoPresuArea.getText());
-            Area area = new Area(nombre, descripcion, presupuesto);
-            sistema.agregarArea(area);
-            sistema.ordenarAreasPorNombre();
-            listaAltaAreas.setListData(sistema.getListaAreas().toArray());
-            JOptionPane.showMessageDialog(this, "El area fue agregada correctamente.");
-            limpiarCajas();
+            if (!existente) {
+                String descripcion = textoDescArea.getText();
+                int presupuesto = Integer.parseInt(textoPresuArea.getText());
+                Area area = new Area(nombre, descripcion, presupuesto);
+                sistema.agregarArea(area);
+                sistema.ordenarAreasPorNombre();
+                listaAltaAreas.setListData(sistema.getListaAreas().toArray());
+                JOptionPane.showMessageDialog(this, "El area fue agregada correctamente.");
+                limpiarCajas();
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Presupuesto invalido");
@@ -167,7 +169,7 @@ public class AltaArea extends javax.swing.JFrame implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     private void textoNombreAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoNombreAreaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_textoNombreAreaActionPerformed
 
     private void botonRegistrarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarAreaActionPerformed
@@ -194,9 +196,9 @@ public class AltaArea extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.equals("areas")){
-        sistema.ordenarAreasPorNombre();
-       listaAltaAreas.setListData(sistema.getListaAreas().toArray());
+        if (arg.equals("areas")) {
+            sistema.ordenarAreasPorNombre();
+            listaAltaAreas.setListData(sistema.getListaAreas().toArray());
         }
     }
 }
