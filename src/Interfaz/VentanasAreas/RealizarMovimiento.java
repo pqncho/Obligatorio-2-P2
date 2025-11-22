@@ -203,7 +203,7 @@ public class RealizarMovimiento extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jLabel2.setText("Area origen");
+        jLabel2.setText("Área origen");
 
         jLabel3.setText("Empleados");
 

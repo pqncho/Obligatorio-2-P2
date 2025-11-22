@@ -60,7 +60,7 @@ public class ModificacionManager extends javax.swing.JFrame implements Observer 
 
         jLabel2.setText("Nombre");
 
-        jLabel3.setText("Cedula");
+        jLabel3.setText("Cédula");
 
         jLabel4.setText("Celular");
 

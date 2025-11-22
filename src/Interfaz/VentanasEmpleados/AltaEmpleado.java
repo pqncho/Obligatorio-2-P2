@@ -164,7 +164,7 @@ public class AltaEmpleado extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jLabel1.setText("Cedula");
+        jLabel1.setText("Cédula");
 
         jLabel2.setText("Nombre");
 
@@ -182,7 +182,7 @@ public class AltaEmpleado extends javax.swing.JFrame implements Observer {
 
         jLabel6.setText("Manager");
 
-        jLabel7.setText("Area");
+        jLabel7.setText("Área");
 
         botonRegistrarAltaEmp.setText("Registrar");
         botonRegistrarAltaEmp.addActionListener(new java.awt.event.ActionListener() {

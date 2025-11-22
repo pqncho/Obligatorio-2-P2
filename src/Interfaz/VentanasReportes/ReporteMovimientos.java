@@ -208,7 +208,7 @@ public class ReporteMovimientos extends javax.swing.JFrame implements Observer {
                 {"", null, null, null}
             },
             new String [] {
-                "Mes", "Area origen", "Area destino", "Empleado"
+                "Mes", "Área origen", "Área destino", "Empleado"
             }
         ) {
             Class[] types = new Class [] {
@@ -246,7 +246,7 @@ public class ReporteMovimientos extends javax.swing.JFrame implements Observer {
 
         jLabel2.setText("Mes");
 
-        jLabel3.setText("Area origen");
+        jLabel3.setText("Área origen");
 
         boxEmpRepMov.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
         boxEmpRepMov.addActionListener(new java.awt.event.ActionListener() {
@@ -257,7 +257,7 @@ public class ReporteMovimientos extends javax.swing.JFrame implements Observer {
 
         jLabel5.setText("Empleado");
 
-        jLabel6.setText("Area destino");
+        jLabel6.setText("Área destino");
 
         botonExp.setText("Exportar como CSV");
         botonExp.addActionListener(new java.awt.event.ActionListener() {

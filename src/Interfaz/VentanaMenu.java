@@ -105,7 +105,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        jMenu1.setText("Areas");
+        jMenu1.setText("Áreas");
 
         itemAreaAlta.setText("Alta");
         itemAreaAlta.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +123,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         });
         jMenu1.add(itemAreaBaja);
 
-        itemAreaModificacion.setText("Modificacion");
+        itemAreaModificacion.setText("Modificación");
         itemAreaModificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemAreaModificacionActionPerformed(evt);
@@ -141,7 +141,7 @@ public class VentanaMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Managers");
+        jMenu2.setText("Mánagers");
 
         itemManagersAlta.setText("Alta");
         itemManagersAlta.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +159,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         });
         jMenu2.add(itemManagersBaja);
 
-        itemManagersModificacion.setText("Modificacion");
+        itemManagersModificacion.setText("Modificación");
         itemManagersModificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemManagersModificacionActionPerformed(evt);
@@ -191,7 +191,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         });
         jMenu4.add(itemReporteInteligente);
 
-        itemReporteAreas.setText("Reporte de estado de areas");
+        itemReporteAreas.setText("Reporte de estado de áreas");
         itemReporteAreas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemReporteAreasActionPerformed(evt);

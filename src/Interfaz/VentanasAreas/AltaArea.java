@@ -88,7 +88,7 @@ public class AltaArea extends javax.swing.JFrame implements Observer {
 
         jLabel1.setText("Nombre");
 
-        jLabel2.setText("Descripcion");
+        jLabel2.setText("Descripción");
 
         jLabel3.setText("Presupuesto");
 
